@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="lbcfublModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'lbcfubl.dbo.Account' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="argent" />
+            <PropertyRef Name="date" />
+          </Key>
+          <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="argent" Type="float" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="cost_without_margin" Type="float" Nullable="false" />
+          <Property Name="cost_with_margin" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'lbcfubl.dbo.Purchase' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="id_prod" />
+          </Key>
+          <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="id_prod" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shopping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Shopping_Product">
+          <Key>
+            <PropertyRef Name="id_shopping" />
+            <PropertyRef Name="id_product" />
+            <PropertyRef Name="number" />
+          </Key>
+          <Property Name="id_shopping" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id_product" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accompte_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="id_prod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shopping_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Shopping_Product">
+              <PropertyRef Name="id_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shopping_Product_Shopping">
+          <End Role="Shopping" Type="Self.Shopping" Multiplicity="1" />
+          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shopping">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Shopping_Product">
+              <PropertyRef Name="id_shopping" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lbcfublModelStoreContainer">
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shopping" EntityType="Self.Shopping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Account].[login] AS [login], 
+    [Account].[argent] AS [argent], 
+    [Account].[date] AS [date]
+    FROM [dbo].[Account] AS [Account]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Purchase].[login] AS [login], 
+    [Purchase].[date] AS [date], 
+    [Purchase].[id_prod] AS [id_prod]
+    FROM [dbo].[Purchase] AS [Purchase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Shopping_Product" EntityType="Self.Shopping_Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Shopping_Product].[id_shopping] AS [id_shopping], 
+    [Shopping_Product].[id_product] AS [id_product], 
+    [Shopping_Product].[number] AS [number]
+    FROM [dbo].[Shopping_Product] AS [Shopping_Product]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Accompte_User" Association="Self.FK_Accompte_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shopping_Product_Product" Association="Self.FK_Shopping_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shopping_Product_Shopping" Association="Self.FK_Shopping_Product_Shopping">
+            <End Role="Shopping" EntitySet="Shopping" />
+            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lbcfublModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cost_without_margin" Type="Double" Nullable="false" />
+          <Property Name="cost_with_margin" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
+          <NavigationProperty Name="Shopping_Product" Relationship="Self.FK_Shopping_Product_Product" FromRole="Product" ToRole="Shopping_Product" />
+        </EntityType>
+        <EntityType Name="Shopping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Shopping_Product" Relationship="Self.FK_Shopping_Product_Shopping" FromRole="Shopping" ToRole="Shopping_Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accompte_User" FromRole="User" ToRole="Account" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_User" FromRole="User" ToRole="Purchase" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="argent" />
+            <PropertyRef Name="date" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="argent" Type="Double" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Accompte_User" FromRole="Account" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="id_prod" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_prod" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Purchase_User" FromRole="Purchase" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Shopping_Product">
+          <Key>
+            <PropertyRef Name="id_shopping" />
+            <PropertyRef Name="id_product" />
+            <PropertyRef Name="number" />
+          </Key>
+          <Property Name="id_shopping" Type="Guid" Nullable="false" />
+          <Property Name="id_product" Type="Guid" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Shopping_Product_Product" FromRole="Shopping_Product" ToRole="Product" />
+          <NavigationProperty Name="Shopping" Relationship="Self.FK_Shopping_Product_Shopping" FromRole="Shopping_Product" ToRole="Shopping" />
+        </EntityType>
+        <Association Name="FK_Purchase_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="id_prod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shopping_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Shopping_Product">
+              <PropertyRef Name="id_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shopping_Product_Shopping">
+          <End Role="Shopping" Type="Self.Shopping" Multiplicity="1" />
+          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shopping">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Shopping_Product">
+              <PropertyRef Name="id_shopping" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accompte_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lbcfublEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Shoppings" EntityType="Self.Shopping" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="Shopping_Product" EntityType="Self.Shopping_Product" />
+          <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shopping_Product_Product" Association="Self.FK_Shopping_Product_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shopping_Product_Shopping" Association="Self.FK_Shopping_Product_Shopping">
+            <End Role="Shopping" EntitySet="Shoppings" />
+            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accompte_User" Association="Self.FK_Accompte_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lbcfublModelStoreContainer" CdmEntityContainer="lbcfublEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="lbcfublModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="cost_without_margin" ColumnName="cost_without_margin" />
+                <ScalarProperty Name="cost_with_margin" ColumnName="cost_with_margin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shoppings">
+            <EntityTypeMapping TypeName="lbcfublModel.Shopping">
+              <MappingFragment StoreEntitySet="Shopping">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="lbcfublModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="lbcfublModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="argent" ColumnName="argent" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="lbcfublModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_prod" ColumnName="id_prod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shopping_Product">
+            <EntityTypeMapping TypeName="lbcfublModel.Shopping_Product">
+              <MappingFragment StoreEntitySet="Shopping_Product">
+                <ScalarProperty Name="id_shopping" ColumnName="id_shopping" />
+                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="number" ColumnName="number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
