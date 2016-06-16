@@ -115,6 +115,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Account.cs" />
+    <Compile Include="DataAccess\Product.cs" />
+    <Compile Include="DataAccess\Purchase.cs" />
     <Compile Include="DataAccess\User.cs" />
     <Compile Include="DBO\Account.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
