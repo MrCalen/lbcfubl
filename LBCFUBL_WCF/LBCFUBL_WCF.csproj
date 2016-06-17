@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BusinessManagement\User\UserService.svc" />
+    <Content Include="BusinessManagement\Product\ProductService.svc" />
     <Content Include="DBO\ef_lbcfubl.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ef_lbcfubl.edmx</DependentUpon>
@@ -118,6 +119,9 @@
     <Compile Include="BusinessManagement\User\IUserService.cs" />
     <Compile Include="BusinessManagement\User\UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
+    <Compile Include="BusinessManagement\Product\IProductService.cs" />
+    <Compile Include="BusinessManagement\Product\ProductService.svc.cs">
+      <DependentUpon>ProductService.svc</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Account.cs" />
     <Compile Include="DataAccess\Product.cs" />
@@ -185,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
