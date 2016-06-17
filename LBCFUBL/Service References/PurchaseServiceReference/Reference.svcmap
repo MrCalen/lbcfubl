@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="44fd96bc-1bda-4620-9ce3-68a4474dfeb5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PurchaseService.disco" MetadataType="Disco" ID="a3d258a7-bae9-4611-850f-6c317f780929" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?disco" />
+    <MetadataFile FileName="PurchaseService.xsd" MetadataType="Schema" ID="3fca4044-840a-46d4-908e-0d905670def8" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PurchaseService1.xsd" MetadataType="Schema" ID="10d649ea-2f3e-4dc5-8f9a-3b61527d4970" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PurchaseService2.xsd" MetadataType="Schema" ID="f28022c9-69f6-4d10-a4c4-ce1121b1f326" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PurchaseService.wsdl" MetadataType="Wsdl" ID="c3523f6e-bcde-4dcd-bfbb-dc45fc07ef73" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
