@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d967dee8-95a9-468a-8be6-9dd303bc8b81" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ShoppingProductService.xsd" MetadataType="Schema" ID="ecfd1d94-5e35-47e0-a99d-b2e8c216b66c" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ShoppingProductService1.xsd" MetadataType="Schema" ID="09e5aa9c-86ba-4f74-800d-4a368286500e" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ShoppingProductService.disco" MetadataType="Disco" ID="c3e69409-1523-4bde-91a2-600fa65af079" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?disco" />
+    <MetadataFile FileName="ShoppingProductService.wsdl" MetadataType="Wsdl" ID="03b4bf89-f69b-4929-8095-ae19764dcc74" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?wsdl" />
+    <MetadataFile FileName="ShoppingProductService2.xsd" MetadataType="Schema" ID="0360a072-595c-4963-a6e6-e578322a6269" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

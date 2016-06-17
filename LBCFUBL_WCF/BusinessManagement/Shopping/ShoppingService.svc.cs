@@ -17,7 +17,7 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
         {
             shopping = new DataAccess.Shopping();
         }
-        public void CreateShopping(DateTime date, List<Shopping_Product> shopping_products)
+        public void CreateShopping(DateTime date, List<DBO.Shopping_Product> shopping_products)
         {
             shopping.CreateShopping(date, shopping_products);
         }

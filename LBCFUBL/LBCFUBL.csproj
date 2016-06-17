@@ -190,6 +190,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ShoppingProductServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ShoppingServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -279,6 +289,36 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\ShoppingProductServiceReference\LBCFUBL.ShoppingProductServiceReference.Shopping_Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService.disco" />
+    <None Include="Service References\ShoppingProductServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ShoppingProductServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ShoppingProductServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ShoppingServiceReference\LBCFUBL.ShoppingServiceReference.Shopping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService.wsdl" />
+    <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ShoppingServiceReference\ShoppingService.disco" />
+    <None Include="Service References\ShoppingServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ShoppingServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ShoppingServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -333,6 +373,16 @@
     <None Include="Service References\PurchaseServiceReference\PurchaseService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ShoppingServiceReference\ShoppingService.wsdl" />
+    <None Include="Service References\ShoppingServiceReference\ShoppingService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ShoppingServiceReference\ShoppingService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ShoppingServiceReference\ShoppingService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -355,6 +405,8 @@
     <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
     <WCFMetadataStorage Include="Service References\PurchaseServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ShoppingProductServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ShoppingServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

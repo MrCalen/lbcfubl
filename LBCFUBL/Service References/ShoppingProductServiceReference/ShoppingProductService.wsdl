@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ShoppingProductService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IShoppingProductService_GetShopping_ProductForShoppingAndProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopping_ProductForShoppingAndProduct" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_GetShopping_ProductForShoppingAndProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopping_ProductForShoppingAndProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_GetShopping_ProductsForShopping_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopping_ProductsForShopping" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_GetShopping_ProductsForShopping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopping_ProductsForShoppingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_CreateShopping_Product_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateShopping_Product" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_CreateShopping_Product_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateShopping_ProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_DeleteShopping_Product_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShopping_Product" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingProductService_DeleteShopping_Product_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShopping_ProductResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IShoppingProductService">
+    <wsdl:operation name="GetShopping_ProductForShoppingAndProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingProductService/GetShopping_ProductForShoppingAndProduct" message="tns:IShoppingProductService_GetShopping_ProductForShoppingAndProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingProductService/GetShopping_ProductForShoppingAndProductResponse" message="tns:IShoppingProductService_GetShopping_ProductForShoppingAndProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShopping_ProductsForShopping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingProductService/GetShopping_ProductsForShopping" message="tns:IShoppingProductService_GetShopping_ProductsForShopping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingProductService/GetShopping_ProductsForShoppingResponse" message="tns:IShoppingProductService_GetShopping_ProductsForShopping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateShopping_Product">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingProductService/CreateShopping_Product" message="tns:IShoppingProductService_CreateShopping_Product_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingProductService/CreateShopping_ProductResponse" message="tns:IShoppingProductService_CreateShopping_Product_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopping_Product">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingProductService/DeleteShopping_Product" message="tns:IShoppingProductService_DeleteShopping_Product_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingProductService/DeleteShopping_ProductResponse" message="tns:IShoppingProductService_DeleteShopping_Product_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IShoppingProductService" type="tns:IShoppingProductService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetShopping_ProductForShoppingAndProduct">
+      <soap:operation soapAction="http://tempuri.org/IShoppingProductService/GetShopping_ProductForShoppingAndProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShopping_ProductsForShopping">
+      <soap:operation soapAction="http://tempuri.org/IShoppingProductService/GetShopping_ProductsForShopping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateShopping_Product">
+      <soap:operation soapAction="http://tempuri.org/IShoppingProductService/CreateShopping_Product" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopping_Product">
+      <soap:operation soapAction="http://tempuri.org/IShoppingProductService/DeleteShopping_Product" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ShoppingProductService">
+    <wsdl:port name="BasicHttpBinding_IShoppingProductService" binding="tns:BasicHttpBinding_IShoppingProductService">
+      <soap:address location="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
