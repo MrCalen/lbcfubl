@@ -26,6 +26,8 @@ namespace LBCFUBL.Models
         public string description { get; set; }
         public double cost_without_margin { get; set; }
         public double cost_with_margin { get; set; }
+        public double cost_HT { get; set; }
+        public double taxe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchase { get; set; }

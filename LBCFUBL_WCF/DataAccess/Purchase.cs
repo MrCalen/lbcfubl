@@ -41,4 +41,3 @@ namespace LBCFUBL_WCF.DataAccess
         }
     }
 }
-}

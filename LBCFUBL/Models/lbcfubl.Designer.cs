@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\Users\Corentin\Desktop\lbcfubl\LBCFUBL\Models\lbcfubl.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\Hugh\Documents\GitHub\menu1\lbcfubl\LBCFUBL\Models\lbcfubl.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.

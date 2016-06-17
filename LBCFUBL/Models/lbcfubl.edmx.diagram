@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="34ca4c6fcd644725b5d851f52e0eea64" Name="Diagram1">
-        <EntityTypeShape EntityType="lbcfublModel.Product" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Shopping" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.User" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Account" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Purchase" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Shopping_Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="lbcfublModel.FK_Purchase_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Shopping" ManuallyRouted="false" />
-        <AssociationConnector Association="lbcfublModel.FK_Accompte_User" ManuallyRouted="false" />
-        <AssociationConnector Association="lbcfublModel.FK_Purchase_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="lbcfublModel.Product" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="lbcfublModel.Shopping" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="lbcfublModel.User" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="lbcfublModel.Account" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="lbcfublModel.Purchase" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="lbcfublModel.Shopping_Product" Width="1.5" PointX="3" PointY="3.75" />
+        <AssociationConnector Association="lbcfublModel.FK_Purchase_Product" />
+        <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Product" />
+        <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Shopping" />
+        <AssociationConnector Association="lbcfublModel.FK_Accompte_User" />
+        <AssociationConnector Association="lbcfublModel.FK_Purchase_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
