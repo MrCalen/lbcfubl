@@ -119,6 +119,7 @@
     <Compile Include="BusinessManagement\User\IUserService.cs" />
     <Compile Include="BusinessManagement\User\UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
+    </Compile>
     <Compile Include="BusinessManagement\Product\IProductService.cs" />
     <Compile Include="BusinessManagement\Product\ProductService.svc.cs">
       <DependentUpon>ProductService.svc</DependentUpon>

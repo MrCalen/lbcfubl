@@ -175,7 +175,12 @@
       <DependentUpon>lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\UserServiceReference\Reference.cs">
+    <Compile Include="Service References\ProductServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -219,10 +224,33 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\UserServiceReference\UserService.disco" />
-    <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\UserServiceReference\configuration.svcinfo" />
-    <None Include="Service References\UserServiceReference\Reference.svcmap">
+    <Content Include="Service References\ProductServiceReference\LBCFUBL.ProductServiceReference.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ProductServiceReference\ProductService.disco" />
+    <None Include="Service References\ProductServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ProductServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ProductServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ServiceReference1\LBCFUBL.ServiceReference1.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ProductServiceReference\ProductService.wsdl" />
+    <None Include="Service References\ProductServiceReference\ProductService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductServiceReference\ProductService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductServiceReference\ProductService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service1.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -270,11 +298,14 @@
     <Content Include="Views\Shopping_Product\Details.cshtml" />
     <Content Include="Views\Shopping_Product\Edit.cshtml" />
     <Content Include="Views\Shopping_Product\Index.cshtml" />
-    <None Include="Service References\UserServiceReference\UserService.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService.xsd">
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
+    <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\UserService1.xsd">
+    <None Include="Service References\ServiceReference1\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -296,7 +327,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\UserServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
