@@ -11,10 +11,12 @@ namespace LBCFUBL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Shopping_Product
     {
+        [ForeignKey("Shopping")]
         public System.Guid id_shopping { get; set; }
+        [ForeignKey("Product")]
         public System.Guid id_product { get; set; }
         public int number { get; set; }
     
