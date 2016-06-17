@@ -59,7 +59,8 @@ namespace LBCFUBL_WCF.DataAccess
 
         public List<DBO.User> GetUsers()
         {
-            return DBO.DatabaseContext.getInstance().Users.ToList();
+            var list = DBO.DatabaseContext.getInstance().Users.ToList();
+            return list;
         }
     }
 }

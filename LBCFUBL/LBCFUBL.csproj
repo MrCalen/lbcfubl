@@ -200,6 +200,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\UserServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Helper.cs" />
+    <Compile Include="Services\ServiceSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -319,6 +326,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\UserServiceReference\LBCFUBL.UserServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\UserServiceReference\UserService.disco" />
+    <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\UserServiceReference\configuration.svcinfo" />
+    <None Include="Service References\UserServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -383,6 +400,16 @@
     <None Include="Service References\ShoppingServiceReference\ShoppingService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UserServiceReference\UserService.wsdl" />
+    <None Include="Service References\UserServiceReference\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -407,6 +434,13 @@
     <WCFMetadataStorage Include="Service References\PurchaseServiceReference\" />
     <WCFMetadataStorage Include="Service References\ShoppingProductServiceReference\" />
     <WCFMetadataStorage Include="Service References\ShoppingServiceReference\" />
+    <WCFMetadataStorage Include="Service References\UserServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LBCFUBL_WCF\LBCFUBL_WCF.csproj">
+      <Project>{761cceff-b867-4e84-a236-5057ff67ff7a}</Project>
+      <Name>LBCFUBL_WCF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

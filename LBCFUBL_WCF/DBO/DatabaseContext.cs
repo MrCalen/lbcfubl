@@ -14,7 +14,10 @@ namespace LBCFUBL_WCF.DBO
         public static lbcfublEntities getInstance()
         {
             if (instance == null)
+            {
                 instance = new lbcfublEntities();
+                instance.Configuration.ProxyCreationEnabled = false;
+            }
             return instance;
         }
     }

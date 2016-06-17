@@ -7,17 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
     public class UsersController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.User.ToList());
+            var users = Helper.GetUserClient().GetUsers().ToList();
+            return View(users);
         }
 
         // GET: Users/Details/5
