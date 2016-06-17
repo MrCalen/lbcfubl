@@ -51,5 +51,10 @@ namespace LBCFUBL_WCF.DataAccess
             DBO.DatabaseContext.getInstance().Users.Remove(exists);
             return true;
         }
+
+        public List<DBO.User> GetUsers()
+        {
+            return DBO.DatabaseContext.getInstance().Users.ToList();
+        }
     }
 }
