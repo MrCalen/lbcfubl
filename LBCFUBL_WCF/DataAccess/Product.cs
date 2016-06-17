@@ -12,6 +12,11 @@ namespace LBCFUBL_WCF.DataAccess
             return DBO.DatabaseContext.getInstance().Products.Where(p => p.name.Equals(name)).Single();
         }
 
+        public List<DBO.Product> GetAllProducts()
+        {
+            return DBO.DatabaseContext.getInstance().Products.ToList();
+        }
+
         public DBO.Product CreateProduct(String name, String description, float cost_without_margin, float cost_with_margin)
         {
             DBO.Product exists = GetProductFromName(name);
