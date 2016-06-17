@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LBCFUBL_WCF", "LBCFUBL_WCF\LBCFUBL_WCF.csproj", "{761CCEFF-B867-4E84-A236-5057FF67FF7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LBCFUBL", "LBCFUBL\LBCFUBL.csproj", "{CE2764AD-F697-4765-8758-F13C017BBB39}"
+	ProjectSection(ProjectDependencies) = postProject
+		{761CCEFF-B867-4E84-A236-5057FF67FF7A} = {761CCEFF-B867-4E84-A236-5057FF67FF7A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
