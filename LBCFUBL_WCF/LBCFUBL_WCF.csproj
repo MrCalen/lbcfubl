@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="BusinessManagement\Account\Account.svc" />
     <Content Include="BusinessManagement\Purchase\PurchaseService.svc" />
+    <Content Include="BusinessManagement\Shopping\ShoppingService.svc" />
     <Content Include="BusinessManagement\User\UserService.svc" />
     <Content Include="BusinessManagement\Product\ProductService.svc" />
     <Content Include="DBO\ef_lbcfubl.Context.tt">
@@ -125,6 +126,10 @@
     <Compile Include="BusinessManagement\Purchase\IPurchaseService.cs" />
     <Compile Include="BusinessManagement\Purchase\PurchaseService.svc.cs">
       <DependentUpon>PurchaseService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessManagement\Shopping\IShoppingService.cs" />
+    <Compile Include="BusinessManagement\Shopping\ShoppingService.svc.cs">
+      <DependentUpon>ShoppingService.svc</DependentUpon>
     </Compile>
     <Compile Include="BusinessManagement\User\IUserService.cs" />
     <Compile Include="BusinessManagement\User\UserService.svc.cs">

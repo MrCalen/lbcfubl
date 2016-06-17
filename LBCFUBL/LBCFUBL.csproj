@@ -185,6 +185,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\PurchaseServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -264,6 +269,16 @@
     <None Include="Service References\ProductServiceReference\ProductService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\PurchaseServiceReference\LBCFUBL.PurchaseServiceReference.Purchase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\PurchaseServiceReference\PurchaseService.disco" />
+    <None Include="Service References\PurchaseServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PurchaseServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PurchaseServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -308,6 +323,16 @@
     <Content Include="Views\Shopping_Product\Details.cshtml" />
     <Content Include="Views\Shopping_Product\Edit.cshtml" />
     <Content Include="Views\Shopping_Product\Index.cshtml" />
+    <None Include="Service References\PurchaseServiceReference\PurchaseService.wsdl" />
+    <None Include="Service References\PurchaseServiceReference\PurchaseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PurchaseServiceReference\PurchaseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PurchaseServiceReference\PurchaseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,6 +354,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PurchaseServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
