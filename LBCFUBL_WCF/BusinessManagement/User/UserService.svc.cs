@@ -13,7 +13,7 @@ namespace LBCFUBL_WCF.BusinessManagement.User
 
         public DBO.User CreateUser(string login, string password, int role)
         {
-            return user.CreateUser(login, password, DataAccess.User.RoleFromInt(role);
+            return user.CreateUser(login, password, DataAccess.User.RoleFromInt(role));
         }
 
         public bool DeleteUser(string login)

@@ -175,12 +175,12 @@
       <DependentUpon>lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ProductServiceReference\Reference.cs">
+    <Compile Include="Service References\AccountServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
+    <Compile Include="Service References\ProductServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -224,9 +224,29 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\AccountServiceReference\Account.disco" />
+    <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\AccountServiceReference\LBCFUBL.AccountServiceReference.Account.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\AccountServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\ProductServiceReference\LBCFUBL.ProductServiceReference.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\AccountServiceReference\Account.wsdl" />
+    <None Include="Service References\AccountServiceReference\Account.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\Account1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\Account2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductServiceReference\ProductService.disco" />
     <None Include="Service References\ProductServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ProductServiceReference\configuration.svcinfo" />
@@ -234,9 +254,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ServiceReference1\LBCFUBL.ServiceReference1.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\ProductServiceReference\ProductService.wsdl" />
     <None Include="Service References\ProductServiceReference\ProductService.xsd">
       <SubType>Designer</SubType>
@@ -246,13 +263,6 @@
     </None>
     <None Include="Service References\ProductServiceReference\ProductService2.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Service1.disco" />
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference1\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -298,16 +308,6 @@
     <Content Include="Views\Shopping_Product\Details.cshtml" />
     <Content Include="Views\Shopping_Product\Edit.cshtml" />
     <Content Include="Views\Shopping_Product\Index.cshtml" />
-    <None Include="Service References\ServiceReference1\Service1.wsdl" />
-    <None Include="Service References\ServiceReference1\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,8 +327,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
