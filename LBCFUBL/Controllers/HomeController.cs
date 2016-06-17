@@ -22,11 +22,6 @@ namespace LBCFUBL.Controllers
 
         public ActionResult Contact()
         {
-            ServiceReference1.Service1Client c = new ServiceReference1.Service1Client();
-            string test = c.GetData(1);
-
-            ViewBag.Message = test;
-
             return View();
         }
     }

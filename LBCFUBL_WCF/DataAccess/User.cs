@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,6 +16,12 @@ namespace LBCFUBL_WCF.DataAccess
             chief = 2,
             admin = 4,
         }
+
+        public static role RoleFromInt(int i)
+        {
+            return Enum.GetValues(typeof(role)).Cast<role>().ElementAt(i);
+        }
+
         public DBO.User GetUserFromLogin(String login)
         {
             return DBO.DatabaseContext.getInstance().Users.Where(u => u.login.Equals(login)).Single();
