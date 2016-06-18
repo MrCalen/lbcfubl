@@ -11,7 +11,7 @@ using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin,assistant")]
     public class UsersController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
@@ -29,9 +30,25 @@ namespace LBCFUBL.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.Username, model.Password))
+                /*if (Membership.ValidateUser(model.Username, model.Password))
                 {
+                    FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
+                    LBCFUBL_WCF.DBO.User u = Helper.GetUserClient().GetUserFromLogin(model.Username);
+                    model.role = LBCFUBL_WCF.DataAccess.User.RoleFromInt(u.role).ToString();
                     FormsAuthentication.RedirectFromLoginPage(model.Username, model.RememberMe);
+                }*/
+
+                LBCFUBL_WCF.DBO.User user = Helper.GetUserClient().GetUserFromLogin(model.Username);
+
+                if (user != null)
+                {
+                    if (user.password == LBCFUBL_WCF.DataAccess.User.CalculateMD5Hash(model.Password))
+                    {
+                        FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
+                        LBCFUBL_WCF.DBO.User u = Helper.GetUserClient().GetUserFromLogin(model.Username);
+                        model.role = LBCFUBL_WCF.DataAccess.User.RoleFromInt(u.role).ToString();
+                        FormsAuthentication.RedirectFromLoginPage(model.Username, model.RememberMe);
+                    }
                 }
 
                 ModelState.AddModelError("", "Incorrect username and/or password");
