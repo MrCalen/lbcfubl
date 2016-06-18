@@ -17,9 +17,13 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
         {
             shopping = new DataAccess.Shopping();
         }
-        public void CreateShopping(DateTime date, List<DBO.Shopping_Product> shopping_products)
+        public void CreateShopping(DateTime date)
         {
-            shopping.CreateShopping(date, shopping_products);
+            shopping.CreateShopping(date);
+        }
+        public void CreateShoppingWithProducts(DateTime date, List<DBO.Shopping_Product> shopping_products)
+        {
+            shopping.CreateShoppingWithProducts(date, shopping_products);
         }
 
         public bool DeleteShopping(DateTime date)
@@ -39,7 +43,15 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
 
         public List<DBO.Shopping> GetShoppingsBeforeDate(DateTime date)
         {
-            return GetShoppingsBeforeDate(date);
+            return shopping.GetShoppingsBeforeDate(date);
+        }
+        public DBO.Shopping GetShoppingFromId(Guid id)
+        {
+            return shopping.GetShoppingFromId(id);
+        }
+        public bool DeleteShoppingFromId(Guid id)
+        {
+            return shopping.DeleteShoppingFromId(id);
         }
     }
 }

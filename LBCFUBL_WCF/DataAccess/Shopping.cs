@@ -19,12 +19,21 @@ namespace LBCFUBL_WCF.DataAccess
         {
             return DBO.DatabaseContext.getInstance().Shoppings.Where(s => s.date >= date).ToList();
         }
-        public void CreateShopping(DateTime date, List<DBO.Shopping_Product> shopping_products)
+        public void CreateShoppingWithProducts(DateTime date, List<DBO.Shopping_Product> shopping_products)
         {
             DBO.Shopping Shopping = new DBO.Shopping
             {
                 date = date,
                 Shopping_Product = shopping_products
+            };
+            DBO.DatabaseContext.getInstance().Shoppings.Add(Shopping);
+            DBO.DatabaseContext.getInstance().SaveChanges();
+        }
+        public void CreateShopping(DateTime date)
+        {
+            DBO.Shopping Shopping = new DBO.Shopping
+            {
+                date = date
             };
             DBO.DatabaseContext.getInstance().Shoppings.Add(Shopping);
             DBO.DatabaseContext.getInstance().SaveChanges();
@@ -36,7 +45,21 @@ namespace LBCFUBL_WCF.DataAccess
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Shoppings.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
             return true;
+        }
+        public bool DeleteShoppingFromId(Guid id)
+        {
+            DBO.Shopping exists = DBO.DatabaseContext.getInstance().Shoppings.FirstOrDefault(s => s.id == id);
+            if (exists == null)
+                return false;
+            DBO.DatabaseContext.getInstance().Shoppings.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
+            return true;
+        }
+        public DBO.Shopping GetShoppingFromId(Guid id)
+        {
+            return DBO.DatabaseContext.getInstance().Shoppings.FirstOrDefault(s => s.id == id);
         }
     }
 }

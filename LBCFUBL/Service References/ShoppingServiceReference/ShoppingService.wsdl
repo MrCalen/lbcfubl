@@ -31,11 +31,29 @@
   <wsdl:message name="IShoppingService_CreateShopping_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateShoppingResponse" />
   </wsdl:message>
+  <wsdl:message name="IShoppingService_CreateShoppingWithProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateShoppingWithProducts" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_CreateShoppingWithProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateShoppingWithProductsResponse" />
+  </wsdl:message>
   <wsdl:message name="IShoppingService_DeleteShopping_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteShopping" />
   </wsdl:message>
   <wsdl:message name="IShoppingService_DeleteShopping_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteShoppingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_GetShoppingFromId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingFromId" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_GetShoppingFromId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingFromIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_DeleteShoppingFromId_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingFromId" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_DeleteShoppingFromId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingFromIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IShoppingService">
     <wsdl:operation name="GetShoppings">
@@ -54,9 +72,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/CreateShopping" message="tns:IShoppingService_CreateShopping_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/CreateShoppingResponse" message="tns:IShoppingService_CreateShopping_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateShoppingWithProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/CreateShoppingWithProducts" message="tns:IShoppingService_CreateShoppingWithProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/CreateShoppingWithProductsResponse" message="tns:IShoppingService_CreateShoppingWithProducts_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteShopping">
       <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/DeleteShopping" message="tns:IShoppingService_DeleteShopping_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/DeleteShoppingResponse" message="tns:IShoppingService_DeleteShopping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingFromId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/GetShoppingFromId" message="tns:IShoppingService_GetShoppingFromId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/GetShoppingFromIdResponse" message="tns:IShoppingService_GetShoppingFromId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingFromId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/DeleteShoppingFromId" message="tns:IShoppingService_DeleteShoppingFromId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/DeleteShoppingFromIdResponse" message="tns:IShoppingService_DeleteShoppingFromId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShoppingService" type="tns:IShoppingService">
@@ -97,8 +127,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateShoppingWithProducts">
+      <soap:operation soapAction="http://tempuri.org/IShoppingService/CreateShoppingWithProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteShopping">
       <soap:operation soapAction="http://tempuri.org/IShoppingService/DeleteShopping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingFromId">
+      <soap:operation soapAction="http://tempuri.org/IShoppingService/GetShoppingFromId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingFromId">
+      <soap:operation soapAction="http://tempuri.org/IShoppingService/DeleteShoppingFromId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

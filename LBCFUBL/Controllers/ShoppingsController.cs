@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
@@ -17,7 +18,7 @@ namespace LBCFUBL.Controllers
         // GET: Shoppings
         public ActionResult Index()
         {
-            return View(db.Shopping.ToList());
+            return View(Helper.GetShoppingClient().GetShoppings().ToList());
         }
 
         // GET: Shoppings/Details/5
@@ -27,7 +28,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shopping shopping = db.Shopping.Find(id);
+            LBCFUBL_WCF.DBO.Shopping shopping = Helper.GetShoppingClient().GetShoppingFromId(id.Value);
             if (shopping == null)
             {
                 return HttpNotFound();
@@ -46,13 +47,11 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,date")] Shopping shopping)
+        public ActionResult Create([Bind(Include = "id,date")] LBCFUBL_WCF.DBO.Shopping shopping)
         {
             if (ModelState.IsValid)
             {
-                shopping.id = Guid.NewGuid();
-                db.Shopping.Add(shopping);
-                db.SaveChanges();
+                Helper.GetShoppingClient().CreateShopping(shopping.date);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +65,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shopping shopping = db.Shopping.Find(id);
+            LBCFUBL_WCF.DBO.Shopping shopping = Helper.GetShoppingClient().GetShoppingFromId(id.Value);
             if (shopping == null)
             {
                 return HttpNotFound();
@@ -79,10 +78,11 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,date")] Shopping shopping)
+        public ActionResult Edit([Bind(Include = "id,date")] LBCFUBL_WCF.DBO.Shopping shopping)
         {
             if (ModelState.IsValid)
             {
+                Helper.GetShoppingClient().CreateShopping(shopping.date);
                 db.Entry(shopping).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -97,7 +97,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shopping shopping = db.Shopping.Find(id);
+            LBCFUBL_WCF.DBO.Shopping shopping = Helper.GetShoppingClient().GetShoppingFromId(id.Value);
             if (shopping == null)
             {
                 return HttpNotFound();
@@ -110,9 +110,7 @@ namespace LBCFUBL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Shopping shopping = db.Shopping.Find(id);
-            db.Shopping.Remove(shopping);
-            db.SaveChanges();
+            Helper.GetShoppingClient().DeleteShoppingFromId(id);
             return RedirectToAction("Index");
         }
 

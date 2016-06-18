@@ -18,8 +18,14 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
         [OperationContract]
         List<DBO.Shopping> GetShoppingsAfterDate(DateTime date);
         [OperationContract]
-        void CreateShopping(DateTime date, List<DBO.Shopping_Product> shopping_products);
+        void CreateShopping(DateTime date);
+        [OperationContract]
+        void CreateShoppingWithProducts(DateTime date, List<DBO.Shopping_Product> shopping_products);
         [OperationContract]
         bool DeleteShopping(DateTime date);
+        [OperationContract]
+        DBO.Shopping GetShoppingFromId(Guid id);
+        [OperationContract]
+        bool DeleteShoppingFromId(Guid id);
     }
 }
