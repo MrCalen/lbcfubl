@@ -131,8 +131,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessManagement\CustomMembershipProvider.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\ShoppingsController.cs" />
@@ -159,6 +161,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>lbcfubl.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>lbcfubl.tt</DependentUpon>
     </Compile>
@@ -236,6 +239,10 @@
     </Content>
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Product.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Account.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Purchase.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping_Product.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.User.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -251,9 +258,6 @@
     <None Include="Service References\AccountServiceReference\Account.disco" />
     <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
     <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
-    <Content Include="Service References\AccountServiceReference\LBCFUBL.AccountServiceReference.Account.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\AccountServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -285,9 +289,6 @@
     <None Include="Service References\ProductServiceReference\ProductService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\PurchaseServiceReference\LBCFUBL.PurchaseServiceReference.Purchase.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\PurchaseServiceReference\PurchaseService.disco" />
     <None Include="Service References\PurchaseServiceReference\configuration91.svcinfo" />
     <None Include="Service References\PurchaseServiceReference\configuration.svcinfo" />
@@ -295,9 +296,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ShoppingProductServiceReference\LBCFUBL.ShoppingProductServiceReference.Shopping_Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService.disco" />
     <None Include="Service References\ShoppingProductServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ShoppingProductServiceReference\configuration.svcinfo" />
@@ -322,9 +320,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\UserServiceReference\LBCFUBL.UserServiceReference.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\UserServiceReference\UserService.disco" />
     <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
     <None Include="Service References\UserServiceReference\configuration.svcinfo" />
@@ -406,6 +401,7 @@
     <None Include="Service References\UserServiceReference\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

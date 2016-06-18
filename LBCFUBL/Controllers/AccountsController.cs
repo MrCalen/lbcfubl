@@ -10,6 +10,7 @@ using LBCFUBL.Models;
 
 namespace LBCFUBL.Controllers
 {
+    [Authorize]
     public class AccountsController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();

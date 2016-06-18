@@ -60,7 +60,7 @@ namespace LBCFUBL_WCF.DataAccess
             return list;
         }
 
-        private string CalculateMD5Hash(string input)
+        public static string CalculateMD5Hash(string input)
         {
             MD5 md5 = System.Security.Cryptography.MD5.Create();
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);

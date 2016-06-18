@@ -10,6 +10,7 @@ using LBCFUBL.Models;
 
 namespace LBCFUBL.Controllers
 {
+    [Authorize]
     public class Shopping_ProductController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();

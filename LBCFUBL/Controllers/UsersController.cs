@@ -11,6 +11,7 @@ using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();
@@ -28,7 +29,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
+            LBCFUBL_WCF.DBO.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -47,7 +48,7 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,password,role")] UserServiceReference.User user)
+        public ActionResult Create([Bind(Include = "login,password,role")] LBCFUBL_WCF.DBO.User user)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +67,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
+            LBCFUBL_WCF.DBO.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -97,7 +98,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
+            LBCFUBL_WCF.DBO.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();

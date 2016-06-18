@@ -11,6 +11,7 @@ using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
+    [Authorize]
     public class ShoppingsController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();
