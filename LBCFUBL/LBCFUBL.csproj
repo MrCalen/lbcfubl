@@ -212,12 +212,10 @@
     <Compile Include="Services\ServiceSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\lbcfubl.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>lbcfubl.edmx</DependentUpon>
@@ -239,10 +237,6 @@
     </Content>
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Product.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping.datasource" />
-    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Account.datasource" />
-    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Purchase.datasource" />
-    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping_Product.datasource" />
-    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.User.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -258,6 +252,9 @@
     <None Include="Service References\AccountServiceReference\Account.disco" />
     <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
     <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\AccountServiceReference\LBCFUBL.AccountServiceReference.Account.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\AccountServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -289,6 +286,9 @@
     <None Include="Service References\ProductServiceReference\ProductService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\PurchaseServiceReference\LBCFUBL.PurchaseServiceReference.Purchase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\PurchaseServiceReference\PurchaseService.disco" />
     <None Include="Service References\PurchaseServiceReference\configuration91.svcinfo" />
     <None Include="Service References\PurchaseServiceReference\configuration.svcinfo" />
@@ -296,6 +296,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\ShoppingProductServiceReference\LBCFUBL.ShoppingProductServiceReference.Shopping_Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ShoppingProductServiceReference\ShoppingProductService.disco" />
     <None Include="Service References\ShoppingProductServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ShoppingProductServiceReference\configuration.svcinfo" />
@@ -320,6 +323,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\UserServiceReference\LBCFUBL.UserServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\UserServiceReference\UserService.disco" />
     <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
     <None Include="Service References\UserServiceReference\configuration.svcinfo" />
@@ -405,6 +411,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
