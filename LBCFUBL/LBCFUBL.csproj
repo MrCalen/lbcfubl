@@ -131,6 +131,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessManagement\CustomAuthorizeAttribute.cs" />
     <Compile Include="BusinessManagement\CustomMembershipProvider.cs" />
     <Compile Include="BusinessManagement\CustomRoleProvider.cs" />
     <Compile Include="Controllers\AccountsController.cs" />

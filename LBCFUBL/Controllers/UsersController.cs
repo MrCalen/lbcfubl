@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LBCFUBL.BusinessManagement;
 using LBCFUBL.Models;
 using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
-    [Authorize(Roles = "admin,assistant")]
+    [CustomAuthorizeAttribute(Roles = "admin,assistant")]
     public class UsersController : Controller
     {
         private lbcfublEntities db = new lbcfublEntities();
