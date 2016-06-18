@@ -28,7 +28,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -47,12 +47,12 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,password,role")] User user)
+        public ActionResult Create([Bind(Include = "login,password,role")] UserServiceReference.User user)
         {
             if (ModelState.IsValid)
             {
-                db.User.Add(user);
-                db.SaveChanges();
+                Helper.GetUserClient().CreateUser(user.login, user.password, user.role);
+                
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +66,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            UserServiceReference.User user = Helper.GetUserClient().GetUserFromLogin(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -110,9 +110,7 @@ namespace LBCFUBL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            User user = db.User.Find(id);
-            db.User.Remove(user);
-            db.SaveChanges();
+            Helper.GetUserClient().DeleteUser(id);
             return RedirectToAction("Index");
         }
 

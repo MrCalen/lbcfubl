@@ -24,7 +24,7 @@ namespace LBCFUBL_WCF.DataAccess
 
         public DBO.User GetUserFromLogin(String login)
         {
-            return DBO.DatabaseContext.getInstance().Users.Where(u => u.login.Equals(login)).Single();
+            return DBO.DatabaseContext.getInstance().Users.FirstOrDefault(u => u.login.Equals(login));
         }
 
         public DBO.User CreateUser(String login, String password, role role)
@@ -32,11 +32,7 @@ namespace LBCFUBL_WCF.DataAccess
             DBO.User exists = GetUserFromLogin(login);
             if (exists != null)
                 return exists;
-            String pass = null;
-            using (MD5 md5hash = MD5.Create())
-            {
-                pass = md5hash.ComputeHash(Encoding.UTF8.GetBytes(password)).ToString();
-            }
+            String pass = CalculateMD5Hash(password);
             DBO.User user = new DBO.User
             {
                 login = login,
@@ -54,6 +50,7 @@ namespace LBCFUBL_WCF.DataAccess
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Users.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
             return true;
         }
 
@@ -61,6 +58,19 @@ namespace LBCFUBL_WCF.DataAccess
         {
             var list = DBO.DatabaseContext.getInstance().Users.ToList();
             return list;
+        }
+
+        private string CalculateMD5Hash(string input)
+        {
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
     }
 }

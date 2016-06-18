@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
+using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
@@ -17,7 +19,8 @@ namespace LBCFUBL.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Product.ToList());
+            var products = Helper.GetProductClient().GetAllProducts().ToList();
+            return View(products);
         }
 
         // GET: Products/Details/5
