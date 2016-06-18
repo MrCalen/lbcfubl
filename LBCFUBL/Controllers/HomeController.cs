@@ -11,6 +11,7 @@ namespace LBCFUBL.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Money = 42; // FIXME: Request real value here
             return View();
         }
 

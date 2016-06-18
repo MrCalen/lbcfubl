@@ -1,9 +1,19 @@
-﻿.navbar {
+﻿body {
+    font-family: 'Muli', sans-serif;
+    font-size: 25px;
+}
+
+.navbar {
     background: #004C94;
 }
 
 .navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
 ul.nav.navbar-nav > li > a,
 ul.nav.navbar-nav > li > a:hover {
     color: white;
+}
+
+.panel-primary > .panel-heading {
+    background-image: -webkit-linear-gradient(top,#004C94 0,#004C94 100%);
 }

@@ -214,6 +214,7 @@
     <Compile Include="Services\ServiceSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\home.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\nav.css" />
     <Content Include="favicon.ico" />
