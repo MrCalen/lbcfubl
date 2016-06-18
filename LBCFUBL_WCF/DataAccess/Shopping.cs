@@ -32,7 +32,7 @@ namespace LBCFUBL_WCF.DataAccess
 
         public bool DeleteShopping(DateTime date)
         {
-            DBO.Shopping exists = DBO.DatabaseContext.getInstance().Shoppings.Where(s => s.date == date).Single();
+            DBO.Shopping exists = DBO.DatabaseContext.getInstance().Shoppings.FirstOrDefault(s => s.date == date);
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Shoppings.Remove(exists);

@@ -9,7 +9,7 @@ namespace LBCFUBL_WCF.DataAccess
     {
         public DBO.Product GetProductFromName(String name)
         {
-            return DBO.DatabaseContext.getInstance().Products.Where(p => p.name.Equals(name)).Single();
+            return DBO.DatabaseContext.getInstance().Products.FirstOrDefault(p => p.name.Equals(name));
         }
 
         public List<DBO.Product> GetAllProducts()

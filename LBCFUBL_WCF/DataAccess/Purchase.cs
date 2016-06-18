@@ -33,7 +33,7 @@ namespace LBCFUBL_WCF.DataAccess
 
         public bool DeletePurchase(String login, DateTime date)
         {
-            DBO.Purchase exists = DBO.DatabaseContext.getInstance().Purchases.Where(a => a.login.Equals(login) && a.date == date).Single();
+            DBO.Purchase exists = DBO.DatabaseContext.getInstance().Purchases.FirstOrDefault(a => a.login.Equals(login) && a.date == date);
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Purchases.Remove(exists);

@@ -9,7 +9,7 @@ namespace LBCFUBL_WCF.DataAccess
     {
         public DBO.Shopping_Product GetShopping_ProductForShoppingAndProduct(DBO.Shopping shopping, DBO.Product product)
         {
-            return DBO.DatabaseContext.getInstance().Shopping_Product.Where(sp => shopping.id == sp.id_shopping && sp.id_product == product.id).Single();
+            return DBO.DatabaseContext.getInstance().Shopping_Product.FirstOrDefault(sp => shopping.id == sp.id_shopping && sp.id_product == product.id);
         }
         public List<DBO.Shopping_Product> GetShopping_ProductsForShopping(DBO.Shopping shopping)
         {

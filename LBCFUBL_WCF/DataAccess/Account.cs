@@ -33,7 +33,7 @@ namespace LBCFUBL_WCF.DataAccess
 
         public bool DeleteAccount(String login, DateTime date)
         {
-            DBO.Account exists = DBO.DatabaseContext.getInstance().Accounts.Where(a => a.login.Equals(login) && a.date == date).Single();
+            DBO.Account exists = DBO.DatabaseContext.getInstance().Accounts.FirstOrDefault(a => a.login.Equals(login) && a.date == date);
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Accounts.Remove(exists);
