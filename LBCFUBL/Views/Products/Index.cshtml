@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LBCFUBL.Models.Product>
+﻿@model IEnumerable<LBCFUBL_WCF.DBO.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -23,12 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.cost_with_margin)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cost_HT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.taxe)
-        </th>
         <th></th>
     </tr>
 
@@ -45,12 +39,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.cost_with_margin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cost_HT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.taxe)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

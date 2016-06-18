@@ -234,6 +234,7 @@
     <Content Include="Models\lbcfubl.edmx.diagram">
       <DependentUpon>lbcfubl.edmx</DependentUpon>
     </Content>
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Product.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -256,9 +257,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ProductServiceReference\LBCFUBL.ProductServiceReference.Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\AccountServiceReference\Account.wsdl" />
     <None Include="Service References\AccountServiceReference\Account.xsd">
       <SubType>Designer</SubType>

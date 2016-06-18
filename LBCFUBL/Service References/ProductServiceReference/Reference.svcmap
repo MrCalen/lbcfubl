@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:3038/BusinessManagement/Product/ProductService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="ProductService2.xsd" MetadataType="Schema" ID="cc8efa7f-3db2-4e9b-ba02-e32f6f11560f" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="74bb1ce3-a9c2-4fb7-a434-7e784116a2ef" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?wsdl" />
     <MetadataFile FileName="ProductService.disco" MetadataType="Disco" ID="943017c1-282d-439b-b60b-723899524a96" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?disco" />
     <MetadataFile FileName="ProductService.xsd" MetadataType="Schema" ID="c13c168f-4e49-4c19-a2aa-179acc66240a" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?xsd=xsd2" />
     <MetadataFile FileName="ProductService1.xsd" MetadataType="Schema" ID="c891d07b-aafa-4bc9-b5bd-a08f8236a878" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ProductService2.xsd" MetadataType="Schema" ID="cc8efa7f-3db2-4e9b-ba02-e32f6f11560f" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="74bb1ce3-a9c2-4fb7-a434-7e784116a2ef" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Product/ProductService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

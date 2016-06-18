@@ -1,4 +1,4 @@
-﻿@model LBCFUBL.Models.Product
+﻿@model LBCFUBL_WCF.DBO.Product
 
 @{
     ViewBag.Title = "Create";
@@ -44,22 +44,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.cost_with_margin, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.cost_with_margin, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cost_HT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cost_HT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cost_HT, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.taxe, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.taxe, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.taxe, "", new { @class = "text-danger" })
             </div>
         </div>
 

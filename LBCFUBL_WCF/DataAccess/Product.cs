@@ -40,7 +40,21 @@ namespace LBCFUBL_WCF.DataAccess
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Products.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
             return true;
+        }
+        public bool DeleteProductFromId(Guid id)
+        {
+            DBO.Product exists = GetProductFromId(id);
+            if (exists == null)
+                return false;
+            DBO.DatabaseContext.getInstance().Products.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
+            return true;
+        }
+        public DBO.Product GetProductFromId(Guid id)
+        {
+            return DBO.DatabaseContext.getInstance().Products.FirstOrDefault(p => p.id.Equals(id));
         }
     }
 }

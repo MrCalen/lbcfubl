@@ -35,5 +35,13 @@ namespace LBCFUBL_WCF.BusinessManagement.Product
         {
             return product.GetProductFromName(name);
         }
+        public DBO.Product GetProductFromId(Guid id)
+        {
+            return product.GetProductFromId(id);
+        }
+        public bool DeleteProductFromId(Guid id)
+        {
+            return product.DeleteProductFromId(id);
+        }
     }
 }

@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
-using LBCFUBL.Models;
 using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
@@ -30,7 +29,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            LBCFUBL_WCF.DBO.Product product = Helper.GetProductClient().GetProductFromId(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -49,13 +48,12 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,description,cost_without_margin,cost_with_margin,cost_HT,taxe")] Product product)
+        public ActionResult Create([Bind(Include = "id,name,description,cost_without_margin,cost_with_margin")] LBCFUBL_WCF.DBO.Product product)
         {
             if (ModelState.IsValid)
             {
                 product.id = Guid.NewGuid();
-                db.Product.Add(product);
-                db.SaveChanges();
+                Helper.GetProductClient().CreateProduct(product.name, product.description, (float)product.cost_without_margin, (float)product.cost_with_margin);
                 return RedirectToAction("Index");
             }
 
@@ -69,7 +67,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            LBCFUBL_WCF.DBO.Product product = Helper.GetProductClient().GetProductFromId(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -100,7 +98,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            LBCFUBL_WCF.DBO.Product product = Helper.GetProductClient().GetProductFromId(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -113,9 +111,7 @@ namespace LBCFUBL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
-            db.SaveChanges();
+            Helper.GetProductClient().DeleteProductFromId(id);
             return RedirectToAction("Index");
         }
 

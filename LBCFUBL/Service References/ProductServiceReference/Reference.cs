@@ -9,675 +9,47 @@
 //------------------------------------------------------------------------------
 
 namespace LBCFUBL.ProductServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Purchase[] PurchasesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Shopping_Product[] Shopping_ProductField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double cost_with_marginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double cost_without_marginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Purchase[] Purchases {
-            get {
-                return this.PurchasesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PurchasesField, value) != true)) {
-                    this.PurchasesField = value;
-                    this.RaisePropertyChanged("Purchases");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Shopping_Product[] Shopping_Product {
-            get {
-                return this.Shopping_ProductField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Shopping_ProductField, value) != true)) {
-                    this.Shopping_ProductField = value;
-                    this.RaisePropertyChanged("Shopping_Product");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double cost_with_margin {
-            get {
-                return this.cost_with_marginField;
-            }
-            set {
-                if ((this.cost_with_marginField.Equals(value) != true)) {
-                    this.cost_with_marginField = value;
-                    this.RaisePropertyChanged("cost_with_margin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double cost_without_margin {
-            get {
-                return this.cost_without_marginField;
-            }
-            set {
-                if ((this.cost_without_marginField.Equals(value) != true)) {
-                    this.cost_without_marginField = value;
-                    this.RaisePropertyChanged("cost_without_margin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Purchase", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class Purchase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Product ProductField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.User UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid id_prodField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string loginField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Product Product {
-            get {
-                return this.ProductField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
-                    this.ProductField = value;
-                    this.RaisePropertyChanged("Product");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.User User {
-            get {
-                return this.UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid id_prod {
-            get {
-                return this.id_prodField;
-            }
-            set {
-                if ((this.id_prodField.Equals(value) != true)) {
-                    this.id_prodField = value;
-                    this.RaisePropertyChanged("id_prod");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string login {
-            get {
-                return this.loginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.loginField, value) != true)) {
-                    this.loginField = value;
-                    this.RaisePropertyChanged("login");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Shopping_Product", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class Shopping_Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Product ProductField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Shopping ShoppingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid id_productField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid id_shoppingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int numberField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Product Product {
-            get {
-                return this.ProductField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
-                    this.ProductField = value;
-                    this.RaisePropertyChanged("Product");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Shopping Shopping {
-            get {
-                return this.ShoppingField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShoppingField, value) != true)) {
-                    this.ShoppingField = value;
-                    this.RaisePropertyChanged("Shopping");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid id_product {
-            get {
-                return this.id_productField;
-            }
-            set {
-                if ((this.id_productField.Equals(value) != true)) {
-                    this.id_productField = value;
-                    this.RaisePropertyChanged("id_product");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid id_shopping {
-            get {
-                return this.id_shoppingField;
-            }
-            set {
-                if ((this.id_shoppingField.Equals(value) != true)) {
-                    this.id_shoppingField = value;
-                    this.RaisePropertyChanged("id_shopping");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int number {
-            get {
-                return this.numberField;
-            }
-            set {
-                if ((this.numberField.Equals(value) != true)) {
-                    this.numberField = value;
-                    this.RaisePropertyChanged("number");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Account[] AccountsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Purchase[] PurchasesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string loginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int roleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Account[] Accounts {
-            get {
-                return this.AccountsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AccountsField, value) != true)) {
-                    this.AccountsField = value;
-                    this.RaisePropertyChanged("Accounts");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Purchase[] Purchases {
-            get {
-                return this.PurchasesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PurchasesField, value) != true)) {
-                    this.PurchasesField = value;
-                    this.RaisePropertyChanged("Purchases");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string login {
-            get {
-                return this.loginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.loginField, value) != true)) {
-                    this.loginField = value;
-                    this.RaisePropertyChanged("login");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int role {
-            get {
-                return this.roleField;
-            }
-            set {
-                if ((this.roleField.Equals(value) != true)) {
-                    this.roleField = value;
-                    this.RaisePropertyChanged("role");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Account", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class Account : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.User UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double argentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string loginField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.User User {
-            get {
-                return this.UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double argent {
-            get {
-                return this.argentField;
-            }
-            set {
-                if ((this.argentField.Equals(value) != true)) {
-                    this.argentField = value;
-                    this.RaisePropertyChanged("argent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string login {
-            get {
-                return this.loginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.loginField, value) != true)) {
-                    this.loginField = value;
-                    this.RaisePropertyChanged("login");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Shopping", Namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO")]
-    [System.SerializableAttribute()]
-    public partial class Shopping : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LBCFUBL.ProductServiceReference.Shopping_Product[] Shopping_ProductField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LBCFUBL.ProductServiceReference.Shopping_Product[] Shopping_Product {
-            get {
-                return this.Shopping_ProductField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Shopping_ProductField, value) != true)) {
-                    this.Shopping_ProductField = value;
-                    this.RaisePropertyChanged("Shopping_Product");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceReference.IProductService")]
     public interface IProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductFromName", ReplyAction="http://tempuri.org/IProductService/GetProductFromNameResponse")]
-        LBCFUBL.ProductServiceReference.Product GetProductFromName(string name);
+        LBCFUBL_WCF.DBO.Product GetProductFromName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductFromName", ReplyAction="http://tempuri.org/IProductService/GetProductFromNameResponse")]
-        System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product> GetProductFromNameAsync(string name);
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> GetProductFromNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProducts", ReplyAction="http://tempuri.org/IProductService/GetAllProductsResponse")]
-        LBCFUBL.ProductServiceReference.Product[] GetAllProducts();
+        LBCFUBL_WCF.DBO.Product[] GetAllProducts();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProducts", ReplyAction="http://tempuri.org/IProductService/GetAllProductsResponse")]
-        System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product[]> GetAllProductsAsync();
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product[]> GetAllProductsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
-        LBCFUBL.ProductServiceReference.Product CreateProduct(string name, string description, float cost_without_margin, float cost_with_margin);
+        LBCFUBL_WCF.DBO.Product CreateProduct(string name, string description, float cost_without_margin, float cost_with_margin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
-        System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product> CreateProductAsync(string name, string description, float cost_without_margin, float cost_with_margin);
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> CreateProductAsync(string name, string description, float cost_without_margin, float cost_with_margin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
         bool DeleteProduct(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
         System.Threading.Tasks.Task<bool> DeleteProductAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductFromId", ReplyAction="http://tempuri.org/IProductService/GetProductFromIdResponse")]
+        LBCFUBL_WCF.DBO.Product GetProductFromId(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductFromId", ReplyAction="http://tempuri.org/IProductService/GetProductFromIdResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> GetProductFromIdAsync(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProductFromId", ReplyAction="http://tempuri.org/IProductService/DeleteProductFromIdResponse")]
+        bool DeleteProductFromId(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProductFromId", ReplyAction="http://tempuri.org/IProductService/DeleteProductFromIdResponse")]
+        System.Threading.Tasks.Task<bool> DeleteProductFromIdAsync(System.Guid id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -707,27 +79,27 @@ namespace LBCFUBL.ProductServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public LBCFUBL.ProductServiceReference.Product GetProductFromName(string name) {
+        public LBCFUBL_WCF.DBO.Product GetProductFromName(string name) {
             return base.Channel.GetProductFromName(name);
         }
         
-        public System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product> GetProductFromNameAsync(string name) {
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> GetProductFromNameAsync(string name) {
             return base.Channel.GetProductFromNameAsync(name);
         }
         
-        public LBCFUBL.ProductServiceReference.Product[] GetAllProducts() {
+        public LBCFUBL_WCF.DBO.Product[] GetAllProducts() {
             return base.Channel.GetAllProducts();
         }
         
-        public System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product[]> GetAllProductsAsync() {
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product[]> GetAllProductsAsync() {
             return base.Channel.GetAllProductsAsync();
         }
         
-        public LBCFUBL.ProductServiceReference.Product CreateProduct(string name, string description, float cost_without_margin, float cost_with_margin) {
+        public LBCFUBL_WCF.DBO.Product CreateProduct(string name, string description, float cost_without_margin, float cost_with_margin) {
             return base.Channel.CreateProduct(name, description, cost_without_margin, cost_with_margin);
         }
         
-        public System.Threading.Tasks.Task<LBCFUBL.ProductServiceReference.Product> CreateProductAsync(string name, string description, float cost_without_margin, float cost_with_margin) {
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> CreateProductAsync(string name, string description, float cost_without_margin, float cost_with_margin) {
             return base.Channel.CreateProductAsync(name, description, cost_without_margin, cost_with_margin);
         }
         
@@ -737,6 +109,22 @@ namespace LBCFUBL.ProductServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteProductAsync(string name) {
             return base.Channel.DeleteProductAsync(name);
+        }
+        
+        public LBCFUBL_WCF.DBO.Product GetProductFromId(System.Guid id) {
+            return base.Channel.GetProductFromId(id);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Product> GetProductFromIdAsync(System.Guid id) {
+            return base.Channel.GetProductFromIdAsync(id);
+        }
+        
+        public bool DeleteProductFromId(System.Guid id) {
+            return base.Channel.DeleteProductFromId(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteProductFromIdAsync(System.Guid id) {
+            return base.Channel.DeleteProductFromIdAsync(id);
         }
     }
 }

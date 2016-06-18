@@ -19,5 +19,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Product
         DBO.Product CreateProduct(String name, String description, float cost_without_margin, float cost_with_margin);
         [OperationContract]
         bool DeleteProduct(String name);
+        [OperationContract]
+        DBO.Product GetProductFromId(Guid id);
+        [OperationContract]
+        bool DeleteProductFromId(Guid id);
     }
 }
