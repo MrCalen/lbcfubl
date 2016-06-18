@@ -1,0 +1,9 @@
+﻿.navbar {
+    background: #004C94;
+}
+
+.navbar-default .navbar-brand,
+ul.nav.navbar-nav > li > a,
+ul.nav.navbar-nav > li > a:hover {
+    color: white;
+}
