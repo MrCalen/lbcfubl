@@ -26,5 +26,13 @@ ul.nav.navbar-nav > li > a:hover {
 .padded-row {
     padding: 10px 0;
     margin: 5px;
-    
+}
+
+.white,
+.white:hover {
+    color: white
+}
+
+a.white {
+   cursor: pointer;
 }
