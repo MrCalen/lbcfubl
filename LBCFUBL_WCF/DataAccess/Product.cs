@@ -24,10 +24,11 @@ namespace LBCFUBL_WCF.DataAccess
                 return exists;
             DBO.Product product = new DBO.Product
             {
-                 name = name,
-                 description = description,
-                 cost_without_margin = cost_without_margin,
-                 cost_with_margin = cost_with_margin
+                id = Guid.NewGuid(),
+                name = name,
+                description = description,
+                cost_without_margin = cost_without_margin,
+                cost_with_margin = cost_with_margin
             };
             DBO.DatabaseContext.getInstance().Products.Add(product);
             DBO.DatabaseContext.getInstance().SaveChanges();

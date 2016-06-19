@@ -23,6 +23,7 @@ namespace LBCFUBL_WCF.DataAccess
         {
             DBO.Shopping Shopping = new DBO.Shopping
             {
+                id = Guid.NewGuid(),
                 date = date,
                 Shopping_Product = shopping_products
             };
@@ -33,6 +34,7 @@ namespace LBCFUBL_WCF.DataAccess
         {
             DBO.Shopping Shopping = new DBO.Shopping
             {
+                id = Guid.NewGuid(),
                 date = date
             };
             DBO.DatabaseContext.getInstance().Shoppings.Add(Shopping);
