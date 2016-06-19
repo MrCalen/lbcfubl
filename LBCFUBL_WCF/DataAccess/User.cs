@@ -14,6 +14,7 @@ namespace LBCFUBL_WCF.DataAccess
             anonym = 0,
             assistant = 1,
             chief = 2,
+            root = 3,
             admin = 4,
         }
 
