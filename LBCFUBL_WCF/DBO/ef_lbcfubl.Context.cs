@@ -33,7 +33,7 @@ namespace LBCFUBL_WCF.DBO
         public virtual DbSet<Shopping> Shoppings { get; set; }
         public virtual DbSet<Shopping_Product> Shopping_Product { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
+    
         public virtual ObjectResult<Nullable<double>> Get_User_Depenses(string user_login)
         {
             var user_loginParameter = user_login != null ?

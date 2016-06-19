@@ -13,7 +13,7 @@ namespace LBCFUBL.Controllers
         public ActionResult Index()
         {
             //  ViewBag.Money = 42; // FIXME: Request real value here
-            ViewBag.Money = Helper.GetUserClient().GetUserMoney(User.Identity.Name);
+            ViewBag.Money = Math.Round(Helper.GetUserClient().GetUserMoney(User.Identity.Name), 2);
             return View();
         }
 

@@ -418,11 +418,8 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="cost_without_margin" ColumnName="cost_without_margin" />
                 <ScalarProperty Name="cost_with_margin" ColumnName="cost_with_margin" />
-<<<<<<< 667cf8ca5856d7921b5d1943c970aa777b809fb0
-=======
                 <ScalarProperty Name="cost_HT" ColumnName="cost_HT" />
                 <ScalarProperty Name="taxe" ColumnName="taxe" />
->>>>>>> add stored proecdure for having money of user
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -451,18 +448,6 @@
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="id" ColumnName="id" />
-<<<<<<< 667cf8ca5856d7921b5d1943c970aa777b809fb0
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="lbcfublModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="role" ColumnName="role" />
-=======
->>>>>>> add stored proecdure for having money of user
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
