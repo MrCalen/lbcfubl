@@ -72,5 +72,11 @@ namespace LBCFUBL_WCF.DataAccess
             }
             return sb.ToString();
         }
+
+        public double GetUserMoney(String login)
+        {
+            // return DBO.DatabaseContext.getInstance().Users.FirstOrDefault(u => u.login.Equals(login));
+            return DBO.DatabaseContext.getInstance().Get_User_Money(login).First().Value;
+        }
     }
 }

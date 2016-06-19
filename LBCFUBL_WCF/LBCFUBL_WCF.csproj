@@ -170,6 +170,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ef_lbcfubl.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBO\Get_Users_Money_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBO\Product.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
@@ -180,6 +183,12 @@
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="DBO\Shopping_Product.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBO\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBO\sp_helpdiagrams_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="DBO\User.cs">

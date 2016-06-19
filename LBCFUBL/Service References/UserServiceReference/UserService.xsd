@@ -48,11 +48,13 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
       <xs:element minOccurs="0" name="Shopping_Product" nillable="true" type="tns:ArrayOfShopping_Product" />
+      <xs:element minOccurs="0" name="cost_HT" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="cost_with_margin" type="xs:double" />
       <xs:element minOccurs="0" name="cost_without_margin" type="xs:double" />
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="ser:guid" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="taxe" nillable="true" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Product" nillable="true" type="tns:Product" />

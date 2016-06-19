@@ -25,5 +25,10 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         {
             return user.GetUsers();
         }
+
+        public double GetUserMoney(string login)
+        {
+            return user.GetUserMoney(login);
+        }
     }
 }

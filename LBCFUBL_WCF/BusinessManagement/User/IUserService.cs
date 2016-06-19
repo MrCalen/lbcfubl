@@ -23,5 +23,8 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         [OperationContract]
         [ReferencePreservingDataContractFormat]
         List<DBO.User> GetUsers();
+
+        [OperationContract]
+        double GetUserMoney(String login);
     }
 }

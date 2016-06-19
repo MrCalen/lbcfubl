@@ -38,6 +38,12 @@ namespace LBCFUBL.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
         System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.User[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserMoney", ReplyAction="http://tempuri.org/IUserService/GetUserMoneyResponse")]
+        double GetUserMoney(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserMoney", ReplyAction="http://tempuri.org/IUserService/GetUserMoneyResponse")]
+        System.Threading.Tasks.Task<double> GetUserMoneyAsync(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +103,14 @@ namespace LBCFUBL.UserServiceReference {
         
         public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.User[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
+        }
+        
+        public double GetUserMoney(string login) {
+            return base.Channel.GetUserMoney(login);
+        }
+        
+        public System.Threading.Tasks.Task<double> GetUserMoneyAsync(string login) {
+            return base.Channel.GetUserMoneyAsync(login);
         }
     }
 }

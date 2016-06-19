@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
@@ -11,7 +12,8 @@ namespace LBCFUBL.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Money = 42; // FIXME: Request real value here
+            //  ViewBag.Money = 42; // FIXME: Request real value here
+            ViewBag.Money = Helper.GetUserClient().GetUserMoney(User.Identity.Name);
             return View();
         }
 
