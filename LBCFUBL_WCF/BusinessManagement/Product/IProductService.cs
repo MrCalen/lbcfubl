@@ -12,15 +12,26 @@ namespace LBCFUBL_WCF.BusinessManagement.Product
     public interface IProductService
     {
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         DBO.Product GetProductFromName(String name);
+
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Product> GetAllProducts();
+
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         DBO.Product CreateProduct(String name, String description, float cost_without_margin, float cost_with_margin);
+
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         bool DeleteProduct(String name);
+
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         DBO.Product GetProductFromId(Guid id);
+
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         bool DeleteProductFromId(Guid id);
     }

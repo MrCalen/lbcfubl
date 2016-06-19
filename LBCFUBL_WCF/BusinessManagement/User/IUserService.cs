@@ -11,12 +11,15 @@ namespace LBCFUBL_WCF.BusinessManagement.User
     [ServiceContract]
     public interface IUserService
     {
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         DBO.User GetUserFromLogin(String login);
 
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         DBO.User CreateUser(String login, String password, int role);
 
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         bool DeleteUser(String login);
 
@@ -24,6 +27,7 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         [ReferencePreservingDataContractFormat]
         List<DBO.User> GetUsers();
 
+        [ReferencePreservingDataContractFormat]
         [OperationContract]
         double GetUserMoney(String login);
     }

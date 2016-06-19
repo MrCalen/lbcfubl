@@ -57,12 +57,13 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,date,id_prod")] LBCFUBL_WCF.DBO.Purchase purchase)
+        public ActionResult Create([Bind(Include = "login,id_prod")] LBCFUBL_WCF.DBO.Purchase purchase)
         {
+            purchase.date = DateTime.Now;
             if (ModelState.IsValid)
             {
                 Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod);
-                return RedirectToAction("Index");
+                return Redirect(Request.UrlReferrer.ToString());
             }
             /*
             ViewBag.id_prod = new SelectList(db.Product, "id", "name", purchase.id_prod);
@@ -70,7 +71,7 @@ namespace LBCFUBL.Controllers
 
             return View(purchase);
             */
-            return View();
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         // GET: Purchases/Edit/5

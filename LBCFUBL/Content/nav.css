@@ -17,3 +17,14 @@ ul.nav.navbar-nav > li > a:hover {
 .panel-primary > .panel-heading {
     background-image: -webkit-linear-gradient(top,#004C94 0,#004C94 100%);
 }
+
+.btn-primary {
+       background: #004C94;
+       color: white;
+}
+
+.padded-row {
+    padding: 10px 0;
+    margin: 5px;
+    
+}
