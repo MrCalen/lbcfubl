@@ -6,3 +6,7 @@
 .current-money {
     font-size: medium;
 }
+
+.current-money > b.negative {
+    color: indianred;
+}
