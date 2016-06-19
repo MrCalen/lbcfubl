@@ -15,7 +15,6 @@ namespace LBCFUBL.Controllers
     [CustomAuthorizeAttribute(Roles = "admin,assistant")]
     public class UsersController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
         // GET: Users
         public ActionResult Index()
         {
@@ -81,12 +80,14 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "login,password,role")] User user)
+        public ActionResult Edit([Bind(Include = "login,password,role")] LBCFUBL_WCF.DBO.User user)
         {
             if (ModelState.IsValid)
             {
+                /* TODO
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
+                */
                 return RedirectToAction("Index");
             }
             return View(user);
@@ -120,7 +121,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

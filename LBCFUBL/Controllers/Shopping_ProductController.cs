@@ -7,19 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
     [Authorize]
     public class Shopping_ProductController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Shopping_Product
         public ActionResult Index()
         {
+            /* TODO
             var shopping_Product = db.Shopping_Product.Include(s => s.Product).Include(s => s.Shopping);
             return View(shopping_Product.ToList());
+            */
+            return View();   
         }
 
         // GET: Shopping_Product/Details/5
@@ -29,19 +31,25 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            /* TODO
             Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
+            LBCFUBL_WCF.DBO.Shopping_Product shopping_product = Helper.GetShoppingProductClient().GetShopping_ProductForId(id);
             if (shopping_Product == null)
             {
                 return HttpNotFound();
             }
             return View(shopping_Product);
+            */
+            return View();
         }
 
         // GET: Shopping_Product/Create
         public ActionResult Create()
         {
+            /*TODO
             ViewBag.id_product = new SelectList(db.Product, "id", "name");
             ViewBag.id_shopping = new SelectList(db.Shopping, "id", "id");
+            */
             return View();
         }
 
@@ -50,18 +58,22 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_shopping,id_product,number")] Shopping_Product shopping_Product)
+        public ActionResult Create([Bind(Include = "id_shopping,id_product,number")] LBCFUBL_WCF.DBO.Shopping_Product shopping_Product)
         {
             if (ModelState.IsValid)
             {
+
                 shopping_Product.id_shopping = Guid.NewGuid();
+                /* TODO
                 db.Shopping_Product.Add(shopping_Product);
                 db.SaveChanges();
+                */
                 return RedirectToAction("Index");
             }
-
+            /* TODO
             ViewBag.id_product = new SelectList(db.Product, "id", "name", shopping_Product.id_product);
             ViewBag.id_shopping = new SelectList(db.Shopping, "id", "id", shopping_Product.id_shopping);
+            */
             return View(shopping_Product);
         }
 
@@ -72,7 +84,8 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
+            /* TODO
+            LBCFUBL_WCF.DBO.Shopping_Product shopping_Product = Helper.GetShoppingProductClient().GetShopping_ProductForId(id);
             if (shopping_Product == null)
             {
                 return HttpNotFound();
@@ -80,6 +93,8 @@ namespace LBCFUBL.Controllers
             ViewBag.id_product = new SelectList(db.Product, "id", "name", shopping_Product.id_product);
             ViewBag.id_shopping = new SelectList(db.Shopping, "id", "id", shopping_Product.id_shopping);
             return View(shopping_Product);
+            */
+            return View();
         }
 
         // POST: Shopping_Product/Edit/5
@@ -87,17 +102,22 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_shopping,id_product,number")] Shopping_Product shopping_Product)
+        public ActionResult Edit([Bind(Include = "id_shopping,id_product,number")] LBCFUBL_WCF.DBO.Shopping_Product shopping_Product)
         {
             if (ModelState.IsValid)
             {
+                /*TODO
                 db.Entry(shopping_Product).State = EntityState.Modified;
                 db.SaveChanges();
+                */
                 return RedirectToAction("Index");
             }
+            /*TODO
             ViewBag.id_product = new SelectList(db.Product, "id", "name", shopping_Product.id_product);
             ViewBag.id_shopping = new SelectList(db.Shopping, "id", "id", shopping_Product.id_shopping);
             return View(shopping_Product);
+            */
+            return View();
         }
 
         // GET: Shopping_Product/Delete/5
@@ -107,12 +127,14 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
+            /*TODO
+            LBCFUBL_WCF.DBO.Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
             if (shopping_Product == null)
             {
                 return HttpNotFound();
             }
-            return View(shopping_Product);
+            return View(shopping_Product);*/
+            return View();
         }
 
         // POST: Shopping_Product/Delete/5
@@ -120,9 +142,11 @@ namespace LBCFUBL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
+            /*TODO
+            LBCFUBL_WCF.DBO.Shopping_Product shopping_Product = db.Shopping_Product.Find(id);
             db.Shopping_Product.Remove(shopping_Product);
             db.SaveChanges();
+            */
             return RedirectToAction("Index");
         }
 
@@ -130,7 +154,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

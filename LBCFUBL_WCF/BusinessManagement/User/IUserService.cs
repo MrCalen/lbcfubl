@@ -21,6 +21,7 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         bool DeleteUser(String login);
 
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.User> GetUsers();
     }
 }

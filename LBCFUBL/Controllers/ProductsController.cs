@@ -15,8 +15,6 @@ namespace LBCFUBL.Controllers
     [CustomAuthorizeAttribute]
     public class ProductsController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Products
         public ActionResult Index()
         {
@@ -82,12 +80,14 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,description,cost_without_margin,cost_with_margin,cost_HT,taxe")] Product product)
+        public ActionResult Edit([Bind(Include = "id,name,description,cost_without_margin,cost_with_margin,cost_HT,taxe")] LBCFUBL_WCF.DBO.Product product)
         {
             if (ModelState.IsValid)
             {
+                /* TODO
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
+                */
                 return RedirectToAction("Index");
             }
             return View(product);
@@ -121,7 +121,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

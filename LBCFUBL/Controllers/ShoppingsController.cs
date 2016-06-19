@@ -14,8 +14,6 @@ namespace LBCFUBL.Controllers
     [Authorize]
     public class ShoppingsController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Shoppings
         public ActionResult Index()
         {
@@ -84,8 +82,9 @@ namespace LBCFUBL.Controllers
             if (ModelState.IsValid)
             {
                 Helper.GetShoppingClient().CreateShopping(shopping.date);
+                /* TODO
                 db.Entry(shopping).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();*/
                 return RedirectToAction("Index");
             }
             return View(shopping);
@@ -119,7 +118,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

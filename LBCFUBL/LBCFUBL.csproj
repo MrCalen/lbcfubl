@@ -145,40 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\lbcfubl.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>lbcfubl.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\lbcfubl.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\lbcfubl.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>lbcfubl.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Purchase.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Shopping.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Shopping_Product.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>lbcfubl.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\AccountServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -220,27 +187,14 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\lbcfubl.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>lbcfubl.edmx</DependentUpon>
-      <LastGenOutput>lbcfubl.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\lbcfubl.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>lbcfubl.edmx</DependentUpon>
-      <LastGenOutput>lbcfubl.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\lbcfubl.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>lbcfubl.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\lbcfubl.edmx.diagram">
-      <DependentUpon>lbcfubl.edmx</DependentUpon>
-    </Content>
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Product.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.User1.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Account1.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Purchase1.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping_Product1.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

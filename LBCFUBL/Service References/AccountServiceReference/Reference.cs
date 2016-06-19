@@ -15,6 +15,12 @@ namespace LBCFUBL.AccountServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AccountServiceReference.IAccount")]
     public interface IAccount {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccounts", ReplyAction="http://tempuri.org/IAccount/GetAccountsResponse")]
+        LBCFUBL_WCF.DBO.Account[] GetAccounts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccounts", ReplyAction="http://tempuri.org/IAccount/GetAccountsResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account[]> GetAccountsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccountsForLogin", ReplyAction="http://tempuri.org/IAccount/GetAccountsForLoginResponse")]
         LBCFUBL_WCF.DBO.Account[] GetAccountsForLogin(string login);
         
@@ -44,6 +50,18 @@ namespace LBCFUBL.AccountServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/DeleteAccount", ReplyAction="http://tempuri.org/IAccount/DeleteAccountResponse")]
         System.Threading.Tasks.Task<bool> DeleteAccountAsync(string login, System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccountForId", ReplyAction="http://tempuri.org/IAccount/GetAccountForIdResponse")]
+        LBCFUBL_WCF.DBO.Account GetAccountForId(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccountForId", ReplyAction="http://tempuri.org/IAccount/GetAccountForIdResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/DeleteAccountForId", ReplyAction="http://tempuri.org/IAccount/DeleteAccountForIdResponse")]
+        bool DeleteAccountForId(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/DeleteAccountForId", ReplyAction="http://tempuri.org/IAccount/DeleteAccountForIdResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(System.Guid id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -71,6 +89,14 @@ namespace LBCFUBL.AccountServiceReference {
         
         public AccountClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public LBCFUBL_WCF.DBO.Account[] GetAccounts() {
+            return base.Channel.GetAccounts();
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account[]> GetAccountsAsync() {
+            return base.Channel.GetAccountsAsync();
         }
         
         public LBCFUBL_WCF.DBO.Account[] GetAccountsForLogin(string login) {
@@ -111,6 +137,22 @@ namespace LBCFUBL.AccountServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteAccountAsync(string login, System.DateTime date) {
             return base.Channel.DeleteAccountAsync(login, date);
+        }
+        
+        public LBCFUBL_WCF.DBO.Account GetAccountForId(System.Guid id) {
+            return base.Channel.GetAccountForId(id);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(System.Guid id) {
+            return base.Channel.GetAccountForIdAsync(id);
+        }
+        
+        public bool DeleteAccountForId(System.Guid id) {
+            return base.Channel.DeleteAccountForId(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(System.Guid id) {
+            return base.Channel.DeleteAccountForIdAsync(id);
         }
     }
 }

@@ -137,6 +137,7 @@
       <DependentUpon>ShoppingProductService.svc</DependentUpon>
     </Compile>
     <Compile Include="BusinessManagement\User\IUserService.cs" />
+    <Compile Include="BusinessManagement\ReferencePreservingDataContractFormatAttribute.cs" />
     <Compile Include="BusinessManagement\User\UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
@@ -194,6 +195,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="dev.config" />
     <EntityDeploy Include="DBO\ef_lbcfubl.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ef_lbcfubl.Designer.cs</LastGenOutput>
@@ -201,7 +203,6 @@
     <Content Include="DBO\ef_lbcfubl.edmx.diagram">
       <DependentUpon>ef_lbcfubl.edmx</DependentUpon>
     </Content>
-    <Content Include="dev.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

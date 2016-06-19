@@ -12,6 +12,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
     public interface IAccount
     {
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
+        List<DBO.Account> GetAccounts();
+        [OperationContract]
         List<DBO.Account> GetAccountsForLogin(String login);
         [OperationContract]
         List<DBO.Account> GetAccountsForLoginBeforeDate(String login, DateTime date);
@@ -21,5 +24,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
         void CreateAccount(String login, float money, DateTime date);
         [OperationContract]
         bool DeleteAccount(String login, DateTime date);
+        [OperationContract]
+        DBO.Account GetAccountForId(Guid id);
+        [OperationContract]
+        bool DeleteAccountForId(Guid id);
     }
 }

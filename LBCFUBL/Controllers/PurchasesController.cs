@@ -7,19 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
     [Authorize]
     public class PurchasesController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Purchases
         public ActionResult Index()
         {
+            /* TODO
             var purchase = db.Purchase.Include(p => p.Product).Include(p => p.User);
             return View(purchase.ToList());
+            */
+            return View();
         }
 
         // GET: Purchases/Details/5
@@ -29,19 +31,24 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            /* TODO
             Purchase purchase = db.Purchase.Find(id);
             if (purchase == null)
             {
                 return HttpNotFound();
             }
             return View(purchase);
+            */
+            return View();
         }
 
         // GET: Purchases/Create
         public ActionResult Create()
         {
+            /*TODO
             ViewBag.id_prod = new SelectList(db.Product, "id", "name");
             ViewBag.login = new SelectList(db.User, "login", "password");
+            */
             return View();
         }
 
@@ -50,18 +57,20 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,date,id_prod")] Purchase purchase)
+        public ActionResult Create([Bind(Include = "login,date,id_prod")] LBCFUBL_WCF.DBO.Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db.Purchase.Add(purchase);
-                db.SaveChanges();
+                Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod);
                 return RedirectToAction("Index");
             }
-
+            /*
             ViewBag.id_prod = new SelectList(db.Product, "id", "name", purchase.id_prod);
             ViewBag.login = new SelectList(db.User, "login", "password", purchase.login);
+
             return View(purchase);
+            */
+            return View();
         }
 
         // GET: Purchases/Edit/5
@@ -71,6 +80,7 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            /*TODO
             Purchase purchase = db.Purchase.Find(id);
             if (purchase == null)
             {
@@ -79,6 +89,8 @@ namespace LBCFUBL.Controllers
             ViewBag.id_prod = new SelectList(db.Product, "id", "name", purchase.id_prod);
             ViewBag.login = new SelectList(db.User, "login", "password", purchase.login);
             return View(purchase);
+            */
+            return View();
         }
 
         // POST: Purchases/Edit/5
@@ -86,17 +98,22 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "login,date,id_prod")] Purchase purchase)
+        public ActionResult Edit([Bind(Include = "login,date,id_prod")] LBCFUBL_WCF.DBO.Purchase purchase)
         {
             if (ModelState.IsValid)
             {
+                /*TODO
                 db.Entry(purchase).State = EntityState.Modified;
                 db.SaveChanges();
+                */
                 return RedirectToAction("Index");
             }
+            /*TODO
             ViewBag.id_prod = new SelectList(db.Product, "id", "name", purchase.id_prod);
             ViewBag.login = new SelectList(db.User, "login", "password", purchase.login);
             return View(purchase);
+            */
+            return View();
         }
 
         // GET: Purchases/Delete/5
@@ -106,12 +123,15 @@ namespace LBCFUBL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            /* TODO
             Purchase purchase = db.Purchase.Find(id);
             if (purchase == null)
             {
                 return HttpNotFound();
             }
             return View(purchase);
+            */
+            return View();
         }
 
         // POST: Purchases/Delete/5
@@ -119,9 +139,11 @@ namespace LBCFUBL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            /*TODO
             Purchase purchase = db.Purchase.Find(id);
             db.Purchase.Remove(purchase);
             db.SaveChanges();
+            */
             return RedirectToAction("Index");
         }
 
@@ -129,7 +151,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

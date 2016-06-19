@@ -8,29 +8,28 @@ using System.Web;
 using System.Web.Mvc;
 using LBCFUBL.BusinessManagement;
 using LBCFUBL.Models;
+using LBCFUBL.Services;
 
 namespace LBCFUBL.Controllers
 {
     [CustomAuthorizeAttribute(Roles="admin")]
     public class AccountsController : Controller
     {
-        private lbcfublEntities db = new lbcfublEntities();
-
         // GET: Accounts
         public ActionResult Index()
         {
-            var account = db.Account.Include(a => a.User);
-            return View(account.ToList());
+            var lol = Helper.GetAccountClient().GetAccounts().ToList();
+            return View(lol);
         }
 
         // GET: Accounts/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Account.Find(id);
+            LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -41,7 +40,7 @@ namespace LBCFUBL.Controllers
         // GET: Accounts/Create
         public ActionResult Create()
         {
-            ViewBag.login = new SelectList(db.User, "login", "password");
+            ViewData["login"] = new SelectList(Helper.GetUserClient().GetUsers().ToList().Select(x => x.login), "user");
             return View();
         }
 
@@ -50,32 +49,31 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,argent,date")] Account account)
+        public ActionResult Create([Bind(Include = "login,argent,date")] LBCFUBL_WCF.DBO.Account account)
         {
             if (ModelState.IsValid)
             {
-                db.Account.Add(account);
-                db.SaveChanges();
+                Helper.GetAccountClient().CreateAccount(account.login, (float)account.argent, account.date);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.login = new SelectList(db.User, "login", "password", account.login);
+            ViewBag.login = new SelectList(Helper.GetUserClient().GetUsers(), "login", "password", account.login);
             return View(account);
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Account.Find(id);
+            LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.login = new SelectList(db.User, "login", "password", account.login);
+            ViewBag.login = new SelectList(Helper.GetUserClient().GetUsers(), "login", "password", account.login);
             return View(account);
         }
 
@@ -84,26 +82,27 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "login,argent,date")] Account account)
+        public ActionResult Edit([Bind(Include = "login,argent,date")] LBCFUBL_WCF.DBO.Account account)
         {
             if (ModelState.IsValid)
             {
+                /* TODO
                 db.Entry(account).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();*/
                 return RedirectToAction("Index");
             }
-            ViewBag.login = new SelectList(db.User, "login", "password", account.login);
+            ViewBag.login = new SelectList(Helper.GetUserClient().GetUsers(), "login", "password", account.login);
             return View(account);
         }
 
         // GET: Accounts/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Account.Find(id);
+            LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -114,11 +113,10 @@ namespace LBCFUBL.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-            Account account = db.Account.Find(id);
-            db.Account.Remove(account);
-            db.SaveChanges();
+            LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
+            Helper.GetAccountClient().DeleteAccountForId(id);
             return RedirectToAction("Index");
         }
 
@@ -126,7 +124,7 @@ namespace LBCFUBL.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

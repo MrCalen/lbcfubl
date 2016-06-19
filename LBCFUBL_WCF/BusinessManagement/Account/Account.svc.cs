@@ -12,10 +12,14 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Account.svc ou Account.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Account : IAccount
     {
-        private DataAccess.Account account;
+        private DataAccess.Account account = new DataAccess.Account();
         Account()
         {
             account = new DataAccess.Account();
+        }
+        public List<DBO.Account> GetAccounts()
+        {
+            return account.GetAccounts();
         }
         public void CreateAccount(string login, float money, DateTime date)
         {
@@ -40,6 +44,14 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
         public List<DBO.Account> GetAccountsForLoginBeforeDate(string login, DateTime date)
         {
             return account.GetAccountsForLoginBeforeDate(login, date);
+        }
+        public DBO.Account GetAccountForId(Guid id)
+        {
+            return account.GetAccountForId(id);
+        }
+        public bool DeleteAccountForId(Guid id)
+        {
+            return account.DeleteAccountForId(id);
         }
     }
 }

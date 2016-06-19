@@ -7,6 +7,14 @@ namespace LBCFUBL_WCF.DataAccess
 {
     public class Account
     {
+        public List<DBO.Account> GetAccounts()
+        {
+            return DBO.DatabaseContext.getInstance().Accounts.ToList();
+        }
+        public DBO.Account GetAccountForId(Guid id)
+        {
+            return DBO.DatabaseContext.getInstance().Accounts.FirstOrDefault(a => a.id == id);
+        }
         public List<DBO.Account> GetAccountsForLogin(String login)
         {
             return DBO.DatabaseContext.getInstance().Accounts.Where(a => a.login.Equals(login)).ToList();
@@ -23,6 +31,7 @@ namespace LBCFUBL_WCF.DataAccess
         {
             DBO.Account account = new DBO.Account
             {
+                id = Guid.NewGuid(),
                 login = login,
                 argent = money,
                 date = date
@@ -34,6 +43,14 @@ namespace LBCFUBL_WCF.DataAccess
         public bool DeleteAccount(String login, DateTime date)
         {
             DBO.Account exists = DBO.DatabaseContext.getInstance().Accounts.FirstOrDefault(a => a.login.Equals(login) && a.date == date);
+            if (exists == null)
+                return false;
+            DBO.DatabaseContext.getInstance().Accounts.Remove(exists);
+            return true;
+        }
+        public bool DeleteAccountForId(Guid id)
+        {
+            DBO.Account exists = GetAccountForId(id);
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Accounts.Remove(exists);
