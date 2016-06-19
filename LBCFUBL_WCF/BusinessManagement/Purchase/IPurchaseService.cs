@@ -12,14 +12,23 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
     public interface IPurchaseService
     {
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Purchase> GetPurchasesForLogin(String login);
+
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Purchase> GetPurchasesForLoginBeforeDate(String login, DateTime date);
+
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Purchase> GetPurchasesForLoginAfterDate(String login, DateTime date);
+
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         void CreatePurchase(String login, DateTime date, Guid id_prod);
+
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         bool DeletePurchase(String login, DateTime date);
     }
 }
