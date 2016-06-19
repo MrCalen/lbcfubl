@@ -45,6 +45,7 @@ namespace LBCFUBL_WCF.DataAccess
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Accounts.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
             return true;
         }
         public bool DeleteAccountForId(int id)
@@ -53,6 +54,7 @@ namespace LBCFUBL_WCF.DataAccess
             if (exists == null)
                 return false;
             DBO.DatabaseContext.getInstance().Accounts.Remove(exists);
+            DBO.DatabaseContext.getInstance().SaveChanges();
             return true;
         }
     }

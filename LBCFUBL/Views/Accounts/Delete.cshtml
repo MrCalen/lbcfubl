@@ -1,4 +1,4 @@
-﻿@model LBCFUBL.Models.Account
+﻿@model LBCFUBL_WCF.DBO.Account
 
 @{
     ViewBag.Title = "Delete";
@@ -12,13 +12,28 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.User.password)
+            @Html.DisplayNameFor(model => model.login)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.password)
+            @Html.DisplayFor(model => model.login)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.argent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.argent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {
