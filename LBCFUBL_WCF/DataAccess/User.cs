@@ -14,8 +14,7 @@ namespace LBCFUBL_WCF.DataAccess
             anonym = 0,
             assistant = 1,
             chief = 2,
-            root = 3,
-            admin = 4,
+            admin = 3,
         }
 
         public static role RoleFromInt(int i)
