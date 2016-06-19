@@ -52,16 +52,16 @@ namespace LBCFUBL.AccountServiceReference {
         System.Threading.Tasks.Task<bool> DeleteAccountAsync(string login, System.DateTime date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccountForId", ReplyAction="http://tempuri.org/IAccount/GetAccountForIdResponse")]
-        LBCFUBL_WCF.DBO.Account GetAccountForId(System.Guid id);
+        LBCFUBL_WCF.DBO.Account GetAccountForId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAccountForId", ReplyAction="http://tempuri.org/IAccount/GetAccountForIdResponse")]
-        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(System.Guid id);
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/DeleteAccountForId", ReplyAction="http://tempuri.org/IAccount/DeleteAccountForIdResponse")]
-        bool DeleteAccountForId(System.Guid id);
+        bool DeleteAccountForId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/DeleteAccountForId", ReplyAction="http://tempuri.org/IAccount/DeleteAccountForIdResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(System.Guid id);
+        System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,19 +139,19 @@ namespace LBCFUBL.AccountServiceReference {
             return base.Channel.DeleteAccountAsync(login, date);
         }
         
-        public LBCFUBL_WCF.DBO.Account GetAccountForId(System.Guid id) {
+        public LBCFUBL_WCF.DBO.Account GetAccountForId(int id) {
             return base.Channel.GetAccountForId(id);
         }
         
-        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(System.Guid id) {
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Account> GetAccountForIdAsync(int id) {
             return base.Channel.GetAccountForIdAsync(id);
         }
         
-        public bool DeleteAccountForId(System.Guid id) {
+        public bool DeleteAccountForId(int id) {
             return base.Channel.DeleteAccountForId(id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(System.Guid id) {
+        public System.Threading.Tasks.Task<bool> DeleteAccountForIdAsync(int id) {
             return base.Channel.DeleteAccountForIdAsync(id);
         }
     }

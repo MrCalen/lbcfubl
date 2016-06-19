@@ -19,6 +19,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
       <xs:element minOccurs="0" name="Shopping" nillable="true" type="tns:Shopping" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="id_product" type="ser:guid" />
       <xs:element minOccurs="0" name="id_shopping" type="ser:guid" />
       <xs:element minOccurs="0" name="number" type="xs:int" />
@@ -48,6 +49,7 @@
       <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="id_prod" type="ser:guid" />
       <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -74,7 +76,7 @@
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="argent" type="xs:double" />
       <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="id" type="ser:guid" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

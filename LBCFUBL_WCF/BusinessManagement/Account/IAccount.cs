@@ -15,18 +15,25 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
         [ReferencePreservingDataContractFormat]
         List<DBO.Account> GetAccounts();
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Account> GetAccountsForLogin(String login);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Account> GetAccountsForLoginBeforeDate(String login, DateTime date);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Account> GetAccountsForLoginAfterDate(String login, DateTime date);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         void CreateAccount(String login, float money, DateTime date);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         bool DeleteAccount(String login, DateTime date);
         [OperationContract]
-        DBO.Account GetAccountForId(Guid id);
+        [ReferencePreservingDataContractFormat]
+        DBO.Account GetAccountForId(int id);
         [OperationContract]
-        bool DeleteAccountForId(Guid id);
+        [ReferencePreservingDataContractFormat]
+        bool DeleteAccountForId(int id);
     }
 }

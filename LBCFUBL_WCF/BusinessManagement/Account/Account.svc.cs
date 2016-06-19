@@ -45,11 +45,11 @@ namespace LBCFUBL_WCF.BusinessManagement.Account
         {
             return account.GetAccountsForLoginBeforeDate(login, date);
         }
-        public DBO.Account GetAccountForId(Guid id)
+        public DBO.Account GetAccountForId(int id)
         {
             return account.GetAccountForId(id);
         }
-        public bool DeleteAccountForId(Guid id)
+        public bool DeleteAccountForId(int id)
         {
             return account.DeleteAccountForId(id);
         }

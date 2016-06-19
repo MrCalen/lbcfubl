@@ -12,7 +12,7 @@
           <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="argent" Type="float" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -24,17 +24,14 @@
           <Property Name="cost_without_margin" Type="float" Nullable="false" />
           <Property Name="cost_with_margin" Type="float" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6002: La table/vue 'lbcfubl.dbo.Purchase' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
         <EntityType Name="Purchase">
           <Key>
-            <PropertyRef Name="login" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="id_prod" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="id_prod" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Shopping">
           <Key>
@@ -43,17 +40,14 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Purchase' n'a pas de clé primaire
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
         <EntityType Name="Shopping_Product">
           <Key>
-            <PropertyRef Name="id_shopping" />
-            <PropertyRef Name="id_product" />
-            <PropertyRef Name="number" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="id_shopping" Type="uniqueidentifier" Nullable="false" />
           <Property Name="id_product" Type="uniqueidentifier" Nullable="false" />
           <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -126,22 +120,10 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
         <EntityContainer Name="lbcfublModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shopping" EntityType="Self.Shopping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shopping_Product" EntityType="Self.Shopping_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Purchase" EntityType="Self.Purchase" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Purchase].[login] AS [login], 
-    [Purchase].[date] AS [date], 
-    [Purchase].[id_prod] AS [id_prod]
-    FROM [dbo].[Purchase] AS [Purchase]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Shopping_Product" EntityType="Self.Shopping_Product" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Shopping_Product].[id_shopping] AS [id_shopping], 
-    [Shopping_Product].[id_product] AS [id_product], 
-    [Shopping_Product].[number] AS [number]
-    FROM [dbo].[Shopping_Product] AS [Shopping_Product]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Accompte_User" Association="Self.FK_Accompte_User">
             <End Role="User" EntitySet="User" />
             <End Role="Account" EntitySet="Account" />
@@ -175,7 +157,7 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
           <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="argent" Type="Double" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="User" Relationship="Self.FK_Accompte_User" FromRole="Account" ToRole="User" />
         </EntityType>
         <EntityType Name="Product">
@@ -190,6 +172,17 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
           <NavigationProperty Name="Shopping_Product" Relationship="Self.FK_Shopping_Product_Product" FromRole="Product" ToRole="Shopping_Product" />
         </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_prod" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Purchase_User" FromRole="Purchase" ToRole="User" />
+        </EntityType>
         <EntityType Name="Shopping">
           <Key>
             <PropertyRef Name="id" />
@@ -197,6 +190,17 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Shopping_Product" Relationship="Self.FK_Shopping_Product_Shopping" FromRole="Shopping" ToRole="Shopping_Product" />
+        </EntityType>
+        <EntityType Name="Shopping_Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id_shopping" Type="Guid" Nullable="false" />
+          <Property Name="id_product" Type="Guid" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Shopping_Product_Product" FromRole="Shopping_Product" ToRole="Product" />
+          <NavigationProperty Name="Shopping" Relationship="Self.FK_Shopping_Product_Shopping" FromRole="Shopping_Product" ToRole="Shopping" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -207,30 +211,6 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
           <Property Name="role" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_Accompte_User" FromRole="User" ToRole="Account" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_User" FromRole="User" ToRole="Purchase" />
-        </EntityType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="login" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="id_prod" />
-          </Key>
-          <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="id_prod" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Purchase_User" FromRole="Purchase" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Shopping_Product">
-          <Key>
-            <PropertyRef Name="id_shopping" />
-            <PropertyRef Name="id_product" />
-            <PropertyRef Name="number" />
-          </Key>
-          <Property Name="id_shopping" Type="Guid" Nullable="false" />
-          <Property Name="id_product" Type="Guid" Nullable="false" />
-          <Property Name="number" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Shopping_Product_Product" FromRole="Shopping_Product" ToRole="Product" />
-          <NavigationProperty Name="Shopping" Relationship="Self.FK_Shopping_Product_Shopping" FromRole="Shopping_Product" ToRole="Shopping" />
         </EntityType>
         <Association Name="FK_Accompte_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -268,18 +248,6 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shopping_Product_Shopping">
-          <End Role="Shopping" Type="Self.Shopping" Multiplicity="1" />
-          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shopping">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Shopping_Product">
-              <PropertyRef Name="id_shopping" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Purchase_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
@@ -292,13 +260,25 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Shopping_Product_Shopping">
+          <End Role="Shopping" Type="Self.Shopping" Multiplicity="1" />
+          <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shopping">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Shopping_Product">
+              <PropertyRef Name="id_shopping" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="lbcfublEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Shoppings" EntityType="Self.Shopping" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="Shoppings" EntityType="Self.Shopping" />
           <EntitySet Name="Shopping_Product" EntityType="Self.Shopping_Product" />
+          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Accompte_User" Association="Self.FK_Accompte_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Account" EntitySet="Accounts" />
@@ -311,13 +291,13 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
             <End Role="Product" EntitySet="Products" />
             <End Role="Shopping_Product" EntitySet="Shopping_Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Shopping_Product_Shopping" Association="Self.FK_Shopping_Product_Shopping">
-            <End Role="Shopping" EntitySet="Shoppings" />
-            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
-          </AssociationSet>
           <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shopping_Product_Shopping" Association="Self.FK_Shopping_Product_Shopping">
+            <End Role="Shopping" EntitySet="Shoppings" />
+            <End Role="Shopping_Product" EntitySet="Shopping_Product" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -347,29 +327,21 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Shoppings">
-            <EntityTypeMapping TypeName="lbcfublModel.Shopping">
-              <MappingFragment StoreEntitySet="Shopping">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="lbcfublModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="role" ColumnName="role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Purchases">
             <EntityTypeMapping TypeName="lbcfublModel.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="id_prod" ColumnName="id_prod" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shoppings">
+            <EntityTypeMapping TypeName="lbcfublModel.Shopping">
+              <MappingFragment StoreEntitySet="Shopping">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -379,6 +351,16 @@ avertissement 6002: La table/vue 'lbcfubl.dbo.Shopping_Product' n'a pas de clé 
                 <ScalarProperty Name="id_shopping" ColumnName="id_shopping" />
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
                 <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="lbcfublModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

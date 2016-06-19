@@ -17,6 +17,7 @@ namespace LBCFUBL_WCF.DBO
         public string login { get; set; }
         public System.DateTime date { get; set; }
         public System.Guid id_prod { get; set; }
+        public int id { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }

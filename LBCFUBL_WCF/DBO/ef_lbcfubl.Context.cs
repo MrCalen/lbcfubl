@@ -27,9 +27,9 @@ namespace LBCFUBL_WCF.DBO
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Shopping> Shoppings { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<Shopping> Shoppings { get; set; }
         public virtual DbSet<Shopping_Product> Shopping_Product { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

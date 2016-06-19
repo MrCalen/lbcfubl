@@ -17,6 +17,7 @@ namespace LBCFUBL_WCF.DBO
         public System.Guid id_shopping { get; set; }
         public System.Guid id_product { get; set; }
         public int number { get; set; }
+        public int id { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Shopping Shopping { get; set; }

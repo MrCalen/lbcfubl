@@ -23,12 +23,8 @@ namespace LBCFUBL.Controllers
         }
 
         // GET: Accounts/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
@@ -62,12 +58,8 @@ namespace LBCFUBL.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
@@ -96,12 +88,8 @@ namespace LBCFUBL.Controllers
         }
 
         // GET: Accounts/Delete/5
-        public ActionResult Delete(Guid id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             if (account == null)
             {
@@ -113,7 +101,7 @@ namespace LBCFUBL.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(int id)
         {
             LBCFUBL_WCF.DBO.Account account = Helper.GetAccountClient().GetAccountForId(id);
             Helper.GetAccountClient().DeleteAccountForId(id);
