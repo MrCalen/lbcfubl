@@ -6,84 +6,30 @@
     @Styles.Render("~/Content/home.css")
 }
 
-<div class="col-md-7">
-
-    <div class="row">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Historique des achats <a class="pull-right white">Voir plus</a></div>
-            <div class="panel-body">
-                <table class="table table-responsive">
-                    <thead>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Historique des achats @Html.ActionLink("Voir Plus", "Index", "Purchases", new { area = "" }, new { @class = "pull-right white" })</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var history in ViewBag.History)
+                    {
                         <tr>
-                            <th>Produit</th>
-                            <th>Prix</th>
-                            <th>Date</th>
+                            <td>@history.Product.name</td>
+                            <td>@Math.Round(history.Product.cost_with_margin, 2)€</td>
+                            <td>@history.date</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var history in ViewBag.History)
-                        {
-                            <tr>
-                                <td>@history.Product.name</td>
-                                <td>@Math.Round(history.Product.cost_with_margin, 2)€</td>
-                                <td>@history.date</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-
 </div>
 
-<div class="col-md-4 col-md-offset-1">
-    @if (ViewBag.Money != null)
-    {
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading @(ViewBag.Money < 0 ? "panel-negative" : "")">
-                    <div class="panel-title">Etat du compte actuellement:</div>
-                </div>
-                <div class="panel-body">
-                    <p class="current-money">Votre compte: <b @( ViewBag.Money < 0 ? "class=negative" : "")>@ViewBag.Money</b>€</p>
-                </div>
-            </div>
-        </div>
-    }
-    @if (ViewBag.Users != null && ViewBag.Products != null)
-    {
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="panel-title">Marquer une consommation</div>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm("Create", "Purchases", null, FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="row padded-row">
-                            <label>Sélectionner un login</label>
-                            <select class="form-control" name="login">
-                                @foreach (var user in ViewBag.Users)
-                                {
-                                    <option value="@user.login">@user.login</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="row padded-row">
-                            <label>Sélectionner un produit</label>
-                            <select class="form-control" name="id_prod">
-                                @foreach (var product in ViewBag.Products)
-                                {
-                                    <option value="@product.id">@product.name</option>
-                                }
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Valider</button>
-                    }
-                </div>
-            </div>
-        </div>
-    }
-</div>

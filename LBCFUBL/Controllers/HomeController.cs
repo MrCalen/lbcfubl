@@ -12,10 +12,7 @@ namespace LBCFUBL.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Money = Math.Round(Helper.GetUserClient().GetUserMoney(User.Identity.Name), 2);
-            ViewBag.Products = Helper.GetProductClient().GetAllProducts();
-            ViewBag.Users = Helper.GetUserClient().GetUsers();
-            ViewBag.History = Helper.GetPurchaseClient().GetPurchasesForLogin(User.Identity.Name).Reverse();
+            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
             return View();
         }
 

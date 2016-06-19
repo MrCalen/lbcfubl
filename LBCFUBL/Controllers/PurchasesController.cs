@@ -17,10 +17,8 @@ namespace LBCFUBL.Controllers
         // GET: Purchases
         public ActionResult Index()
         {
-            /* TODO
-            var purchase = db.Purchase.Include(p => p.Product).Include(p => p.User);
-            return View(purchase.ToList());
-            */
+            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
+            ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(User.Identity.Name);
             return View();
         }
 
