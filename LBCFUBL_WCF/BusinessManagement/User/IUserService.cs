@@ -38,5 +38,13 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         [ReferencePreservingDataContractFormat]
         [OperationContract]
         void Block(string login, bool block);
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_User_Account_History_Result> GetUserAccountHistoryResult(string login);
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_User_Purchase_History_Result> GetUserPurchaseHistoryResult(string login);
     }
 }

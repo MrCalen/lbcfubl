@@ -97,4 +97,32 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUserAccountHistoryResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserAccountHistoryResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUserAccountHistoryResultResult" nillable="true" type="q5:ArrayOfGet_User_Account_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserPurchaseHistoryResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserPurchaseHistoryResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUserPurchaseHistoryResultResult" nillable="true" type="q6:ArrayOfGet_User_Purchase_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

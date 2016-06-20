@@ -56,6 +56,18 @@ namespace LBCFUBL.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Block", ReplyAction="http://tempuri.org/IUserService/BlockResponse")]
         System.Threading.Tasks.Task BlockAsync(string login, bool block);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserAccountHistoryResult", ReplyAction="http://tempuri.org/IUserService/GetUserAccountHistoryResultResponse")]
+        LBCFUBL_WCF.DBO.Get_User_Account_History_Result[] GetUserAccountHistoryResult(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserAccountHistoryResult", ReplyAction="http://tempuri.org/IUserService/GetUserAccountHistoryResultResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Account_History_Result[]> GetUserAccountHistoryResultAsync(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPurchaseHistoryResult", ReplyAction="http://tempuri.org/IUserService/GetUserPurchaseHistoryResultResponse")]
+        LBCFUBL_WCF.DBO.Get_User_Purchase_History_Result[] GetUserPurchaseHistoryResult(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPurchaseHistoryResult", ReplyAction="http://tempuri.org/IUserService/GetUserPurchaseHistoryResultResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Purchase_History_Result[]> GetUserPurchaseHistoryResultAsync(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,6 +151,22 @@ namespace LBCFUBL.UserServiceReference {
         
         public System.Threading.Tasks.Task BlockAsync(string login, bool block) {
             return base.Channel.BlockAsync(login, block);
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_User_Account_History_Result[] GetUserAccountHistoryResult(string login) {
+            return base.Channel.GetUserAccountHistoryResult(login);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Account_History_Result[]> GetUserAccountHistoryResultAsync(string login) {
+            return base.Channel.GetUserAccountHistoryResultAsync(login);
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_User_Purchase_History_Result[] GetUserPurchaseHistoryResult(string login) {
+            return base.Channel.GetUserPurchaseHistoryResult(login);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Purchase_History_Result[]> GetUserPurchaseHistoryResultAsync(string login) {
+            return base.Channel.GetUserPurchaseHistoryResultAsync(login);
         }
     }
 }

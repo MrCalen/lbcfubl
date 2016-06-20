@@ -95,5 +95,16 @@ namespace LBCFUBL_WCF.DataAccess
             DBO.User usr = GetUserFromLogin(login);
             usr.is_blocked = (block ? 1 : 0);
         }
+
+        public List<DBO.Get_User_Account_History_Result> GetUserAccountHistory(string login)
+        {
+            return DBO.DatabaseContext.getInstance().Get_User_Account_History(login).ToList();
+        }
+
+        public List<DBO.Get_User_Purchase_History_Result> GetUserPurchaseHistory(string login)
+        {
+            return DBO.DatabaseContext.getInstance().Get_User_Purchase_History(login).ToList();
+        }
+
     }
 }

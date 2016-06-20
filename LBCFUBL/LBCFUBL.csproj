@@ -197,6 +197,8 @@
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Account1.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Purchase1.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping_Product1.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Get_User_Account_History_Result.datasource" />
+    <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Get_User_Purchase_History_Result.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

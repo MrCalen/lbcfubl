@@ -50,6 +50,18 @@
   <wsdl:message name="IUserService_Block_OutputMessage">
     <wsdl:part name="parameters" element="tns:BlockResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUserAccountHistoryResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccountHistoryResult" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserAccountHistoryResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccountHistoryResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserPurchaseHistoryResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurchaseHistoryResult" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserPurchaseHistoryResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurchaseHistoryResultResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUserFromLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserFromLogin" message="tns:IUserService_GetUserFromLogin_InputMessage" />
@@ -78,6 +90,14 @@
     <wsdl:operation name="Block">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/Block" message="tns:IUserService_Block_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/BlockResponse" message="tns:IUserService_Block_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccountHistoryResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserAccountHistoryResult" message="tns:IUserService_GetUserAccountHistoryResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserAccountHistoryResultResponse" message="tns:IUserService_GetUserAccountHistoryResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurchaseHistoryResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserPurchaseHistoryResult" message="tns:IUserService_GetUserPurchaseHistoryResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserPurchaseHistoryResultResponse" message="tns:IUserService_GetUserPurchaseHistoryResult_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -138,6 +158,24 @@
     </wsdl:operation>
     <wsdl:operation name="Block">
       <soap:operation soapAction="http://tempuri.org/IUserService/Block" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccountHistoryResult">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserAccountHistoryResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurchaseHistoryResult">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserPurchaseHistoryResult" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -14,6 +14,19 @@ namespace LBCFUBL.Controllers
     [Authorize]
     public class PurchasesController : Controller
     {
+        public class Data {
+            public double first { get; set; }
+            public double second { get; set; }
+            public bool third { get; set; }
+
+            public Data(double first, double second, bool third)
+            {
+                this.first = first;
+                this.second = second;
+                this.third = third;
+            }
+        }
+
         // GET: Purchases
         public ActionResult Index(string id)
         {
@@ -28,6 +41,49 @@ namespace LBCFUBL.Controllers
             ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name, true);
             ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(id);
             ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(id);
+
+            var purchaseHistory = Helper.GetUserClient().GetUserPurchaseHistoryResult(id);
+            var accountHistory = Helper.GetUserClient().GetUserAccountHistoryResult(id);
+
+            var map = new SortedList<DateTime, Data>(); // Monthly purchase (account - purchase) , total this month
+            foreach (var account in accountHistory)
+            {
+                int year = (int)account.year;
+                int month = (int)account.month;
+                DateTime date = new DateTime((int)account.year, (int)account.month, 1);
+                map[date] = new Data(0, account.total_account, false);
+            }
+            foreach (var purchase in purchaseHistory)
+            {
+                DateTime date = new DateTime((int)purchase.year, (int)purchase.month, 1);
+                Data tuple = null;
+                if (map.ContainsKey(date))
+                    tuple = map[date];
+                else
+                {
+                    tuple = new Data(0, 0, true);
+                }
+                map[date] = new Data(purchase.month_purchase, tuple.second - purchase.total_purchase, tuple.third);
+            }
+
+            Data last = null;
+            foreach (var element in map)
+            {
+                // First Element, do nothing
+                if (last == null)
+                {
+                    last = element.Value;
+                    continue;
+                }
+
+                if (element.Value.third)
+                {
+                    // We got a purchase, get the last 
+                    element.Value.second += last.second;
+                }
+                last = element.Value;
+            }
+            ViewBag.Map = map;
             return View("Index");
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LBCFUBL_WCF.DBO;
 
 namespace LBCFUBL_WCF.BusinessManagement.User
 {
@@ -40,6 +41,16 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         public void Block(string login, bool block)
         {
             user.Block(login, block);
+        }
+
+        public List<Get_User_Account_History_Result> GetUserAccountHistoryResult(string login)
+        {
+            return user.GetUserAccountHistory(login);
+        }
+
+        public List<Get_User_Purchase_History_Result> GetUserPurchaseHistoryResult(string login)
+        {
+            return user.GetUserPurchaseHistory(login);
         }
     }
 }
