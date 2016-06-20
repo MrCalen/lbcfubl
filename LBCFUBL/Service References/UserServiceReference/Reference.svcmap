@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:3038/BusinessManagement/User/UserService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="29bfffb3-4457-4f56-a9aa-9e1dfe89a4e3" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="2e384e1d-f7b6-4c71-ad77-8a9e0629ca23" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?disco" />
     <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="c5ed60ec-3b0b-4d62-9414-4d2d8b51745e" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd2" />
-    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="e4fb8d7c-ec04-40e5-afb3-f3cc478786c3" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd0" />
     <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="eb7077a5-1171-499d-adb6-3a281d73ac0c" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?wsdl" />
     <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="458b7c88-f74c-475e-9708-e69c3b8d916f" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd1" />
-    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="2e384e1d-f7b6-4c71-ad77-8a9e0629ca23" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?disco" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="e4fb8d7c-ec04-40e5-afb3-f3cc478786c3" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

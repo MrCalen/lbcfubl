@@ -18,8 +18,9 @@ namespace LBCFUBL.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = Helper.GetUserClient().GetUsers().ToList();
-            return View(users);
+            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
+            ViewBag.Accounts = Helper.GetUserClient().GetUsersMoneys();
+            return View();
         }
 
         // GET: Users/Details/5

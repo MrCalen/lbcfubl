@@ -1,45 +1,63 @@
-﻿@model IEnumerable<LBCFUBL_WCF.DBO.User>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section css {
+    @Styles.Render("~/Content/home.css")
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Liste des assistants</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th>Compte</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var account in ViewBag.Accounts)
+                    {
+                        <div id="myModal-@(account.Item1)" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Ajouter un accompte à : @(account.Item1)</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        @using (Html.BeginForm("Create", "Accounts", null, FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" value="@(account.Item1)" name="login"/>
+                                            <div class="row padded-row">
+                                                <label>Montant : </label>
+                                                <input type="number" name="argent" class="form-control" min="0"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Valider</button>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.role)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.login)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.login }) |
-            @Html.ActionLink("Details", "Details", new { id=item.login }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.login })
-        </td>
-    </tr>
-}
-
-</table>
+                            </div>
+                        </div>
+                        <tr>
+                            <td>@account.Item1</td>
+                            <td style="font-weight: bold;">@account.Item2 €</td>
+                            <td align="right">
+                                <button data-toggle="modal" data-target="#myModal-@(account.Item1)">Ajouter accompte</button>
+                                <button>Bloquer</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

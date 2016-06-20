@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="lbcfublModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="lbcfublModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="id" />
@@ -59,6 +59,7 @@
           <Property Name="login" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="is_blocked" Type="int" />
         </EntityType>
         <Association Name="FK_Accompte_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -132,7 +133,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="Get_User_Depenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_login" Type="varchar" Mode="In" />
         </Function>
@@ -140,36 +140,6 @@
           <Parameter Name="user_login" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Get_Users_Money" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="lbcfublModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -202,7 +172,8 @@
             <End Role="Shopping_Product" EntitySet="Shopping_Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="lbcfublModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -238,10 +209,10 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id_prod" Type="Guid" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="added_by" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
           <NavigationProperty Name="User" Relationship="Self.FK_Purchase_User" FromRole="Purchase" ToRole="User" />
-          <Property Name="added_by" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AddedBy" Relationship="lbcfublModel.FK_Purchase_User1" FromRole="Purchase" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Purchase_User1" FromRole="Purchase" ToRole="User" />
         </EntityType>
         <EntityType Name="Shopping">
           <Key>
@@ -269,9 +240,10 @@
           <Property Name="login" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="is_blocked" Type="Int32" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_Accompte_User" FromRole="User" ToRole="Account" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_User" FromRole="User" ToRole="Purchase" />
-          <NavigationProperty Name="Purchases1" Relationship="lbcfublModel.FK_Purchase_User1" FromRole="User" ToRole="Purchase" />
+          <NavigationProperty Name="Purchases1" Relationship="Self.FK_Purchase_User1" FromRole="User" ToRole="Purchase" />
         </EntityType>
         <Association Name="FK_Accompte_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -321,6 +293,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Purchase_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="added_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shopping_Product_Shopping">
           <End Role="Shopping" Type="Self.Shopping" Multiplicity="1" />
           <End Role="Shopping_Product" Type="Self.Shopping_Product" Multiplicity="*" />
@@ -356,79 +340,26 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
+          <AssociationSet Name="FK_Purchase_User1" Association="Self.FK_Purchase_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
           <AssociationSet Name="FK_Shopping_Product_Shopping" Association="Self.FK_Shopping_Product_Shopping">
             <End Role="Shopping" EntitySet="Shoppings" />
             <End Role="Shopping_Product" EntitySet="Shopping_Product" />
           </AssociationSet>
           <FunctionImport Name="Get_User_Depenses" ReturnType="Collection(Double)">
-          <Parameter Name="user_login" Mode="In" Type="String" />
+            <Parameter Name="user_login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_User_Money" ReturnType="Collection(Double)">
-          <Parameter Name="user_login" Mode="In" Type="String" />
+            <Parameter Name="user_login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_Users_Money" ReturnType="Collection(lbcfublModel.Get_Users_Money_Result)" />
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(lbcfublModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(lbcfublModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_Purchase_User1" Association="lbcfublModel.FK_Purchase_User1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="Get_Users_Money_Result">
           <Property Type="String" Name="login" Nullable="false" MaxLength="8" />
-          <Property Type="Double" Name="Column1" Nullable="true" />
+          <Property Type="Double" Name="money" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <Association Name="FK_Purchase_User1">
-          <End Type="lbcfublModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="lbcfublModel.Purchase" Role="Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="login" />
-            </Principal>
-            <Dependent Role="Purchase">
-              <PropertyRef Name="added_by" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -461,11 +392,11 @@
           <EntitySetMapping Name="Purchases">
             <EntityTypeMapping TypeName="lbcfublModel.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="id_prod" ColumnName="id_prod" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -493,6 +424,7 @@
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="is_blocked" ColumnName="is_blocked" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -502,34 +434,10 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="lbcfublModel.Get_Users_Money_Result">
                 <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="money" ColumnName="money" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="lbcfublModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="lbcfublModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="lbcfublModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="lbcfublModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="lbcfublModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="lbcfublModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="lbcfublModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="lbcfublModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="lbcfublModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

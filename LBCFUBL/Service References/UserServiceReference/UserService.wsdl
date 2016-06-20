@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" />
+      <xsd:import schemaLocation="http://localhost:3038/BusinessManagement/User/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserService_GetUserFromLogin_InputMessage">
@@ -37,6 +38,12 @@
   <wsdl:message name="IUserService_GetUserMoney_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserMoneyResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUsersMoneys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersMoneys" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUsersMoneys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersMoneysResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUserFromLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserFromLogin" message="tns:IUserService_GetUserFromLogin_InputMessage" />
@@ -57,6 +64,10 @@
     <wsdl:operation name="GetUserMoney">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserMoney" message="tns:IUserService_GetUserMoney_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserMoneyResponse" message="tns:IUserService_GetUserMoney_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersMoneys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUsersMoneys" message="tns:IUserService_GetUsersMoneys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUsersMoneysResponse" message="tns:IUserService_GetUsersMoneys_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -99,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserMoney">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUserMoney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersMoneys">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUsersMoneys" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

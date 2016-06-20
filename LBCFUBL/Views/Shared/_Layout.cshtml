@@ -36,21 +36,18 @@
                         <li>@Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (User.IsInRole("admin"))
-                        {
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        }
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li>@Html.ActionLink("Utilisateurs", "Index", "Users", new { area = "" }, new { @class = "" })</li>
+                                }
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Déconnexion", "LogOut", "Login", new { area = "" }, new { @class = "" })</li>
+                                <li class="dropdown-header">Nav header</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -86,7 +83,7 @@
                             </div>
                             <div class="panel-body">
                                 @using (Html.BeginForm("Create", "Purchases", null, FormMethod.Post))
-                    {
+                                {
                                     @Html.AntiForgeryToken()
                                     <div class="row padded-row">
                                         <label>Sélectionner un login</label>
@@ -107,7 +104,7 @@
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Valider</button>
-                                }
+                                 }
                             </div>
                         </div>
                     </div>

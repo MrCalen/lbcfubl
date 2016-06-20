@@ -45,12 +45,14 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "login,argent,date")] LBCFUBL_WCF.DBO.Account account)
+        public ActionResult Create([Bind(Include = "login,argent")] LBCFUBL_WCF.DBO.Account account)
         {
+            account.date = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 Helper.GetAccountClient().CreateAccount(account.login, (float)account.argent, account.date);
-                return RedirectToAction("Index");
+                return Redirect(Request.UrlReferrer.ToString());
             }
 
             ViewBag.login = new SelectList(Helper.GetUserClient().GetUsers(), "login", "password", account.login);

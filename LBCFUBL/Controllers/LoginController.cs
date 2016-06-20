@@ -17,7 +17,7 @@ namespace LBCFUBL.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return LogOut();
+                return Redirect("/");
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -57,7 +57,7 @@ namespace LBCFUBL.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult LogOut()
         {

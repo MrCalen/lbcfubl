@@ -78,5 +78,16 @@ namespace LBCFUBL_WCF.DataAccess
             // return DBO.DatabaseContext.getInstance().Users.FirstOrDefault(u => u.login.Equals(login));
             return DBO.DatabaseContext.getInstance().Get_User_Money(login).First().Value;
         }
+
+        public List<Tuple<string, double>> GetUsersMoneys()
+        {
+            List<Tuple<string, double>> ret = new List<Tuple<string, double>>();
+            var users_list = DBO.DatabaseContext.getInstance().Get_Users_Money().ToList();
+            foreach (var user in users_list)
+            {
+                ret.Add(new Tuple<string, double>(user.login, Math.Round((double)(user.money), 2)));
+            }
+            return ret;
+        }
     }
 }

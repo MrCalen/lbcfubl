@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LBCFUBL_WCF.BusinessManagement.User
 {
@@ -29,6 +30,11 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         public double GetUserMoney(string login)
         {
             return user.GetUserMoney(login);
+        }
+
+        public List<Tuple<string, double>> GetUsersMoneys()
+        {
+            return user.GetUsersMoneys();
         }
     }
 }

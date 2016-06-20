@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="884f72ad43844a2aaf6ba0ac5ce54314" Name="Diagram1">
-        <EntityTypeShape EntityType="lbcfublModel.Account" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Product" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+      <Diagram DiagramId="5a8e98fd4ebe40f2944adc4fdc2bdf67" Name="Diagram1">
+        <EntityTypeShape EntityType="lbcfublModel.Account" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="lbcfublModel.Product" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="lbcfublModel.Purchase" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Shopping" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="lbcfublModel.Shopping_Product" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="lbcfublModel.Shopping" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="lbcfublModel.Shopping_Product" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="lbcfublModel.User" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="lbcfublModel.FK_Accompte_User" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Purchase_Product" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Product" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Purchase_User" ManuallyRouted="false" />
+        <AssociationConnector Association="lbcfublModel.FK_Purchase_User1" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Shopping" ManuallyRouted="false" />
-        <AssociationConnector Association="lbcfublModel.FK_Purchase_User1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

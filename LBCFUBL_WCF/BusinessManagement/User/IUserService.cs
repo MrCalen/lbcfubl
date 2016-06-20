@@ -30,5 +30,9 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         [ReferencePreservingDataContractFormat]
         [OperationContract]
         double GetUserMoney(String login);
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<Tuple<string, double>> GetUsersMoneys();
     }
 }
