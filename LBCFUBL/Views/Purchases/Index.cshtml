@@ -1,39 +1,18 @@
-﻿@model IEnumerable<LBCFUBL.Models.Purchase>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Purchases";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.password)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+@section css {
+    @Styles.Render("~/Content/home.css")
 }
 
-</table>
+
+
+
+<div class="row">
+    <h2>Index</h2>
+    @foreach (var purchase in ViewBag.Purchases)
+    {
+        <h2>Coucou</h2>
+    }
+</div>

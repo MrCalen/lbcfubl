@@ -16,6 +16,7 @@
         <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Product" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Purchase_User" ManuallyRouted="false" />
         <AssociationConnector Association="lbcfublModel.FK_Shopping_Product_Shopping" ManuallyRouted="false" />
+        <AssociationConnector Association="lbcfublModel.FK_Purchase_User1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
