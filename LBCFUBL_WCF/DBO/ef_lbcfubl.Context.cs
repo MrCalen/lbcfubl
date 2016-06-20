@@ -56,5 +56,33 @@ namespace LBCFUBL_WCF.DBO
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Users_Money_Result>("Get_Users_Money");
         }
+    
+        public virtual ObjectResult<Get_User_Account_History_Result> Get_User_Account_History(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_User_Account_History_Result>("Get_User_Account_History", loginParameter);
+        }
+    
+        public virtual ObjectResult<Get_User_Purchase_History_Result> Get_User_Purchase_History(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_User_Purchase_History_Result>("Get_User_Purchase_History", loginParameter);
+        }
+    
+        public virtual ObjectResult<Get_Users_Accounts_History_Result> Get_Users_Accounts_History()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Users_Accounts_History_Result>("Get_Users_Accounts_History");
+        }
+    
+        public virtual ObjectResult<Get_Users_Purchases_History_Result> Get_Users_Purchases_History()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Users_Purchases_History_Result>("Get_Users_Purchases_History");
+        }
     }
 }

@@ -133,13 +133,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Get_User_Account_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Get_User_Depenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_login" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Get_User_Money" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_login" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Get_User_Purchase_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Users_Accounts_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_Users_Money" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Users_Purchases_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="lbcfublModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -354,10 +362,44 @@
           <Parameter Name="user_login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_Users_Money" ReturnType="Collection(lbcfublModel.Get_Users_Money_Result)" />
+          <FunctionImport Name="Get_User_Account_History" ReturnType="Collection(lbcfublModel.Get_User_Account_History_Result)">
+            <Parameter Name="login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_User_Purchase_History" ReturnType="Collection(lbcfublModel.Get_User_Purchase_History_Result)">
+            <Parameter Name="login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Users_Accounts_History" ReturnType="Collection(lbcfublModel.Get_Users_Accounts_History_Result)" />
+          <FunctionImport Name="Get_Users_Purchases_History" ReturnType="Collection(lbcfublModel.Get_Users_Purchases_History_Result)" />
         </EntityContainer>
         <ComplexType Name="Get_Users_Money_Result">
           <Property Type="String" Name="login" Nullable="false" MaxLength="8" />
           <Property Type="Double" Name="money" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_User_Account_History_Result">
+          <Property Type="String" Name="login" Nullable="false" MaxLength="8" />
+          <Property Type="Double" Name="month_account" Nullable="true" />
+          <Property Type="Double" Name="total_account" Nullable="false" />
+          <Property Type="Int32" Name="month" Nullable="true" />
+          <Property Type="Int32" Name="year" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_User_Purchase_History_Result">
+          <Property Type="String" Name="login" Nullable="false" MaxLength="8" />
+          <Property Type="Double" Name="month_purchase" Nullable="false" />
+          <Property Type="Double" Name="total_purchase" Nullable="false" />
+          <Property Type="Int32" Name="month" Nullable="true" />
+          <Property Type="Int32" Name="year" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Users_Accounts_History_Result">
+          <Property Type="Double" Name="month_account" Nullable="true" />
+          <Property Type="Double" Name="total_account" Nullable="false" />
+          <Property Type="Int32" Name="month" Nullable="true" />
+          <Property Type="Int32" Name="year" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Users_Purchases_History_Result">
+          <Property Type="Double" Name="month_purchase" Nullable="false" />
+          <Property Type="Double" Name="total_purchase" Nullable="false" />
+          <Property Type="Int32" Name="month" Nullable="true" />
+          <Property Type="Int32" Name="year" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -434,6 +476,48 @@
               <ComplexTypeMapping TypeName="lbcfublModel.Get_Users_Money_Result">
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="money" ColumnName="money" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_User_Account_History" FunctionName="lbcfublModel.Store.Get_User_Account_History">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lbcfublModel.Get_User_Account_History_Result">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="month_account" ColumnName="month_account" />
+                <ScalarProperty Name="total_account" ColumnName="total_account" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_User_Purchase_History" FunctionName="lbcfublModel.Store.Get_User_Purchase_History">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lbcfublModel.Get_User_Purchase_History_Result">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="month_purchase" ColumnName="month_purchase" />
+                <ScalarProperty Name="total_purchase" ColumnName="total_purchase" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Users_Accounts_History" FunctionName="lbcfublModel.Store.Get_Users_Accounts_History">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lbcfublModel.Get_Users_Accounts_History_Result">
+                <ScalarProperty Name="month_account" ColumnName="month_account" />
+                <ScalarProperty Name="total_account" ColumnName="total_account" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Users_Purchases_History" FunctionName="lbcfublModel.Store.Get_Users_Purchases_History">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lbcfublModel.Get_Users_Purchases_History_Result">
+                <ScalarProperty Name="month_purchase" ColumnName="month_purchase" />
+                <ScalarProperty Name="total_purchase" ColumnName="total_purchase" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
