@@ -15,30 +15,26 @@ namespace LBCFUBL.Controllers
     public class PurchasesController : Controller
     {
         // GET: Purchases
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
-            ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(User.Identity.Name);
-            ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(User.Identity.Name);
-            return View();
+            if (id == null)
+                id = User.Identity.Name;
+            if (id != User.Identity.Name && !User.IsInRole("admin"))
+            {
+                TempData["Error"] = "Vous n'êtes pas autorisé à voir cette resource";
+                return Redirect("/Purchases");
+            }
+
+            ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name, true);
+            ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(id);
+            ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(id);
+            return View("Index");
         }
 
         // GET: Purchases/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            /* TODO
-            Purchase purchase = db.Purchase.Find(id);
-            if (purchase == null)
-            {
-                return HttpNotFound();
-            }
-            return View(purchase);
-            */
-            return View();
+            throw new Exception();
         }
 
         // GET: Purchases/Create

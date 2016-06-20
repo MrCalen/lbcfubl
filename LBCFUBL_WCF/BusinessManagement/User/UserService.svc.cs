@@ -36,5 +36,10 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         {
             return user.GetUsersMoneys();
         }
+
+        public void Block(string login, bool block)
+        {
+            user.Block(login, block);
+        }
     }
 }

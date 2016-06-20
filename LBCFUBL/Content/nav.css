@@ -36,3 +36,7 @@ ul.nav.navbar-nav > li > a:hover {
 a.white {
    cursor: pointer;
 }
+
+.stripe {
+    text-decoration: line-through;
+}

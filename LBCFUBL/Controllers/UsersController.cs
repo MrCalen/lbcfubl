@@ -18,9 +18,28 @@ namespace LBCFUBL.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
+            ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
             ViewBag.Accounts = Helper.GetUserClient().GetUsersMoneys();
+            var map = new Dictionary<string, LBCFUBL_WCF.DBO.User>();
+            foreach (var account in ViewBag.Accounts)
+                map[account.Item1] = Helper.GetUserClient().GetUserFromLogin(account.Item1);
+            ViewBag.AccountForUser = map;
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Block(FormCollection form)
+        {
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("admin"))
+            {
+                TempData["Error"] = "Vous n'êtes pas autorisé à effectuer cette action cette resource";
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+            bool shouldblock = Int32.Parse(form["block"].ToString()) == 1;
+            string login = form["login"];
+            Helper.GetUserClient().Block(login, shouldblock);
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         // GET: Users/Details/5

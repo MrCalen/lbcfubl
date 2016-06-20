@@ -12,7 +12,7 @@ namespace LBCFUBL.Controllers
     {
         public ActionResult Index()
         {
-            ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
+            ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
             return View();
         }
 

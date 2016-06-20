@@ -89,5 +89,11 @@ namespace LBCFUBL_WCF.DataAccess
             }
             return ret;
         }
+
+        public void Block(string login, bool block)
+        {
+            DBO.User usr = GetUserFromLogin(login);
+            usr.is_blocked = (block ? 1 : 0);
+        }
     }
 }
