@@ -9,8 +9,10 @@
   <xs:element name="ArrayOfPurchase" nillable="true" type="tns:ArrayOfPurchase" />
   <xs:complexType name="Purchase">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="added_by" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="date" type="xs:dateTime" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="id_prod" type="ser:guid" />
@@ -18,6 +20,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Purchase" nillable="true" type="tns:Purchase" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accounts" nillable="true" type="tns:ArrayOfAccount" />
+      <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
+      <xs:element minOccurs="0" name="Purchases1" nillable="true" type="tns:ArrayOfPurchase" />
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="role" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Account" nillable="true" type="tns:Account" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccount" nillable="true" type="tns:ArrayOfAccount" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="argent" type="xs:double" />
+      <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Account" nillable="true" type="tns:Account" />
   <xs:complexType name="Product">
     <xs:sequence>
       <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
@@ -57,30 +86,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Shopping" nillable="true" type="tns:Shopping" />
-  <xs:complexType name="User">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Accounts" nillable="true" type="tns:ArrayOfAccount" />
-      <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
-      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="role" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="ArrayOfAccount">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Account" nillable="true" type="tns:Account" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAccount" nillable="true" type="tns:ArrayOfAccount" />
-  <xs:complexType name="Account">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
-      <xs:element minOccurs="0" name="argent" type="xs:double" />
-      <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Account" nillable="true" type="tns:Account" />
 </xs:schema>

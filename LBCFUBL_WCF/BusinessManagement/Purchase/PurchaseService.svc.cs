@@ -17,9 +17,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
         {
             purchase = new DataAccess.Purchase();
         }
-        public void CreatePurchase(string login, DateTime date, Guid id_prod)
+        public void CreatePurchase(string login, DateTime date, Guid id_prod, string added_by)
         {
-            purchase.CreatePurchase(login, date, id_prod);
+            purchase.CreatePurchase(login, date, id_prod, added_by);
         }
 
         public bool DeletePurchase(string login, DateTime date)

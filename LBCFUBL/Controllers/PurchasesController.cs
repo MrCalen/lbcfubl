@@ -60,8 +60,8 @@ namespace LBCFUBL.Controllers
             purchase.date = DateTime.Now;
             if (ModelState.IsValid)
             {
-                purchase.AddedBy = Helper.GetUserClient().GetUserFromLogin(User.Identity.Name);
-                Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod);
+                purchase.added_by = User.Identity.Name;
+                Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
                 return Redirect(Request.UrlReferrer.ToString());
             }
             /*

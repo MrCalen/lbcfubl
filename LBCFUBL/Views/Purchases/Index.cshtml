@@ -6,13 +6,31 @@
     @Styles.Render("~/Content/home.css")
 }
 
-
-
-
 <div class="row">
-    <h2>Index</h2>
-    @foreach (var purchase in ViewBag.Purchases)
-    {
-        <h2>Coucou</h2>
-    }
+    <div class="panel panel-primary">
+        <div class="panel-heading">Historique des achats</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Date</th>
+                        <th>Ajouté par</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var purchase in ViewBag.Purchases)
+                    {
+                        <tr>
+                            <td>@purchase.Product.name</td>
+                            <td>@Math.Round(purchase.Product.cost_with_margin, 2)€</td>
+                            <td>@purchase.date</td>
+                            <td>@purchase.added_by</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -34,10 +34,10 @@ namespace LBCFUBL.PurchaseServiceReference {
         System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Purchase[]> GetPurchasesForLoginAfterDateAsync(string login, System.DateTime date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/CreatePurchase", ReplyAction="http://tempuri.org/IPurchaseService/CreatePurchaseResponse")]
-        void CreatePurchase(string login, System.DateTime date, System.Guid id_prod);
+        void CreatePurchase(string login, System.DateTime date, System.Guid id_prod, string added_by);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/CreatePurchase", ReplyAction="http://tempuri.org/IPurchaseService/CreatePurchaseResponse")]
-        System.Threading.Tasks.Task CreatePurchaseAsync(string login, System.DateTime date, System.Guid id_prod);
+        System.Threading.Tasks.Task CreatePurchaseAsync(string login, System.DateTime date, System.Guid id_prod, string added_by);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/DeletePurchase", ReplyAction="http://tempuri.org/IPurchaseService/DeletePurchaseResponse")]
         bool DeletePurchase(string login, System.DateTime date);
@@ -97,12 +97,12 @@ namespace LBCFUBL.PurchaseServiceReference {
             return base.Channel.GetPurchasesForLoginAfterDateAsync(login, date);
         }
         
-        public void CreatePurchase(string login, System.DateTime date, System.Guid id_prod) {
-            base.Channel.CreatePurchase(login, date, id_prod);
+        public void CreatePurchase(string login, System.DateTime date, System.Guid id_prod, string added_by) {
+            base.Channel.CreatePurchase(login, date, id_prod, added_by);
         }
         
-        public System.Threading.Tasks.Task CreatePurchaseAsync(string login, System.DateTime date, System.Guid id_prod) {
-            return base.Channel.CreatePurchaseAsync(login, date, id_prod);
+        public System.Threading.Tasks.Task CreatePurchaseAsync(string login, System.DateTime date, System.Guid id_prod, string added_by) {
+            return base.Channel.CreatePurchaseAsync(login, date, id_prod, added_by);
         }
         
         public bool DeletePurchase(string login, System.DateTime date) {

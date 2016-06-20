@@ -25,7 +25,7 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
 
         [OperationContract]
         [ReferencePreservingDataContractFormat]
-        void CreatePurchase(String login, DateTime date, Guid id_prod);
+        void CreatePurchase(String login, DateTime date, Guid id_prod, string added_by);
 
         [OperationContract]
         [ReferencePreservingDataContractFormat]

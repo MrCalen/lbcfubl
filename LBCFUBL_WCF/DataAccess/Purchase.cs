@@ -19,13 +19,14 @@ namespace LBCFUBL_WCF.DataAccess
         {
             return DBO.DatabaseContext.getInstance().Purchases.Where(a => a.login.Equals(login) && a.date >= date).ToList();
         }
-        public void CreatePurchase(String login, DateTime date, Guid id_prod)
+        public void CreatePurchase(String login, DateTime date, Guid id_prod, string added_by)
         {
             DBO.Purchase purchase = new DBO.Purchase
             {
                 login = login,
                 date = date,
-                id_prod = id_prod
+                id_prod = id_prod,
+                added_by = added_by
             };
             DBO.DatabaseContext.getInstance().Purchases.Add(purchase);
             DBO.DatabaseContext.getInstance().SaveChanges();

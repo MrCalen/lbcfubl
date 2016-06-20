@@ -52,6 +52,7 @@
         <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="date" type="xs:dateTime" />
         <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id_prod" type="q4:guid" />
+        <xs:element minOccurs="0" name="added_by" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
