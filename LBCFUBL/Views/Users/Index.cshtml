@@ -51,13 +51,49 @@
                             <td>@account.Item1</td>
                             <td style="font-weight: bold;">@account.Item2 €</td>
                             <td align="right">
-                                <button data-toggle="modal" data-target="#myModal-@(account.Item1)">Ajouter accompte</button>
-                                <button>Bloquer</button>
+                                <button class="btn" data-toggle="modal" data-target="#myModal-@(account.Item1)">Ajouter accompte</button>
+                                <button class="btn btn-default">Bloquer</button>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+            <div id="createUserModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Inscription d'un assistant: </h4>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("Create", "Users", null, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row padded-row">
+                                    <label>Login : </label>
+                                    <input type="text" name="login" class="form-control" />
+                                    <label>Mot de passe : </label>
+                                    <input type="text" name="password" class="form-control" />
+                                    <label>Role : </label>
+                                    <select class="form-control" name="role">
+                                        <option value="1">Assistant</option>
+                                        <option value="2">Chef</option>
+                                        <option value="3">Admin</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#createUserModal">Inscription d'un assistant</button>
+
         </div>
     </div>
 </div>
