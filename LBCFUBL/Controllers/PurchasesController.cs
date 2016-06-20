@@ -19,6 +19,7 @@ namespace LBCFUBL.Controllers
         {
             ViewUtils.FillViewBag(ViewBag, User.Identity.Name);
             ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(User.Identity.Name);
+            ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(User.Identity.Name);
             return View();
         }
 
