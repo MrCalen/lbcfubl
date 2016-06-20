@@ -40,3 +40,11 @@ a.white {
 .stripe {
     text-decoration: line-through;
 }
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a {
+ background-image: -webkit-linear-gradient(top,#004C94 0,#004C94 100%);
+ color: white;
+}
