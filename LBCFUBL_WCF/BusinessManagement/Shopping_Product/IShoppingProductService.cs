@@ -12,12 +12,19 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping_Product
     public interface IShoppingProductService
     {
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         DBO.Shopping_Product GetShopping_ProductForShoppingAndProduct(DBO.Shopping shopping, DBO.Product product);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Shopping_Product> GetShopping_ProductsForShopping(DBO.Shopping shopping);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         void CreateShopping_Product(DBO.Product product, DBO.Shopping shopping, int number);
         [OperationContract]
+        [ReferencePreservingDataContractFormat]
         bool DeleteShopping_Product(DBO.Shopping shopping, DBO.Product product);
+        [OperationContract]
+        [ReferencePreservingDataContractFormat]
+        List<DBO.Shopping_Product> GetShopping_ProductsForShoppingId(Guid shoppingId);
     }
 }

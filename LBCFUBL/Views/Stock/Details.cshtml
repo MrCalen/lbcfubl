@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LBCFUBL_WCF.DBO.Shopping_Product>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Shopping</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.number)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.number)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /*id = Model.id*/ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

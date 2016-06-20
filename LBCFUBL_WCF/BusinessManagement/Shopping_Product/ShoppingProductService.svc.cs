@@ -37,5 +37,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping_Product
         {
             return shopping_product.GetShopping_ProductsForShopping(shopping);
         }
+        public List<DBO.Shopping_Product> GetShopping_ProductsForShoppingId(Guid shoppingId)
+        {
+            return shopping_product.GetShopping_ProductsForShoppingId(shoppingId);
+        }
     }
 }

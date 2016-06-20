@@ -37,5 +37,9 @@ namespace LBCFUBL_WCF.DataAccess
             DBO.DatabaseContext.getInstance().Shopping_Product.Remove(exists);
             return true;
         }
+        public List<DBO.Shopping_Product> GetShopping_ProductsForShoppingId(Guid shoppingId)
+        {
+            return DBO.DatabaseContext.getInstance().Shopping_Product.Where(sp => sp.id_shopping == shoppingId).ToList();
+        }
     }
 }

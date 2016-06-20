@@ -141,6 +141,7 @@
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\ShoppingsController.cs" />
     <Compile Include="Controllers\Shopping_ProductController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -370,6 +371,9 @@
     <None Include="Service References\UserServiceReference\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stock\Details.cshtml" />
+    <Content Include="Views\Stock\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

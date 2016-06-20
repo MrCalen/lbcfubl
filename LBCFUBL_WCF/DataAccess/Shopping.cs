@@ -21,12 +21,15 @@ namespace LBCFUBL_WCF.DataAccess
         }
         public void CreateShoppingWithProducts(DateTime date, List<DBO.Shopping_Product> shopping_products)
         {
+            Guid id = Guid.NewGuid();
             DBO.Shopping Shopping = new DBO.Shopping
             {
-                id = Guid.NewGuid(),
-                date = date,
-                Shopping_Product = shopping_products
+                id = id,
+                date = date
             };
+            foreach (DBO.Shopping_Product shopping_product in shopping_products)
+                shopping_product.id_shopping = id;
+            Shopping.Shopping_Product = shopping_products;
             DBO.DatabaseContext.getInstance().Shoppings.Add(Shopping);
             DBO.DatabaseContext.getInstance().SaveChanges();
         }
