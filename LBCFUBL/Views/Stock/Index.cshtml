@@ -45,11 +45,38 @@
                 <tbody>
                     @foreach (LBCFUBL_WCF.DBO.Shopping shopping in ViewBag.Shoppings)
                     {
+                        <div id="shopModal-@(shopping.id.ToString())" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Détails</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="modal-title">Date: @(shopping.date)</h5>
+                                        <tr>
+                                            <th>Produit</th>
+                                            <th>Acheté</th>
+                                        </tr>
+                                        @foreach (LBCFUBL_WCF.DBO.Shopping_Product product in shopping.Shopping_Product)
+                                        {
+                                            <tr>
+                                                <td style="font-weight: bold;">@product.Product.name</td>
+                                                <td>@product.number</td>
+                                            </tr>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <tr>
                             <td style="font-weight: bold;">@shopping.date</td>
                             <td>@(((Dictionary<LBCFUBL_WCF.DBO.Shopping, double>)ViewBag.Shoppings_totals)[shopping])</td>
                             <td>
-                                <button class="btn btn-primary">Voir plus</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#shopModal-@(shopping.id.ToString())">Voir plus</button>
                             </td>
                         </tr>
                     }
