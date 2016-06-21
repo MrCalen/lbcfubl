@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using LBCFUBL.BusinessManagement;
 using LBCFUBL.Models;
 using LBCFUBL.Services;
+using System.IO;
+using System.Text;
 
 namespace LBCFUBL.Controllers
 {
@@ -135,6 +137,24 @@ namespace LBCFUBL.Controllers
         {
             Helper.GetUserClient().DeleteUser(id);
             return RedirectToAction("Index");
+        }
+
+        // GET: Users/Report/5
+        public ActionResult Report(string login)
+        {
+            if (login == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                UserReport report = UserReport.CreateReport(login);
+                return File(report.FilePath, report.MimeType, report.FileName);
+            } catch (ArgumentException e)
+            {
+                return HttpNotFound();
+            }
         }
 
         protected override void Dispose(bool disposing)

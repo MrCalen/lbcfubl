@@ -51,6 +51,9 @@
                             <td style="font-weight: bold;">@account.Item2 €</td>
                             <td align="right">
                                 <div class="row">
+                                    @Html.ActionLink("Telecharger rapport", "Report", "Users", new { login = account.Item1 }, null)
+                                </div>
+                                <div class="row">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#myModal-@(account.Item1)">Ajouter accompte</button>
                                 </div>
                                 <div class="row padded-row">
