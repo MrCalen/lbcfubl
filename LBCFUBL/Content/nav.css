@@ -7,8 +7,12 @@
     background: #004C94;
 }
 
-.navbar-default .navbar-brand,
-.navbar-default .navbar-brand:hover,
+.navbar-blocked {
+    background: #bf0606;
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover,
 ul.nav.navbar-nav > li > a,
 ul.nav.navbar-nav > li > a:hover {
     color: white;
@@ -45,6 +49,14 @@ a.white {
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover,
 .navbar-default .navbar-nav>.open>a {
- background-image: -webkit-linear-gradient(top,#004C94 0,#004C94 100%);
+ background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0,0,0,0) 100%);
  color: white;
+}
+
+.nav .open>a, .nav .open>a:focus,
+.nav > li > a:hover,
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a,
+.nav .open>a:hover {
+    background-color: transparent;
 }

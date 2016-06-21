@@ -15,6 +15,7 @@ namespace LBCFUBL.Services
             ViewBag.Money = Math.Round(Helper.GetUserClient().GetUserMoney(UserLogin), 2);
             ViewBag.Products = Helper.GetProductClient().GetAllProducts();
             ViewBag.Users = Helper.GetUserClient().GetUsers();
+            ViewBag.User = Helper.GetUserClient().GetUserFromLogin(UserLogin);
             var History = Helper.GetPurchaseClient().GetPurchasesForLogin(UserLogin).Reverse();
             ViewBag.History = isfull ? History : History.Take(10);
         }
