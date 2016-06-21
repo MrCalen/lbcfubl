@@ -136,6 +136,7 @@
     <Compile Include="BusinessManagement\CustomRoleProvider.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LabController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
@@ -378,6 +379,7 @@
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Stock\Details.cshtml" />
     <Content Include="Views\Stock\Create.cshtml" />
+    <Content Include="Views\Lab\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

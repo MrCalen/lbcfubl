@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section css {
+    @Styles.Render("~/Content/home.css")
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Liste des utilisateurs bloqués</div>
+    <div class="panel-body">
+        <ul style="list-style-type: none">
+            @foreach (var user in ViewBag.BlockedUsers)
+            {
+                <li>
+                    <div class="container-fluid row padded-row">
+                        <b>@user.login</b>
+                        <div class="pull-right">
+                            @{ int? blocked = user.is_blocked; }
+                            @using (Html.BeginForm("Block", "Users", null, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="login" value="@user.login" />
+                                    <input type="hidden" name="block" value="@(blocked == null || blocked == 0 ? 1 : 0)" />
+                                            <button class="btn btn-danger">@(blocked == null || blocked == 0 ? "Bloquer" : "Débloquer")</button>
+                            }
+                        </div>
+
+                    </div>
+                    <hr/>
+                </li>
+              }
+        </ul>
+    </div>
+</div>
