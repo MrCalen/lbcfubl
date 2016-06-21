@@ -35,5 +35,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
         [OperationContract]
         [ReferencePreservingDataContractFormat]
         bool DeleteShoppingFromId(Guid id);
+
+        [OperationContract]
+        [ReferencePreservingDataContractFormat]
+        double GetShoppingTotalCost(Guid id);
     }
 }

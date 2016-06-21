@@ -42,6 +42,7 @@
                                 <li>@Html.ActionLink("Produits", "Index", "Products", new { }, new { @class="" })</li>
                                 @if (User.IsInRole("admin"))
                                 {
+                                    <li>@Html.ActionLink("Stock", "Index", "Stock", new { area = "" }, new { @class = "" })</li>
                                     <li>@Html.ActionLink("Le Lab", "Index", "Stock", new { area = "" }, new { @class = "" })</li>
                                     <li>@Html.ActionLink("Utilisateurs", "Index", "Users", new { area = "" }, new { @class = "" })</li>
                                 }

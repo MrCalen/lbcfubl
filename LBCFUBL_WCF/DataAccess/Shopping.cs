@@ -66,5 +66,10 @@ namespace LBCFUBL_WCF.DataAccess
         {
             return DBO.DatabaseContext.getInstance().Shoppings.FirstOrDefault(s => s.id == id);
         }
+
+        public double GetShoppingTotalCost(Guid id)
+        {
+            return Math.Round((double)DBO.DatabaseContext.getInstance().Get_Purchase_Total(id).FirstOrDefault(), 2);
+        }
     }
 }

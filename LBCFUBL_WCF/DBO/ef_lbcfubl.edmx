@@ -133,6 +133,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Get_Purchase_Total" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="Get_Stock_For_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="datett" Type="datetime" Mode="In" />
         </Function>
@@ -374,7 +377,10 @@
           <FunctionImport Name="Get_Users_Accounts_History" ReturnType="Collection(lbcfublModel.Get_Users_Accounts_History_Result)" />
           <FunctionImport Name="Get_Users_Purchases_History" ReturnType="Collection(lbcfublModel.Get_Users_Purchases_History_Result)" />
           <FunctionImport Name="Get_Stock_For_Date" ReturnType="Collection(lbcfublModel.Get_Stock_For_Date_Result)">
-            <Parameter Name="datett" Mode="In" Type="DateTime" />
+          <Parameter Name="datett" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Purchase_Total" ReturnType="Collection(Double)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Get_Users_Money_Result">
@@ -541,6 +547,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Purchase_Total" FunctionName="lbcfublModel.Store.Get_Purchase_Total" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

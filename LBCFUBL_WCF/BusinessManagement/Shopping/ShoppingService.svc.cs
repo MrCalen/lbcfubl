@@ -53,5 +53,10 @@ namespace LBCFUBL_WCF.BusinessManagement.Shopping
         {
             return shopping.DeleteShoppingFromId(id);
         }
+
+        public double GetShoppingTotalCost(Guid id)
+        {
+            return shopping.GetShoppingTotalCost(id);
+        }
     }
 }

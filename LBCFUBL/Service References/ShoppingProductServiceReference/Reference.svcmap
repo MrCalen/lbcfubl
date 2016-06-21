@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="ShoppingProductService2.xsd" MetadataType="Schema" ID="0360a072-595c-4963-a6e6-e578322a6269" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd0" />
     <MetadataFile FileName="ShoppingProductService.xsd" MetadataType="Schema" ID="ecfd1d94-5e35-47e0-a99d-b2e8c216b66c" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd1" />
     <MetadataFile FileName="ShoppingProductService1.xsd" MetadataType="Schema" ID="09e5aa9c-86ba-4f74-800d-4a368286500e" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ShoppingProductService.disco" MetadataType="Disco" ID="c3e69409-1523-4bde-91a2-600fa65af079" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?disco" />
     <MetadataFile FileName="ShoppingProductService.wsdl" MetadataType="Wsdl" ID="03b4bf89-f69b-4929-8095-ae19764dcc74" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?wsdl" />
-    <MetadataFile FileName="ShoppingProductService2.xsd" MetadataType="Schema" ID="0360a072-595c-4963-a6e6-e578322a6269" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ShoppingProductService.disco" MetadataType="Disco" ID="c3e69409-1523-4bde-91a2-600fa65af079" SourceId="1" SourceUrl="http://localhost:3038/BusinessManagement/Shopping_Product/ShoppingProductService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

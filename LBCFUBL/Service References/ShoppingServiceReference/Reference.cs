@@ -64,10 +64,10 @@ namespace LBCFUBL.ShoppingServiceReference {
         System.Threading.Tasks.Task<bool> DeleteShoppingFromIdAsync(System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShoppingService/GetShoppingTotalCost", ReplyAction="http://tempuri.org/IShoppingService/GetShoppingTotalCostResponse")]
-        double GetShoppingTotalCost(LBCFUBL_WCF.DBO.Shopping s);
+        double GetShoppingTotalCost(System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShoppingService/GetShoppingTotalCost", ReplyAction="http://tempuri.org/IShoppingService/GetShoppingTotalCostResponse")]
-        System.Threading.Tasks.Task<double> GetShoppingTotalCostAsync(LBCFUBL_WCF.DBO.Shopping s);
+        System.Threading.Tasks.Task<double> GetShoppingTotalCostAsync(System.Guid id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -161,12 +161,12 @@ namespace LBCFUBL.ShoppingServiceReference {
             return base.Channel.DeleteShoppingFromIdAsync(id);
         }
         
-        public double GetShoppingTotalCost(LBCFUBL_WCF.DBO.Shopping s) {
-            return base.Channel.GetShoppingTotalCost(s);
+        public double GetShoppingTotalCost(System.Guid id) {
+            return base.Channel.GetShoppingTotalCost(id);
         }
         
-        public System.Threading.Tasks.Task<double> GetShoppingTotalCostAsync(LBCFUBL_WCF.DBO.Shopping s) {
-            return base.Channel.GetShoppingTotalCostAsync(s);
+        public System.Threading.Tasks.Task<double> GetShoppingTotalCostAsync(System.Guid id) {
+            return base.Channel.GetShoppingTotalCostAsync(id);
         }
     }
 }

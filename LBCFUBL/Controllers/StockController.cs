@@ -22,11 +22,11 @@ namespace LBCFUBL.Controllers
             Dictionary<LBCFUBL_WCF.DBO.Shopping, double> shopping_totals = new Dictionary<LBCFUBL_WCF.DBO.Shopping, double>();
             foreach (LBCFUBL_WCF.DBO.Shopping s in shoppings)
             {
-                shopping_totals.Add(s, Helper.GetShoppingClient().GetShoppingTotalCost(s));
+                shopping_totals.Add(s, Helper.GetShoppingClient().GetShoppingTotalCost(s.id));
             }
             ViewBag.Shoppings_totals = shopping_totals;
 
-            ViewBag.Products = new LBCFUBL_WCF.DBO.Product[10];
+            ViewBag.ActualStock = Helper.GetPurchaseClient().GetStocksForDate(DateTime.Now);
             return View();
         }
 
