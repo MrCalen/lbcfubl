@@ -117,6 +117,11 @@ namespace LBCFUBL.Controllers
                 purchase.added_by = User.Identity.Name;
                 for (int i = 0; i < quantity; i++)
                     Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
+
+                // Check that the user is not blocked by adding a new purchase
+                double money = Math.Round(Helper.GetUserClient().GetUserMoney(purchase.login), 2);
+                if (money < 20)
+                    Helper.GetUserClient().Block(purchase.login, true);
                 return Redirect(Request.UrlReferrer.ToString());
             }
             /*
