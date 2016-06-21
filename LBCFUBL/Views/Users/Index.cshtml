@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <tr>
-                            <td>@account.Item1</td>
+                            <td>@Html.ActionLink((string)@account.Item1, "Index/" + (string)@account.Item1, "Purchases", new { area = "" }, new { @class = "" })</td>
                             <td style="font-weight: bold;">@account.Item2 €</td>
                             <td align="right">
                                 <div class="row">
