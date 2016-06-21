@@ -133,6 +133,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Get_Stock_For_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="datett" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="Get_User_Account_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="login" Type="varchar" Mode="In" />
         </Function>
@@ -363,13 +366,16 @@
           </FunctionImport>
           <FunctionImport Name="Get_Users_Money" ReturnType="Collection(lbcfublModel.Get_Users_Money_Result)" />
           <FunctionImport Name="Get_User_Account_History" ReturnType="Collection(lbcfublModel.Get_User_Account_History_Result)">
-            <Parameter Name="login" Mode="In" Type="String" />
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_User_Purchase_History" ReturnType="Collection(lbcfublModel.Get_User_Purchase_History_Result)">
-            <Parameter Name="login" Mode="In" Type="String" />
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_Users_Accounts_History" ReturnType="Collection(lbcfublModel.Get_Users_Accounts_History_Result)" />
           <FunctionImport Name="Get_Users_Purchases_History" ReturnType="Collection(lbcfublModel.Get_Users_Purchases_History_Result)" />
+          <FunctionImport Name="Get_Stock_For_Date" ReturnType="Collection(lbcfublModel.Get_Stock_For_Date_Result)">
+            <Parameter Name="datett" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Get_Users_Money_Result">
           <Property Type="String" Name="login" Nullable="false" MaxLength="8" />
@@ -400,6 +406,11 @@
           <Property Type="Double" Name="total_purchase" Nullable="false" />
           <Property Type="Int32" Name="month" Nullable="true" />
           <Property Type="Int32" Name="year" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Stock_For_Date_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="bought" Nullable="true" />
+          <Property Type="Int32" Name="consummed" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -518,6 +529,15 @@
                 <ScalarProperty Name="total_purchase" ColumnName="total_purchase" />
                 <ScalarProperty Name="month" ColumnName="month" />
                 <ScalarProperty Name="year" ColumnName="year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Stock_For_Date" FunctionName="lbcfublModel.Store.Get_Stock_For_Date">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lbcfublModel.Get_Stock_For_Date_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="bought" ColumnName="bought" />
+                <ScalarProperty Name="consummed" ColumnName="consummed" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

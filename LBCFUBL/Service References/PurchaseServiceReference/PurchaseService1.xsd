@@ -76,4 +76,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStocksForDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dt" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStocksForDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetStocksForDateResult" nillable="true" type="q5:ArrayOfGet_Stock_For_Date_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -40,5 +40,10 @@ namespace LBCFUBL_WCF.DataAccess
             DBO.DatabaseContext.getInstance().Purchases.Remove(exists);
             return true;
         }
+
+        public List<DBO.Get_Stock_For_Date_Result> GetStocksForDate(DateTime dt)
+        {
+            return DBO.DatabaseContext.getInstance().Get_Stock_For_Date(dt).ToList();
+        }
     }
 }

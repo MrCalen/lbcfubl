@@ -41,5 +41,10 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
         {
             return purchase.GetPurchasesForLoginBeforeDate(login, date);
         }
+
+        public List<Get_Stock_For_Date_Result> GetStocksForDate(DateTime dt)
+        {
+            return purchase.GetStocksForDate(dt);
+        }
     }
 }

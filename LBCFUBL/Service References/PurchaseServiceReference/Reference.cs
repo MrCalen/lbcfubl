@@ -44,6 +44,12 @@ namespace LBCFUBL.PurchaseServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/DeletePurchase", ReplyAction="http://tempuri.org/IPurchaseService/DeletePurchaseResponse")]
         System.Threading.Tasks.Task<bool> DeletePurchaseAsync(string login, System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/GetStocksForDate", ReplyAction="http://tempuri.org/IPurchaseService/GetStocksForDateResponse")]
+        LBCFUBL_WCF.DBO.Get_Stock_For_Date_Result[] GetStocksForDate(System.DateTime dt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/GetStocksForDate", ReplyAction="http://tempuri.org/IPurchaseService/GetStocksForDateResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Stock_For_Date_Result[]> GetStocksForDateAsync(System.DateTime dt);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +117,14 @@ namespace LBCFUBL.PurchaseServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeletePurchaseAsync(string login, System.DateTime date) {
             return base.Channel.DeletePurchaseAsync(login, date);
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_Stock_For_Date_Result[] GetStocksForDate(System.DateTime dt) {
+            return base.Channel.GetStocksForDate(dt);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Stock_For_Date_Result[]> GetStocksForDateAsync(System.DateTime dt) {
+            return base.Channel.GetStocksForDateAsync(dt);
         }
     }
 }

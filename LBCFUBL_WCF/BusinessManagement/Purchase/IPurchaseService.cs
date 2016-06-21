@@ -30,5 +30,9 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
         [OperationContract]
         [ReferencePreservingDataContractFormat]
         bool DeletePurchase(String login, DateTime date);
+
+        [OperationContract]
+        [ReferencePreservingDataContractFormat]
+        List<DBO.Get_Stock_For_Date_Result> GetStocksForDate(DateTime dt);
     }
 }

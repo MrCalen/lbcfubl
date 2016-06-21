@@ -170,6 +170,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ef_lbcfubl.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBO\Get_Stock_For_Date_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBO\Get_Users_Accounts_History_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
