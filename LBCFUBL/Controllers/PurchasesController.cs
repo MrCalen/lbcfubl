@@ -111,10 +111,12 @@ namespace LBCFUBL.Controllers
         public ActionResult Create([Bind(Include = "login,id_prod")] LBCFUBL_WCF.DBO.Purchase purchase)
         {
             purchase.date = DateTime.Now;
+            int quantity = Int32.Parse(Request.Form["quantity"]);
             if (ModelState.IsValid)
             {
                 purchase.added_by = User.Identity.Name;
-                Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
+                for (int i = 0; i < quantity; i++)
+                    Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
                 return Redirect(Request.UrlReferrer.ToString());
             }
             /*
