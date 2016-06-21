@@ -55,6 +55,12 @@
   <wsdl:message name="IShoppingService_DeleteShoppingFromId_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteShoppingFromIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IShoppingService_GetShoppingTotalCost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingTotalCost" />
+  </wsdl:message>
+  <wsdl:message name="IShoppingService_GetShoppingTotalCost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingTotalCostResponse" />
+  </wsdl:message>
   <wsdl:portType name="IShoppingService">
     <wsdl:operation name="GetShoppings">
       <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/GetShoppings" message="tns:IShoppingService_GetShoppings_InputMessage" />
@@ -87,6 +93,10 @@
     <wsdl:operation name="DeleteShoppingFromId">
       <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/DeleteShoppingFromId" message="tns:IShoppingService_DeleteShoppingFromId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/DeleteShoppingFromIdResponse" message="tns:IShoppingService_DeleteShoppingFromId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingTotalCost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShoppingService/GetShoppingTotalCost" message="tns:IShoppingService_GetShoppingTotalCost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShoppingService/GetShoppingTotalCostResponse" message="tns:IShoppingService_GetShoppingTotalCost_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShoppingService" type="tns:IShoppingService">
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteShoppingFromId">
       <soap:operation soapAction="http://tempuri.org/IShoppingService/DeleteShoppingFromId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingTotalCost">
+      <soap:operation soapAction="http://tempuri.org/IShoppingService/GetShoppingTotalCost" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

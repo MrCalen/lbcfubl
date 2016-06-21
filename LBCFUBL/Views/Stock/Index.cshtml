@@ -1,34 +1,62 @@
-﻿@model IEnumerable<LBCFUBL_WCF.DBO.Shopping>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Stock";
+}
+@section css {
+    @Styles.Render("~/Content/home.css")
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Stock actuel</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Type</th>
+                        <th>Quantité restante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in ViewBag.Products)
+                    {
+                        <tr>
+                            <td style="font-weight: bold;">product.name</td>
+                            <td>product.description</td>
+                            <td>product.quantité</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
-        </tr>
-    }
-
-</table>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Dernières courses</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (LBCFUBL_WCF.DBO.Shopping shopping in ViewBag.Shoppings)
+                    {
+                        <tr>
+                            <td style="font-weight: bold;">@shopping.date</td>
+                            <td>@(ViewBag.Shoppings_totals.Item[shopping])</td>
+                            <td>
+                                <button class="btn btn-primary">Voir plus</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

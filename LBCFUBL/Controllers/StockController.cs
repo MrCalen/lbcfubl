@@ -16,7 +16,18 @@ namespace LBCFUBL.Controllers
         // GET: Stock
         public ActionResult Index()
         {
-            return View(Helper.GetShoppingClient().GetShoppings());
+            Services.ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
+            LBCFUBL_WCF.DBO.Shopping[] shoppings = Helper.GetShoppingClient().GetShoppings();
+            ViewBag.Shoppings = shoppings;
+            Dictionary<LBCFUBL_WCF.DBO.Shopping, double> shopping_totals = new Dictionary<LBCFUBL_WCF.DBO.Shopping, double>();
+            foreach (LBCFUBL_WCF.DBO.Shopping s in shoppings)
+            {
+                shopping_totals.Add(s, Helper.GetShoppingClient().GetShoppingTotalCost(s));
+            }
+            ViewBag.Shoppings_totals = shopping_totals;
+
+            ViewBag.Products = new LBCFUBL_WCF.DBO.Product[10];
+            return View();
         }
 
         // GET: Stock/Details/5

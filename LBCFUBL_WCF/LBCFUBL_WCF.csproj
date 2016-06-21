@@ -206,7 +206,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="BusinessManagement\App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
