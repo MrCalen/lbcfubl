@@ -13,6 +13,10 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
     {
         [OperationContract]
         [ReferencePreservingDataContractFormat]
+        List<DBO.Purchase> GetPurchases();
+
+        [OperationContract]
+        [ReferencePreservingDataContractFormat]
         List<DBO.Purchase> GetPurchasesForLogin(String login);
 
         [OperationContract]

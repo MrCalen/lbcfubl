@@ -80,6 +80,7 @@
                             </div>
                             <div class="panel-body">
                                 <p class="current-money">Votre compte: <b @( ViewBag.Money < 0 ? "class=negative" : "")>@ViewBag.Money</b>€</p>
+                                @Html.ActionLink("Telecharger le rapport", "Report", "Home")
                             </div>
                         </div>
                     </div>

@@ -27,5 +27,18 @@ namespace LBCFUBL.Controllers
         {
             return View();
         }
+
+        public ActionResult Report()
+        {
+            try
+            {
+                GlobalReport report = GlobalReport.CreateReport();
+                return File(report.FilePath, report.MimeType, report.FileName);
+            }
+            catch (ArgumentException)
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

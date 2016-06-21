@@ -151,7 +151,7 @@ namespace LBCFUBL.Controllers
             {
                 UserReport report = UserReport.CreateReport(login);
                 return File(report.FilePath, report.MimeType, report.FileName);
-            } catch (ArgumentException e)
+            } catch (ArgumentException)
             {
                 return HttpNotFound();
             }

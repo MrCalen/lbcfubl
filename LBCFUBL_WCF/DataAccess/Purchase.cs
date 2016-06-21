@@ -7,6 +7,10 @@ namespace LBCFUBL_WCF.DataAccess
 {
     public class Purchase
     {
+        public List<DBO.Purchase> GetPurchases()
+        {
+            return DBO.DatabaseContext.getInstance().Purchases.ToList();
+        }
         public List<DBO.Purchase> GetPurchasesForLogin(String login)
         {
             return DBO.DatabaseContext.getInstance().Purchases.Where(a => a.login.Equals(login)).ToList();

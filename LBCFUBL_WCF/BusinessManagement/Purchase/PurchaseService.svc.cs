@@ -27,6 +27,10 @@ namespace LBCFUBL_WCF.BusinessManagement.Purchase
             return purchase.DeletePurchase(login, date);
         }
 
+        public List<DBO.Purchase> GetPurchases()
+        {
+            return purchase.GetPurchases();
+        }
         public List<DBO.Purchase> GetPurchasesForLogin(string login)
         {
             return purchase.GetPurchasesForLogin(login);
