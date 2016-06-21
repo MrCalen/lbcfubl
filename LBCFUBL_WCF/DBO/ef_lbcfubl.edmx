@@ -380,7 +380,7 @@
           <Parameter Name="datett" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Get_Purchase_Total" ReturnType="Collection(Double)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Get_Users_Money_Result">
