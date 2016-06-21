@@ -18,8 +18,9 @@ namespace LBCFUBL.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = Helper.GetProductClient().GetAllProducts().ToList();
-            return View(products);
+            ViewBag.Products = Helper.GetProductClient().GetAllProducts().ToList();
+            ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
+            return View();
         }
 
         // GET: Products/Details/5
@@ -48,7 +49,7 @@ namespace LBCFUBL.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,description,cost_without_margin,cost_with_margin")] LBCFUBL_WCF.DBO.Product product)
+        public ActionResult Create([Bind(Include = "name,description,cost_without_margin,cost_with_margin")] LBCFUBL_WCF.DBO.Product product)
         {
             if (ModelState.IsValid)
             {

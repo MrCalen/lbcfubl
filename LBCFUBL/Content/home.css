@@ -10,3 +10,17 @@
 .current-money > b.negative {
     color: indianred;
 }
+
+.panel-admin {
+    border-color: #bf0606;
+}
+.panel-admin > .panel-heading {
+    background-image: -webkit-linear-gradient(top,#bf0606 0,#bf0606 100%);
+    background-color: #bf0606;
+   border-color: #bf0606;
+}
+
+.btn-admin {
+    background-image: -webkit-linear-gradient(top,#bf0606 0,#bf0606 100%);
+    color: white;
+}

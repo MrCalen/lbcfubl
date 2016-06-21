@@ -1,0 +1,8 @@
+﻿.left-padded,
+.panel-heading {
+    padding-left: 15px;
+}
+
+.right-padded {
+    padding-right: 15px;
+}

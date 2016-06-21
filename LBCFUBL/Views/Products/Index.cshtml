@@ -1,51 +1,93 @@
-﻿@model IEnumerable<LBCFUBL_WCF.DBO.Product>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Produits";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cost_without_margin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cost_with_margin)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cost_without_margin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cost_with_margin)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+@section css {
+    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/products.css")
 }
 
-</table>
+@if (User.IsInRole("admin"))
+{
+
+    @section admin {
+        <div class="row">
+            <div class="panel panel-primary panel-admin">
+                <div class="panel-heading">Ajouter un produit</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Products", null, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row padded-row">
+                            <label>Nom du produit</label>
+                            <input type="text" name="name" class="form-control"/>
+                        </div>
+                        <div class="row padded-row">
+                            <label>Description du produit</label>
+                            <textarea class="form-control" name="description"></textarea>
+                        </div>
+                        <div class="row padded-row">
+                            <label>Coût sans marge:</label>
+                            <input type="number" name="cost_without_margin" class="form-control" step="0.1"/>
+                        </div>
+                        <div class="row padded-row">
+                            <label>Coût avec marge</label>
+                            <input type="number" name="cost_with_margin" class="form-control" step="0.1"/>
+                        </div>
+                        <div class="row padded-row">
+                            <button class="btn btn-admin">Créer</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var product in ViewBag.Products)
+        {
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">@product.name</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row left-padded">
+                            @product.description
+                        </div>
+                        <hr />
+                        @if (!User.IsInRole("admin"))
+                        {
+                            <div class="row left-padded">
+                                <b>Seulement @(Math.Round(product.cost_with_margin, 2)) €</b>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row left-padded">
+                                Coût sans marge: <b>@(Math.Round(product.cost_without_margin, 2))</b>
+                            </div>
+                            <div class="row left-padded">
+                                Coût avec marge: <b>@(Math.Round(product.cost_with_margin, 2))</b>
+                            </div>
+                        }
+                        <hr />
+                        <div class="row right-padded">
+                            @using (Html.BeginForm("Create", "Purchases", null, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" value="@product.id" name="id_prod" />
+                                <input type="hidden" value="@User.Identity.Name" name="login" />
+                                <input type="hidden" value="1" name="quantity" />
+                                <button type="submit" class="btn btn-primary pull-right">Acheter</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
