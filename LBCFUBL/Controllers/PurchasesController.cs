@@ -51,7 +51,7 @@ namespace LBCFUBL.Controllers
                 int year = (int)account.year;
                 int month = (int)account.month;
                 DateTime date = new DateTime((int)account.year, (int)account.month, 1);
-                map[date] = new Data(0, account.total_account, false);
+                map[date] = new Data((double)account.month_account, account.total_account, false);
             }
             foreach (var purchase in purchaseHistory)
             {
@@ -63,7 +63,7 @@ namespace LBCFUBL.Controllers
                 {
                     tuple = new Data(0, 0, true);
                 }
-                map[date] = new Data(purchase.month_purchase, tuple.second - purchase.total_purchase, tuple.third);
+                map[date] = new Data(tuple.first - purchase.month_purchase, tuple.second - purchase.total_purchase, tuple.third);
             }
 
             Data last = null;
@@ -120,7 +120,7 @@ namespace LBCFUBL.Controllers
 
                 // Check that the user is not blocked by adding a new purchase
                 double money = Math.Round(Helper.GetUserClient().GetUserMoney(purchase.login), 2);
-                if (money < 20)
+                if (money < -20)
                     Helper.GetUserClient().Block(purchase.login, true);
                 return Redirect(Request.UrlReferrer.ToString());
             }

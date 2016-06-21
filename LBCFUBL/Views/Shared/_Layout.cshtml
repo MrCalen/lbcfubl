@@ -180,7 +180,7 @@
             var numberProduct = (parseInt(quantityFruit) + parseInt(quantityEnergy) + parseInt(quantityWater) + parseInt(quantitySnack));
             var student = document.getElementById("student").checked;
             var price = ((quantitySnack * 0.6 + quantityWater * 0.3 + quantityEnergy * 1.2 + quantityFruit * 0.7) + (numberProduct * student * 0.1));
-            document.getElementById("calculator").innerHTML = price + '€';
+            document.getElementById("calculator").innerHTML = (Math.round(price * 100) / 100) + '€';
         }
     </script>
 </body>

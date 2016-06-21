@@ -125,4 +125,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUsersAccountHistoryResult">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersAccountHistoryResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUsersAccountHistoryResultResult" nillable="true" type="q7:ArrayOfGet_Users_Accounts_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersPurchasesHistoryResult">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersPurchasesHistoryResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUsersPurchasesHistoryResultResult" nillable="true" type="q8:ArrayOfGet_Users_Purchases_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

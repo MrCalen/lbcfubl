@@ -16,7 +16,7 @@ var myChart = new Chart(ctx, {
         labels: [
            @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
            {
-                @Html.Raw("\"")@elt.Key@Html.Raw("\",")
+                @Html.Raw("\"")@(elt.Key.ToString("MMMM yyyy"))@Html.Raw("\",")
            }
         ],
         datasets: [

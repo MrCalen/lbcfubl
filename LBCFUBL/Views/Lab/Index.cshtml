@@ -4,9 +4,73 @@
 
 @section css {
     @Styles.Render("~/Content/home.css")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
 }
 
-<div class="panel panel-primary">
+@section scripts {
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                   @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+                   {
+                @Html.Raw("\"")@(elt.Key.ToString("MMMM yyyy"))@Html.Raw("\",")
+
+                   }
+                ],
+                datasets: [
+                    {
+                        label: 'Dépenses ce mois-ci',
+                        data: [
+                            @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+                   {
+                       @elt.Value.first @Html.Raw(",")
+                   }
+                        ],
+                        backgroundColor: [
+                         'rgba(255, 99, 132, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "Etat du compte",
+                        data: [
+                               @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+                        {
+                                   @elt.Value.second @Html.Raw(",")
+                        }
+                        ],
+                        backgroundColor: [
+                         'rgba(10, 99, 132, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(10, 99, 132,1)',
+                        ],
+                        borderWidth: 1
+                    }]
+            },
+            options: {
+                showTooltips: true,
+                responsive: true,
+            }
+        });
+    </script>
+}
+
+<div class="panel panel-primary panel-admin">
+    <div class="panel-heading">Graphes</div>
+    <div class="panel-body">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+
+<div class="panel panel-primary panel-admin">
     <div class="panel-heading">Liste des utilisateurs bloqués</div>
     <div class="panel-body">
         <ul style="list-style-type: none">
@@ -21,15 +85,48 @@
                             {
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="login" value="@user.login" />
-                                    <input type="hidden" name="block" value="@(blocked == null || blocked == 0 ? 1 : 0)" />
-                                            <button class="btn btn-danger">@(blocked == null || blocked == 0 ? "Bloquer" : "Débloquer")</button>
+                                <input type="hidden" name="block" value="@(blocked == null || blocked == 0 ? 1 : 0)" />
+                                <button class="btn btn-danger">@(blocked == null || blocked == 0 ? "Bloquer" : "Débloquer")</button>
                             }
                         </div>
 
                     </div>
-                    <hr/>
+                    <hr />
                 </li>
-              }
+                                }
+        </ul>
+    </div>
+</div>
+<div class="panel panel-primary panel-admin">
+    <div class="panel-heading">Liste des utilisateurs endettés</div>
+    <div class="panel-body">
+        <ul style="list-style-type: none">
+            @foreach (var user in ViewBag.DeptUsers)
+            {
+                <li>
+                    <div class="container-fluid row padded-row">
+                        <b>@user.login</b>
+                        <div class="negative pull-right">@(ViewBag.MoneyForUser[user.login])</div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-primary panel-admin">
+    <div class="panel-heading">Liste des utilisateurs qui profitent au lab</div>
+    <div class="panel-body">
+        <ul style="list-style-type: none">
+            @foreach (var user in ViewBag.AccountUsers)
+            {
+                <li>
+                    <div class="container-fluid row padded-row">
+                        <b>@user.login</b>
+                        <div class="negative pull-right">@(ViewBag.MoneyForUser[user.login])</div>
+                    </div>
+                </li>
+            }
         </ul>
     </div>
 </div>
