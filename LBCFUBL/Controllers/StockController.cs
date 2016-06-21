@@ -23,6 +23,7 @@ namespace LBCFUBL.Controllers
             foreach (LBCFUBL_WCF.DBO.Shopping s in shoppings)
             {
                 shopping_totals.Add(s, Helper.GetShoppingClient().GetShoppingTotalCost(s.id));
+                s.Shopping_Product = Helper.GetShoppingProductClient().GetShopping_ProductsForShopping(s);
             }
             ViewBag.Shoppings_totals = shopping_totals;
 
