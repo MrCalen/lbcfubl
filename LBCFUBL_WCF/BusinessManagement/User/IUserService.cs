@@ -55,5 +55,20 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         [OperationContract]
         List<DBO.Get_Users_Purchases_History_Result> GetUsersPurchasesHistoryResult();
 
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_User_Account_Day_History_Result> GetUserAccountDayHistory(string login);
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_User_Purchase_Day_History_Result> GetUserPurchaseDayHistory(string login);
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_Users_Accounts_Day_History_Result> GetAccountsDayHistory();
+
+        [ReferencePreservingDataContractFormat]
+        [OperationContract]
+        List<DBO.Get_Users_Purchases_Day_History_Result> GetPurchasesDayHistory();
     }
 }

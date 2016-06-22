@@ -115,6 +115,25 @@ namespace LBCFUBL_WCF.DataAccess
         {
             return DBO.DatabaseContext.getInstance().Get_Users_Accounts_History().ToList();
         }
-    
+
+        public List<DBO.Get_User_Account_Day_History_Result> GetUserAccountDayHistory(string login)
+        {
+            return DBO.DatabaseContext.getInstance().Get_User_Account_Day_History(login).ToList();
+        }
+        public List<DBO.Get_User_Purchase_Day_History_Result> GetUserPurchaseDayHistory(string login)
+        {
+            return DBO.DatabaseContext.getInstance().Get_User_Purchase_Day_History(login).ToList();
+        }
+
+        public List<DBO.Get_Users_Accounts_Day_History_Result> GetAccountsDayHistory()
+        {
+            return DBO.DatabaseContext.getInstance().Get_Users_Accounts_Day_History().ToList();
+        }
+
+        public List<DBO.Get_Users_Purchases_Day_History_Result> GetPurchasesDayHistory()
+        {
+            return DBO.DatabaseContext.getInstance().Get_Users_Purchases_Day_History().ToList();
+        }
+
     }
 }

@@ -102,5 +102,42 @@ namespace LBCFUBL_WCF.DBO
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("Get_Purchase_Total", idParameter);
         }
+    
+        public virtual ObjectResult<Get_User_Account_Day_History_Result> Get_User_Account_Day_History(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_User_Account_Day_History_Result>("Get_User_Account_Day_History", loginParameter);
+        }
+    
+        public virtual ObjectResult<Get_User_Money_History_Result> Get_User_Money_History(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_User_Money_History_Result>("Get_User_Money_History", loginParameter);
+        }
+    
+        public virtual ObjectResult<Get_User_Purchase_Day_History_Result> Get_User_Purchase_Day_History(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_User_Purchase_Day_History_Result>("Get_User_Purchase_Day_History", loginParameter);
+        }
+    
+        public virtual ObjectResult<Get_Users_Accounts_Day_History_Result> Get_Users_Accounts_Day_History()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Users_Accounts_Day_History_Result>("Get_Users_Accounts_Day_History");
+        }
+    
+        public virtual ObjectResult<Get_Users_Purchases_Day_History_Result> Get_Users_Purchases_Day_History()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Users_Purchases_Day_History_Result>("Get_Users_Purchases_Day_History");
+        }
     }
 }

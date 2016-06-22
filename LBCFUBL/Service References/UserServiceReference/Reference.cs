@@ -80,6 +80,30 @@ namespace LBCFUBL.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsersPurchasesHistoryResult", ReplyAction="http://tempuri.org/IUserService/GetUsersPurchasesHistoryResultResponse")]
         System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Purchases_History_Result[]> GetUsersPurchasesHistoryResultAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserAccountDayHistory", ReplyAction="http://tempuri.org/IUserService/GetUserAccountDayHistoryResponse")]
+        LBCFUBL_WCF.DBO.Get_User_Account_Day_History_Result[] GetUserAccountDayHistory(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserAccountDayHistory", ReplyAction="http://tempuri.org/IUserService/GetUserAccountDayHistoryResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Account_Day_History_Result[]> GetUserAccountDayHistoryAsync(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPurchaseDayHistory", ReplyAction="http://tempuri.org/IUserService/GetUserPurchaseDayHistoryResponse")]
+        LBCFUBL_WCF.DBO.Get_User_Purchase_Day_History_Result[] GetUserPurchaseDayHistory(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPurchaseDayHistory", ReplyAction="http://tempuri.org/IUserService/GetUserPurchaseDayHistoryResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Purchase_Day_History_Result[]> GetUserPurchaseDayHistoryAsync(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAccountsDayHistory", ReplyAction="http://tempuri.org/IUserService/GetAccountsDayHistoryResponse")]
+        LBCFUBL_WCF.DBO.Get_Users_Accounts_Day_History_Result[] GetAccountsDayHistory();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAccountsDayHistory", ReplyAction="http://tempuri.org/IUserService/GetAccountsDayHistoryResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Accounts_Day_History_Result[]> GetAccountsDayHistoryAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPurchasesDayHistory", ReplyAction="http://tempuri.org/IUserService/GetPurchasesDayHistoryResponse")]
+        LBCFUBL_WCF.DBO.Get_Users_Purchases_Day_History_Result[] GetPurchasesDayHistory();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPurchasesDayHistory", ReplyAction="http://tempuri.org/IUserService/GetPurchasesDayHistoryResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Purchases_Day_History_Result[]> GetPurchasesDayHistoryAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -195,6 +219,38 @@ namespace LBCFUBL.UserServiceReference {
         
         public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Purchases_History_Result[]> GetUsersPurchasesHistoryResultAsync() {
             return base.Channel.GetUsersPurchasesHistoryResultAsync();
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_User_Account_Day_History_Result[] GetUserAccountDayHistory(string login) {
+            return base.Channel.GetUserAccountDayHistory(login);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Account_Day_History_Result[]> GetUserAccountDayHistoryAsync(string login) {
+            return base.Channel.GetUserAccountDayHistoryAsync(login);
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_User_Purchase_Day_History_Result[] GetUserPurchaseDayHistory(string login) {
+            return base.Channel.GetUserPurchaseDayHistory(login);
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_User_Purchase_Day_History_Result[]> GetUserPurchaseDayHistoryAsync(string login) {
+            return base.Channel.GetUserPurchaseDayHistoryAsync(login);
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_Users_Accounts_Day_History_Result[] GetAccountsDayHistory() {
+            return base.Channel.GetAccountsDayHistory();
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Accounts_Day_History_Result[]> GetAccountsDayHistoryAsync() {
+            return base.Channel.GetAccountsDayHistoryAsync();
+        }
+        
+        public LBCFUBL_WCF.DBO.Get_Users_Purchases_Day_History_Result[] GetPurchasesDayHistory() {
+            return base.Channel.GetPurchasesDayHistory();
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Get_Users_Purchases_Day_History_Result[]> GetPurchasesDayHistoryAsync() {
+            return base.Channel.GetPurchasesDayHistoryAsync();
         }
     }
 }

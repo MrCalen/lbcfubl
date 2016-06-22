@@ -2,6 +2,18 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" />
   <xs:import schemaLocation="http://localhost:3038/BusinessManagement/Purchase/PurchaseService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="GetPurchases">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPurchasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesResult" nillable="true" type="q1:ArrayOfPurchase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetPurchasesForLogin">
     <xs:complexType>
       <xs:sequence>
@@ -12,7 +24,7 @@
   <xs:element name="GetPurchasesForLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginResult" nillable="true" type="q1:ArrayOfPurchase" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginResult" nillable="true" type="q2:ArrayOfPurchase" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -27,7 +39,7 @@
   <xs:element name="GetPurchasesForLoginBeforeDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginBeforeDateResult" nillable="true" type="q2:ArrayOfPurchase" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginBeforeDateResult" nillable="true" type="q3:ArrayOfPurchase" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -42,7 +54,7 @@
   <xs:element name="GetPurchasesForLoginAfterDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginAfterDateResult" nillable="true" type="q3:ArrayOfPurchase" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesForLoginAfterDateResult" nillable="true" type="q4:ArrayOfPurchase" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -51,7 +63,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id_prod" type="q4:guid" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id_prod" type="q5:guid" />
         <xs:element minOccurs="0" name="added_by" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -86,7 +98,7 @@
   <xs:element name="GetStocksForDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetStocksForDateResult" nillable="true" type="q5:ArrayOfGet_Stock_For_Date_Result" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetStocksForDateResult" nillable="true" type="q6:ArrayOfGet_Stock_For_Date_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

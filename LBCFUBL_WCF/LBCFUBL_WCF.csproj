@@ -173,16 +173,31 @@
     <Compile Include="DBO\Get_Stock_For_Date_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBO\Get_Users_Accounts_Day_History_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBO\Get_Users_Accounts_History_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="DBO\Get_Users_Money_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBO\Get_Users_Purchases_Day_History_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBO\Get_Users_Purchases_History_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBO\Get_User_Account_Day_History_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBO\Get_User_Account_History_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBO\Get_User_Money_History_Result.cs">
+      <DependentUpon>ef_lbcfubl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBO\Get_User_Purchase_Day_History_Result.cs">
       <DependentUpon>ef_lbcfubl.tt</DependentUpon>
     </Compile>
     <Compile Include="DBO\Get_User_Purchase_History_Result.cs">

@@ -42,8 +42,15 @@ namespace LBCFUBL.Controllers
             ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(id);
             ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(id);
 
-            var purchaseHistory = Helper.GetUserClient().GetUserPurchaseHistoryResult(id);
-            var accountHistory = Helper.GetUserClient().GetUserAccountHistoryResult(id);
+            ViewBag.MonthMap = GetMonthHistory(id);
+            ViewBag.DayMap = GetDayHistory(id);
+            return View("Index");
+        }
+
+        private SortedList<DateTime, Data> GetMonthHistory(string login)
+        {
+            var purchaseHistory = Helper.GetUserClient().GetUserPurchaseHistoryResult(login);
+            var accountHistory = Helper.GetUserClient().GetUserAccountHistoryResult(login);
 
             var map = new SortedList<DateTime, Data>(); // Monthly purchase (account - purchase) , total this month
             foreach (var account in accountHistory)
@@ -83,8 +90,53 @@ namespace LBCFUBL.Controllers
                 }
                 last = element.Value;
             }
-            ViewBag.Map = map;
-            return View("Index");
+            return map;
+        }
+
+        private SortedList<DateTime, Data> GetDayHistory(string login)
+        {
+            var purchaseHistory = Helper.GetUserClient().GetUserPurchaseDayHistory(login);
+            var accountHistory = Helper.GetUserClient().GetUserAccountDayHistory(login);
+
+            var map = new SortedList<DateTime, Data>(); // Monthly purchase (account - purchase) , total this month
+            foreach (var account in accountHistory)
+            {
+                int year = (int)account.year;
+                int month = (int)account.month;
+                DateTime date = new DateTime((int)account.year, (int)account.month, (int)account.day);
+                map[date] = new Data(0, account.total_account, false);
+            }
+            foreach (var purchase in purchaseHistory)
+            {
+                DateTime date = new DateTime((int)purchase.year, (int)purchase.month, (int)purchase.day);
+                Data tuple = null;
+                if (map.ContainsKey(date))
+                    tuple = map[date];
+                else
+                {
+                    tuple = new Data(0, 0, true);
+                }
+                map[date] = new Data(purchase.day_purchase, tuple.second - purchase.total_purchase, tuple.third);
+            }
+
+            Data last = null;
+            foreach (var element in map)
+            {
+                // First Element, do nothing
+                if (last == null)
+                {
+                    last = element.Value;
+                    continue;
+                }
+
+                if (element.Value.third)
+                {
+                    // We got a purchase, get the last 
+                    element.Value.second += last.second;
+                }
+                last = element.Value;
+            }
+            return map;
         }
 
         // GET: Purchases/Details/5

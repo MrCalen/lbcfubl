@@ -74,6 +74,30 @@
   <wsdl:message name="IUserService_GetUsersPurchasesHistoryResult_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersPurchasesHistoryResultResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUserAccountDayHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccountDayHistory" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserAccountDayHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccountDayHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserPurchaseDayHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurchaseDayHistory" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserPurchaseDayHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurchaseDayHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAccountsDayHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsDayHistory" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAccountsDayHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsDayHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPurchasesDayHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchasesDayHistory" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPurchasesDayHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchasesDayHistoryResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUserFromLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserFromLogin" message="tns:IUserService_GetUserFromLogin_InputMessage" />
@@ -118,6 +142,22 @@
     <wsdl:operation name="GetUsersPurchasesHistoryResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUsersPurchasesHistoryResult" message="tns:IUserService_GetUsersPurchasesHistoryResult_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUsersPurchasesHistoryResultResponse" message="tns:IUserService_GetUsersPurchasesHistoryResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccountDayHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserAccountDayHistory" message="tns:IUserService_GetUserAccountDayHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserAccountDayHistoryResponse" message="tns:IUserService_GetUserAccountDayHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurchaseDayHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserPurchaseDayHistory" message="tns:IUserService_GetUserPurchaseDayHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserPurchaseDayHistoryResponse" message="tns:IUserService_GetUserPurchaseDayHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountsDayHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetAccountsDayHistory" message="tns:IUserService_GetAccountsDayHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetAccountsDayHistoryResponse" message="tns:IUserService_GetAccountsDayHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchasesDayHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetPurchasesDayHistory" message="tns:IUserService_GetPurchasesDayHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetPurchasesDayHistoryResponse" message="tns:IUserService_GetPurchasesDayHistory_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -214,6 +254,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsersPurchasesHistoryResult">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUsersPurchasesHistoryResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccountDayHistory">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserAccountDayHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurchaseDayHistory">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserPurchaseDayHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountsDayHistory">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetAccountsDayHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchasesDayHistory">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetPurchasesDayHistory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

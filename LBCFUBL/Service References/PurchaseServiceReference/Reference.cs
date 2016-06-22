@@ -15,6 +15,12 @@ namespace LBCFUBL.PurchaseServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PurchaseServiceReference.IPurchaseService")]
     public interface IPurchaseService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/GetPurchases", ReplyAction="http://tempuri.org/IPurchaseService/GetPurchasesResponse")]
+        LBCFUBL_WCF.DBO.Purchase[] GetPurchases();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/GetPurchases", ReplyAction="http://tempuri.org/IPurchaseService/GetPurchasesResponse")]
+        System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Purchase[]> GetPurchasesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseService/GetPurchasesForLogin", ReplyAction="http://tempuri.org/IPurchaseService/GetPurchasesForLoginResponse")]
         LBCFUBL_WCF.DBO.Purchase[] GetPurchasesForLogin(string login);
         
@@ -77,6 +83,14 @@ namespace LBCFUBL.PurchaseServiceReference {
         
         public PurchaseServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public LBCFUBL_WCF.DBO.Purchase[] GetPurchases() {
+            return base.Channel.GetPurchases();
+        }
+        
+        public System.Threading.Tasks.Task<LBCFUBL_WCF.DBO.Purchase[]> GetPurchasesAsync() {
+            return base.Channel.GetPurchasesAsync();
         }
         
         public LBCFUBL_WCF.DBO.Purchase[] GetPurchasesForLogin(string login) {

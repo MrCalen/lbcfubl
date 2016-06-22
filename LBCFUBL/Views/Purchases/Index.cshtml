@@ -9,12 +9,12 @@
 
 @section scripts {
 <script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById("monthChart");
+var monthChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: [
-           @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+           @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.MonthMap)
            {
                 @Html.Raw("\"")@(elt.Key.ToString("MMMM yyyy"))@Html.Raw("\",")
            }
@@ -23,7 +23,7 @@ var myChart = new Chart(ctx, {
             {
                label: 'Dépenses ce mois-ci',
                data: [
-                   @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+                   @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.MonthMap)
                    {
                        @elt.Value.first @Html.Raw(",")
                    }
@@ -39,7 +39,60 @@ var myChart = new Chart(ctx, {
             {
                 label: "Etat du compte",
                 data: [
-                       @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.Map)
+                       @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.MonthMap)
+                        {
+                                   @elt.Value.second @Html.Raw(",")
+                        }
+                ],
+                backgroundColor: [
+                 'rgba(10, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(10, 99, 132,1)',
+                ],
+                borderWidth: 1
+        }]
+    },
+    options: {
+        showTooltips: true,
+        responsive: true,
+    }
+});
+</script>
+
+
+<script>
+var ctx = document.getElementById("dayChart");
+var dayChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+           @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.DayMap)
+           {
+                @Html.Raw("\"")@(elt.Key.ToString("dd MMMM yyyy"))@Html.Raw("\",")
+           }
+        ],
+        datasets: [
+            {
+               label: 'Dépenses ce mois-ci',
+               data: [
+                   @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.DayMap)
+                   {
+                       @elt.Value.first @Html.Raw(",")
+                   }
+               ],
+                backgroundColor: [
+                 'rgba(255, 99, 132, 0.2)',
+                ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+            ],
+            borderWidth: 1
+            },
+            {
+                label: "Etat du compte",
+                data: [
+                       @foreach(KeyValuePair<DateTime, LBCFUBL.Controllers.PurchasesController.Data> elt in ViewBag.DayMap)
                         {
                                    @elt.Value.second @Html.Raw(",")
                         }
@@ -61,11 +114,21 @@ var myChart = new Chart(ctx, {
 </script>
 }
 
+
 <div class="row">
     <div class="panel panel-primary">
-    <div class="panel-heading">Graphes</div>
+        <div class="panel-heading">Dépenses journalières</div>
         <div class="panel-body">
-            <canvas id="myChart"></canvas>
+            <canvas id="dayChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-primary">
+    <div class="panel-heading">Dépenses mensuelles</div>
+        <div class="panel-body">
+            <canvas id="monthChart"></canvas>
         </div>
     </div>
 </div>

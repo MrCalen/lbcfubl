@@ -149,4 +149,56 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUserAccountDayHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserAccountDayHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUserAccountDayHistoryResult" nillable="true" type="q9:ArrayOfGet_User_Account_Day_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserPurchaseDayHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserPurchaseDayHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetUserPurchaseDayHistoryResult" nillable="true" type="q10:ArrayOfGet_User_Purchase_Day_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDayHistory">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDayHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetAccountsDayHistoryResult" nillable="true" type="q11:ArrayOfGet_Users_Accounts_Day_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPurchasesDayHistory">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPurchasesDayHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/LBCFUBL_WCF.DBO" minOccurs="0" name="GetPurchasesDayHistoryResult" nillable="true" type="q12:ArrayOfGet_Users_Purchases_Day_History_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

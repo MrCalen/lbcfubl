@@ -62,5 +62,25 @@ namespace LBCFUBL_WCF.BusinessManagement.User
         {
             return user.GetUsersPurchaseHistory();
         }
+
+        public List<Get_User_Account_Day_History_Result> GetUserAccountDayHistory(string login)
+        {
+            return user.GetUserAccountDayHistory(login);
+        }
+
+        public List<Get_User_Purchase_Day_History_Result> GetUserPurchaseDayHistory(string login)
+        {
+            return user.GetUserPurchaseDayHistory(login);
+        }
+
+        public List<Get_Users_Accounts_Day_History_Result> GetAccountsDayHistory()
+        {
+            return user.GetAccountsDayHistory();
+        }
+
+        public List<Get_Users_Purchases_Day_History_Result> GetPurchasesDayHistory()
+        {
+            return user.GetPurchasesDayHistory();
+        }
     }
 }
