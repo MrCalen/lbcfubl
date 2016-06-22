@@ -3,20 +3,26 @@
 }
 @section css {
     @Styles.Render("~/Content/home.css")
-<style>
-    table {
-        border-spacing: 15px;
-    }
+    <style>
+        table {
+            border-spacing: 15px;
+        }
     </style>
 }
-<div class="row">
-    <div class="panel panel-primary">
-        <div class="panel-heading">Stock actuel</div>
-        <div class="panel-body">
-            @Html.ActionLink("Créer course", "Create")
+
+@section admin {
+    @if (User.IsInRole("admin"))
+    {
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Stock actuel</div>
+                <div class="panel-body">
+                    @Html.ActionLink("Créer course", "Create")
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    }
+}
 <div class="row">
     <div class="panel panel-primary">
         <div class="panel-heading">Stock actuel</div>

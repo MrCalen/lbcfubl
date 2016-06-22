@@ -8,7 +8,7 @@
 }
 
 @section scripts {
-<script>
+    <script>
 var ctx = document.getElementById("monthChart");
 var monthChart = new Chart(ctx, {
     type: 'line',
@@ -58,10 +58,9 @@ var monthChart = new Chart(ctx, {
         responsive: true,
     }
 });
-</script>
+    </script>
 
-
-<script>
+    <script>
 var ctx = document.getElementById("dayChart");
 var dayChart = new Chart(ctx, {
     type: 'line',
@@ -111,9 +110,19 @@ var dayChart = new Chart(ctx, {
         responsive: true,
     }
 });
-</script>
+    </script>
 }
 
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Profil de @User.Identity.Name</div>
+        <div class="panel-body">
+            <h4>Etat du compte : <b>@ViewBag.UserMoney €</b></h4>
+            <h4>Rôle: <b>@(LBCFUBL_WCF.DataAccess.User.RoleFromInt(ViewBag.User.role).ToString())</b></h4>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="panel panel-primary">
@@ -126,7 +135,7 @@ var dayChart = new Chart(ctx, {
 
 <div class="row">
     <div class="panel panel-primary">
-    <div class="panel-heading">Dépenses mensuelles</div>
+        <div class="panel-heading">Dépenses mensuelles</div>
         <div class="panel-body">
             <canvas id="monthChart"></canvas>
         </div>
@@ -168,23 +177,23 @@ var dayChart = new Chart(ctx, {
         <div class="panel-body">
             @if (ViewBag.Accounts.Length > 0)
             {
-            <table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th>Valeur</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var account in ViewBag.Accounts)
-                    {
+                <table class="table table-responsive">
+                    <thead>
                         <tr>
-                            <td>@account.argent €</td>
-                            <td>@account.date</td>
+                            <th>Valeur</th>
+                            <th>Date</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var account in ViewBag.Accounts)
+                        {
+                            <tr>
+                                <td>@account.argent €</td>
+                                <td>@account.date</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
             else
             {

@@ -16,6 +16,7 @@ namespace LBCFUBL.Controllers
     public class ProductsController : Controller
     {
         // GET: Products
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Products = Helper.GetProductClient().GetAllProducts().ToList();
@@ -26,6 +27,7 @@ namespace LBCFUBL.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAuthorizeAttribute(Roles = "admin")]
         public ActionResult Create([Bind(Include = "name,description,cost_without_margin,cost_with_margin")] LBCFUBL_WCF.DBO.Product product)
         {
             if (ModelState.IsValid)

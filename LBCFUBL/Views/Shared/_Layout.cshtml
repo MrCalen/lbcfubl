@@ -39,12 +39,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Produits", "Index", "Products", new { }, new { @class="" })</li>
-                                @if (User.IsInRole("admin"))
+                                <li>@Html.ActionLink("Produits", "Index", "Products", new { }, new { @class = "" })</li>
+                                @if (User.IsInRole("admin") || User.IsInRole("chief"))
                                 {
                                     <li>@Html.ActionLink("Stock", "Index", "Stock", new { area = "" }, new { @class = "" })</li>
                                     <li>@Html.ActionLink("Le Lab", "Index", "Lab", new { area = "" }, new { @class = "" })</li>
-                                    <li>@Html.ActionLink("Utilisateurs", "Index", "Users", new { area = "" }, new { @class = "" })</li>
+                                    if (User.IsInRole("admin"))
+                                    {
+                                        <li>@Html.ActionLink("Utilisateurs", "Index", "Users", new { area = "" }, new { @class = "" })</li>
+                                    }
                                 }
                                 <li>@Html.ActionLink("Mon compte", "Index", "Purchases", new { area = "" }, new { @class = "" })</li>
                                 <li role="separator" class="divider"></li>
@@ -115,7 +118,7 @@
                                     </div>
                                     <div class="row padded-row">
                                         <label>Quantité:</label>
-                                        <input type="number" name="quantity" value="1" min="1" class="form-control"/>
+                                        <input type="number" name="quantity" value="1" min="1" class="form-control" />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Valider</button>
                                 }
@@ -131,33 +134,33 @@
                         </div>
                         <div class="panel-body">
 
-                                <div class="row padded-row">
-                                    <label>Snack/Canette:</label>
-                                    <input type="number" id="quantitySnack" value="0" min="0" class="form-control" />
-                                </div>
-                                <div class="row padded-row">
-                                    <label>Eau/Freeze:</label>
-                                    <input type="number" id="quantityWater" value="0" min="0" class="form-control" />
-                                </div>
-                                <div class="row padded-row">
-                                    <label>Boissons énergisantes:</label>
-                                    <input type="number" id="quantityEnergy" value="0" min="0" class="form-control" />
-                                </div>
-                                <div class="row padded-row">
-                                    <label>Jus de fruit:</label>
-                                    <input type="number" id="quantityFruit" value="0" min="0" class="form-control" />
-                                </div>
+                            <div class="row padded-row">
+                                <label>Snack/Canette:</label>
+                                <input type="number" id="quantitySnack" value="0" min="0" class="form-control" />
+                            </div>
+                            <div class="row padded-row">
+                                <label>Eau/Freeze:</label>
+                                <input type="number" id="quantityWater" value="0" min="0" class="form-control" />
+                            </div>
+                            <div class="row padded-row">
+                                <label>Boissons énergisantes:</label>
+                                <input type="number" id="quantityEnergy" value="0" min="0" class="form-control" />
+                            </div>
+                            <div class="row padded-row">
+                                <label>Jus de fruit:</label>
+                                <input type="number" id="quantityFruit" value="0" min="0" class="form-control" />
+                            </div>
                             <div class="row padded-row">
                                 <label>Etudiant</label><input id="student" type="checkbox">
                             </div>
                             <div class="row padded-row">
                                 <label>Total:</label>
                                 <label id="calculator">0€</label>
-                                <br/>
+                                <br />
                                 <button class="btn btn-primary" onclick="calculator()">Calculer</button>
                             </div>
 
-                            </div>
+                        </div>
                     </div>
                 </div>
 

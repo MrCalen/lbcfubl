@@ -14,10 +14,10 @@ using System.Text;
 
 namespace LBCFUBL.Controllers
 {
-    [CustomAuthorizeAttribute(Roles = "admin,assistant")]
+    [CustomAuthorizeAttribute(Roles = "admin")]
     public class UsersController : Controller
     {
-        // GET: Users
+        [HttpGet]
         public ActionResult Index()
         {
             ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);

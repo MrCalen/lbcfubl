@@ -27,7 +27,6 @@ namespace LBCFUBL.Controllers
             }
         }
 
-        // GET: Purchases
         public ActionResult Index(string id)
         {
             if (id == null)
@@ -39,9 +38,11 @@ namespace LBCFUBL.Controllers
             }
 
             ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name, true);
+            ViewBag.UserMoney = Math.Round(Helper.GetUserClient().GetUserMoney(id), 2);
+
             ViewBag.Purchases = Helper.GetPurchaseClient().GetPurchasesForLogin(id);
             ViewBag.Accounts = Helper.GetAccountClient().GetAccountsForLogin(id);
-
+            ViewBag.User = Helper.GetUserClient().GetUserFromLogin(id);
             ViewBag.MonthMap = GetMonthHistory(id);
             ViewBag.DayMap = GetDayHistory(id);
             return View("Index");

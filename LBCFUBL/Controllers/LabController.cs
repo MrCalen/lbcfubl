@@ -12,8 +12,8 @@ namespace LBCFUBL.Controllers
 {
     public class LabController : Controller
     {
-        // GET: Lab
-        [CustomAuthorizeAttribute(Roles = "admin")]
+        [CustomAuthorizeAttribute(Roles = "admin,chief")]
+        [HttpGet]
         public ActionResult Index()
         {
             ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);

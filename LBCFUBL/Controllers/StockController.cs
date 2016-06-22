@@ -10,10 +10,10 @@ using System.Net;
 
 namespace LBCFUBL.Controllers
 {
-    [CustomAuthorizeAttribute(Roles = "admin,assistant")]
+    [CustomAuthorizeAttribute(Roles = "admin,chief")]
     public class StockController : Controller
     {
-        // GET: Stock
+        [HttpGet]
         public ActionResult Index()
         {
             Services.ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
@@ -32,6 +32,8 @@ namespace LBCFUBL.Controllers
             return View();
         }
 
+        [HttpGet]
+        [CustomAuthorizeAttribute(Roles = "admin")]
         public ActionResult Create()
         {
             ViewBag.Products = Helper.GetProductClient().GetAllProducts();
@@ -40,6 +42,7 @@ namespace LBCFUBL.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorizeAttribute(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "date")] LBCFUBL_WCF.DBO.Shopping shopping)
         {
