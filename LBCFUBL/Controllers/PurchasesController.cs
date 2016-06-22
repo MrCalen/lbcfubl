@@ -174,8 +174,12 @@ namespace LBCFUBL.Controllers
                 }
                 purchase.added_by = User.Identity.Name;
                 for (int i = 0; i < quantity; i++)
-                    Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
-
+                {
+                    if (user.login == "lab")
+                        Helper.GetAccountClient().CreateAccount(user.login, (float)Helper.GetProductClient().GetProductFromId(purchase.id_prod).cost_with_margin, purchase.date);
+                    else
+                        Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
+                }
                 // Check that the user is not blocked by adding a new purchase
                 double money = Math.Round(Helper.GetUserClient().GetUserMoney(purchase.login), 2);
                 if (money < -20)
