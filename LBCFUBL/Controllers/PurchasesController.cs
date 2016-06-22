@@ -166,6 +166,12 @@ namespace LBCFUBL.Controllers
             int quantity = Int32.Parse(Request.Form["quantity"]);
             if (ModelState.IsValid)
             {
+                var user = Helper.GetUserClient().GetUserFromLogin(purchase.login);
+                if (user.is_blocked == 1)
+                {
+                    TempData["Error"] = "L'utilisateur est bloqué.";
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
                 purchase.added_by = User.Identity.Name;
                 for (int i = 0; i < quantity; i++)
                     Helper.GetPurchaseClient().CreatePurchase(purchase.login, purchase.date, purchase.id_prod, purchase.added_by);
