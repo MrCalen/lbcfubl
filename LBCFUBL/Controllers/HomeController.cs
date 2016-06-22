@@ -18,20 +18,5 @@ namespace LBCFUBL.Controllers
             ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
             return View();
         }
-
-        [HttpGet]
-        [CustomAuthorizeAttribute(Roles = "admin")]
-        public ActionResult Report()
-        {
-            try
-            {
-                GlobalReport report = GlobalReport.CreateReport();
-                return File(report.FilePath, report.MimeType, report.FileName);
-            }
-            catch (ArgumentException)
-            {
-                return HttpNotFound();
-            }
-        }
     }
 }

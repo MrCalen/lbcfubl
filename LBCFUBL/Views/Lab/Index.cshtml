@@ -8,11 +8,33 @@
 }
 
 @section admin {
-    <div class="row">
+<div class="row">
     <div class="panel panel-admin">
         <div class="panel-heading white">Rapports du lab</div>
         <div class="panel-body">
-            @Html.ActionLink("Télécharger le rapport global du lab", "Report", "Home")
+            <div id="createReportModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Télécharger le rapport global du lab</h4>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("Report", "Home", null, FormMethod.Get))
+                            {
+                                <input type="date" name="from" value="" />
+                                <input type="date" name="to" value="" />
+                                <button class="btn btn-primary">Télécharger le rapport</button>
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#createReportModal">Télécharger le rapport global du lab</button>
         </div>
     </div>
 </div>
