@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace LBCFUBL.Services
 {
-    public class UserReport
+    public class DocXUserReport
     {
         private LBCFUBL_WCF.DBO.User user;
 
@@ -19,7 +19,7 @@ namespace LBCFUBL.Services
         public string FilePath { get; private set; }
         public string MimeType { get; private set; } = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-        private UserReport(string login)
+        private DocXUserReport(string login)
         {
             if (login == null)
                 throw new ArgumentNullException("user");
@@ -48,9 +48,9 @@ namespace LBCFUBL.Services
             return CultureInfo.CreateSpecificCulture("fr-FR");
         }
 
-        public static UserReport CreateReport(string login)
+        public static DocXUserReport CreateReport(string login)
         {
-            UserReport report = new UserReport(login);
+            DocXUserReport report = new DocXUserReport(login);
             
             using (DocX doc = DocX.Create(report.FilePath))
             {

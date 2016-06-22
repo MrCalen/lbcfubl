@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace LBCFUBL.Services
 {
-    public class GlobalReport
+    public class DocXGlobalReport
     {
         private DateTime from;
         private DateTime to;
@@ -16,7 +16,7 @@ namespace LBCFUBL.Services
         public string FilePath { get; private set; }
         public string MimeType { get; private set; } = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-        private GlobalReport(DateTime from, DateTime to)
+        private DocXGlobalReport(DateTime from, DateTime to)
         {
             if (to < from)
             {
@@ -48,9 +48,9 @@ namespace LBCFUBL.Services
             return price.ToString("C", CultureInfo.CreateSpecificCulture("fr-FR"));
         }
 
-        public static GlobalReport CreateReport(DateTime from, DateTime to)
+        public static DocXGlobalReport CreateReport(DateTime from, DateTime to)
         {
-            GlobalReport report = new GlobalReport(from, to);
+            DocXGlobalReport report = new DocXGlobalReport(from, to);
             
             using (DocX doc = DocX.Create(report.FilePath))
             {
