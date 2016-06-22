@@ -149,7 +149,6 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\ShoppingsController.cs" />
-    <Compile Include="Controllers\Shopping_ProductController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,8 +200,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Product.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Shopping.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.User1.datasource" />
@@ -218,6 +215,12 @@
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Get_Users_Purchases_Day_History_Result.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Get_User_Account_Day_History_Result.datasource" />
     <Content Include="Properties\DataSources\LBCFUBL_WCF.DBO.Get_User_Purchase_Day_History_Result.datasource" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Service References\AccountServiceReference\Account.disco" />
+    <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -229,10 +232,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
-    <None Include="Service References\AccountServiceReference\Account.disco" />
-    <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Service References\AccountServiceReference\LBCFUBL.AccountServiceReference.Account.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -325,39 +325,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Accounts\Create.cshtml" />
-    <Content Include="Views\Accounts\Delete.cshtml" />
-    <Content Include="Views\Accounts\Details.cshtml" />
-    <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Purchases\Create.cshtml" />
-    <Content Include="Views\Purchases\Delete.cshtml" />
-    <Content Include="Views\Purchases\Details.cshtml" />
-    <Content Include="Views\Purchases\Edit.cshtml" />
     <Content Include="Views\Purchases\Index.cshtml" />
     <Content Include="Views\Shoppings\Create.cshtml" />
-    <Content Include="Views\Shoppings\Delete.cshtml" />
-    <Content Include="Views\Shoppings\Details.cshtml" />
-    <Content Include="Views\Shoppings\Edit.cshtml" />
     <Content Include="Views\Shoppings\Index.cshtml" />
-    <Content Include="Views\Shopping_Product\Create.cshtml" />
-    <Content Include="Views\Shopping_Product\Delete.cshtml" />
-    <Content Include="Views\Shopping_Product\Details.cshtml" />
-    <Content Include="Views\Shopping_Product\Edit.cshtml" />
-    <Content Include="Views\Shopping_Product\Index.cshtml" />
     <None Include="Service References\PurchaseServiceReference\PurchaseService.wsdl" />
     <None Include="Service References\PurchaseServiceReference\PurchaseService.xsd">
       <SubType>Designer</SubType>
@@ -393,8 +367,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Stock\Index.cshtml" />
-    <Content Include="Views\Stock\Details.cshtml" />
-    <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Lab\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -406,7 +378,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -32,25 +32,10 @@ namespace LBCFUBL.Controllers
             return View();
         }
 
-        // GET: Stock/Details/5
-        public ActionResult Details(Guid id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LBCFUBL_WCF.DBO.Shopping_Product[] shopping = null; // Helper.GetShoppingProductClient().GetShopping_ProductsForShoppingId(id);
-            if (shopping == null)
-            {
-                return HttpNotFound();
-            }
-            return View(shopping);
-        }
-
-        // GET: Stock/Create
         public ActionResult Create()
         {
             ViewBag.Products = Helper.GetProductClient().GetAllProducts();
+            ViewUtils.FillViewBag(ViewBag, TempData, User.Identity.Name);
             return View();
         }
 

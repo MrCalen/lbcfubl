@@ -30,14 +30,6 @@ namespace LBCFUBL.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*if (Membership.ValidateUser(model.Username, model.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
-                    LBCFUBL_WCF.DBO.User u = Helper.GetUserClient().GetUserFromLogin(model.Username);
-                    model.role = LBCFUBL_WCF.DataAccess.User.RoleFromInt(u.role).ToString();
-                    FormsAuthentication.RedirectFromLoginPage(model.Username, model.RememberMe);
-                }*/
-
                 LBCFUBL_WCF.DBO.User user = Helper.GetUserClient().GetUserFromLogin(model.Username);
 
                 if (user != null)
