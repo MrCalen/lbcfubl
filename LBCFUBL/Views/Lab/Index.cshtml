@@ -7,6 +7,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
 }
 
+@section admin {
+    <div class="row">
+    <div class="panel panel-admin">
+        <div class="panel-heading white">Rapports du lab</div>
+        <div class="panel-body">
+            @Html.ActionLink("Télécharger le rapport global du lab", "Report", "Home")
+        </div>
+    </div>
+</div>
+}
+
 @section scripts {
     <script>
         var ctx = document.getElementById("monthChart");
