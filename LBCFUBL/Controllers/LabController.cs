@@ -141,5 +141,24 @@ namespace LBCFUBL.Controllers
             }
             return map;
         }
+
+        [HttpGet]
+        public ActionResult Report(DateTime from, DateTime to, string docx, string xlsx)
+        {
+            try
+            {
+                Report r;
+                if (docx == null)
+                    r = XlsxGlobalReport.CreateReport(from, to);
+                else
+                    r = DocXGlobalReport.CreateReport(from, to);
+
+                return File(r.FilePath, r.MimeType, r.FileName);
+            }
+            catch (ArgumentException)
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

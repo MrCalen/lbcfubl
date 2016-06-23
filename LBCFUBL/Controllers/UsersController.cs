@@ -71,7 +71,7 @@ namespace LBCFUBL.Controllers
 
             try
             {
-                UserReport report = UserReport.CreateReport(login);
+                DocXUserReport report = DocXUserReport.CreateReport(login);
                 return File(report.FilePath, report.MimeType, report.FileName);
             } catch (ArgumentException)
             {

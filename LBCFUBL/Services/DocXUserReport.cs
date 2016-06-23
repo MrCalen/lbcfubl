@@ -11,16 +11,14 @@ using System.Globalization;
 
 namespace LBCFUBL.Services
 {
-    public class DocXUserReport
+    public class DocXUserReport : Report
     {
         private LBCFUBL_WCF.DBO.User user;
 
-        public string FileName { get; private set; }
-        public string FilePath { get; private set; }
-        public string MimeType { get; private set; } = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-
         private DocXUserReport(string login)
+            : base(login, "docx", null, null)
         {
+
             if (login == null)
                 throw new ArgumentNullException("user");
 
@@ -32,9 +30,6 @@ namespace LBCFUBL.Services
             user = Helper.GetUserClient().GetUserFromLogin(login);
             if (user == null)
                 throw new ArgumentException("User fo login `" + login + "` not found");
-
-            FileName = user.login + ".docx";
-            FilePath = dir + @"\" + FileName;
         }
 
         private static void setTableStyle(Novacode.Table table)

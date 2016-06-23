@@ -7,34 +7,11 @@ using System.Globalization;
 
 namespace LBCFUBL.Services
 {
-    public class DocXGlobalReport
+    public class DocXGlobalReport : Report
     {
-        private DateTime from;
-        private DateTime to;
-
-        public string FileName { get; private set; }
-        public string FilePath { get; private set; }
-        public string MimeType { get; private set; } = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-
-        private DocXGlobalReport(DateTime from, DateTime to)
+        protected DocXGlobalReport(DateTime from, DateTime to)
+            : base("global", "docx", from, to)
         {
-            if (to < from)
-            {
-                DateTime t = from;
-                from = to;
-                to = t;
-            }
-
-            this.from = from;
-            this.to = to;
-
-            string dir = @"C:\ProgramData\LBCFUBL\Reports";
-
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            FileName = string.Format("global_{0}_{1}.docx", from.ToString("dd-MM-yyyy"), to.ToString("dd-MM-yyyy"));
-            FilePath = dir + @"\" + FileName;
         }
 
         private static void setTableStyle(Novacode.Table table)

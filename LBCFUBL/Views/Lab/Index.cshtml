@@ -21,11 +21,12 @@
                             <h4 class="modal-title">Télécharger le rapport global du lab</h4>
                         </div>
                         <div class="modal-body">
-                            @using (Html.BeginForm("Report", "Home", null, FormMethod.Get))
+                            @using (Html.BeginForm("Report", "Lab", null, FormMethod.Get))
                             {
                                 <input type="date" name="from" value="" />
                                 <input type="date" name="to" value="" />
-                                <button class="btn btn-primary">Télécharger le rapport</button>
+                                <button class="btn btn-primary" name="docx">.docx</button>
+                                <button class="btn btn-primary" name="xlsx">.xlsx</button>
                             }
                         </div>
                         <div class="modal-footer">
