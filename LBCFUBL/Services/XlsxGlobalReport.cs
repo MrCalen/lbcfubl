@@ -34,17 +34,17 @@ namespace LBCFUBL.Services
 
         private void Fill(ExcelPackage xlsx)
         {
-            InsertWorksheet(xlsx, GetUsersInfos(), "Dettes");
-            InsertWorksheet(xlsx, GetAccounts(), "Accomptes");
-            InsertWorksheet(xlsx, GetPurchases(), "Achats");
+            InsertWorksheet(xlsx, GetUsersInfos(), "Dettes", "D");
+            InsertWorksheet(xlsx, GetAccounts(), "Accomptes", "C");
+            InsertWorksheet(xlsx, GetPurchases(), "Achats", "D");
         }
 
-        private void InsertWorksheet(ExcelPackage xlsx, DataTable table, string name)
+        private void InsertWorksheet(ExcelPackage xlsx, DataTable table, string name, string l)
         {
             ExcelWorksheet ws = xlsx.Workbook.Worksheets.Add(name);
             ws.Cells["A1"].LoadFromDataTable(table, true);
 
-            using (ExcelRange rng = ws.Cells["A1:D1"])
+            using (ExcelRange rng = ws.Cells["A1:" + l + "1"])
             {
                 rng.Style.Font.Bold = true;
                 rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -108,9 +108,9 @@ namespace LBCFUBL.Services
                 DataRow row = table.NewRow();
 
                 row["login"] = user.login;
-                row["account"] = totalAccount;
-                row["due"] = totalPurchases;
-                row["balance"] = totalAccount - totalPurchases;
+                row["account"] = Math.Round(totalAccount, 2);
+                row["due"] = Math.Round(totalPurchases, 2);
+                row["balance"] = Math.Round(totalAccount - totalPurchases, 2);
 
                 table.Rows.Add(row);
             }
@@ -141,7 +141,7 @@ namespace LBCFUBL.Services
 
                 row["login"] = account.login;
                 row["date"] = account.date;
-                row["argent"] = account.argent;
+                row["argent"] = Math.Round(account.argent, 2);
 
                 table.Rows.Add(row);
             }
@@ -176,7 +176,7 @@ namespace LBCFUBL.Services
                 row["login"] = purchase.login;
                 row["date"] = purchase.date.ToString("dd-MM-yyyy hh:mm");
                 row["product"] = purchase.Product.name;
-                row["price"] = purchase.Product.cost_with_margin;
+                row["price"] = Math.Round(purchase.Product.cost_with_margin, 2);
 
                 table.Rows.Add(row);
             }
