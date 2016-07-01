@@ -228,13 +228,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="dev.config" />
     <EntityDeploy Include="DBO\ef_lbcfubl.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ef_lbcfubl.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="DBO\ef_lbcfubl.edmx.diagram">
       <DependentUpon>ef_lbcfubl.edmx</DependentUpon>
+    </Content>
+    <Content Include="dev.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
