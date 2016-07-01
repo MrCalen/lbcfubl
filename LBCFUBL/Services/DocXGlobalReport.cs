@@ -85,6 +85,8 @@ namespace LBCFUBL.Services
             double sumAccountsAfter = accounts.Where(x => x.date <= to).Sum(x => x.argent) -
                 purchases.Where(x => x.date < to).Sum(x => x.Product.cost_with_margin);
 
+            double totalAccounts = accounts.Where(x => x.date <= to).Sum(x => x.argent);
+
             double totalWithoutMargin = purchases.Where(x => from <= x.date && x.date <= to).Sum(x => x.Product.cost_without_margin);
             double total = purchases.Where(x => from <= x.date && x.date <= to).Sum(x => x.Product.cost_with_margin);
 
@@ -92,6 +94,7 @@ namespace LBCFUBL.Services
                 .Append("Période : ").Append(string.Format("du {0} au {1}.", from.ToString("dd-MM-yyyy"), to.ToString("dd-MM-yyyy"))).Bold().AppendLine()
                 .Append(string.Format("Caisse au {0} : ", from.ToString("dd-MM-yyyy"))).Append(currency(sumAccountsBefore)).Bold().AppendLine()
                 .Append(string.Format("Caisse au {0} : ", to.ToString("dd-MM-yyyy"))).Append(currency(sumAccountsAfter)).Bold().AppendLine()
+                .Append("Total accomptes des assistants : ").Append(currency(totalAccounts)).Bold().AppendLine()
                 .Append("Total achats : ").Append(currency(totalWithoutMargin)).Bold().AppendLine()
                 .Append("Total achats (+ marges) : ").Append(currency(total)).Bold().AppendLine()
                 .Append("Total bénéfices : ").Append(currency(total - totalWithoutMargin)).Bold().AppendLine();
