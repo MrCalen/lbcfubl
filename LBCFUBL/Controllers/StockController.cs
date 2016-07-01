@@ -48,6 +48,7 @@ namespace LBCFUBL.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 List<LBCFUBL_WCF.DBO.Product> products = Helper.GetProductClient().GetAllProducts().ToList();
                 List<LBCFUBL_WCF.DBO.Shopping_Product> shopping_products = new List<LBCFUBL_WCF.DBO.Shopping_Product>();
                 foreach(LBCFUBL_WCF.DBO.Product p in products)

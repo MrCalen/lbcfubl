@@ -394,6 +394,7 @@
     </None>
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Lab\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
