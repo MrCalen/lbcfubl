@@ -25,8 +25,11 @@ namespace LBCFUBL.Services
                 to = t;
             }
 
-            this.from = (DateTime) from;
-            this.to = (DateTime) to;
+            if (null != from)
+                this.from = (DateTime) from;
+
+            if (null != to)
+                this.to = (DateTime) to;
 
             string dir = @"C:\ProgramData\LBCFUBL\Reports";
 
