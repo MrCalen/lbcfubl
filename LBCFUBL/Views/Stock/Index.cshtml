@@ -65,7 +65,7 @@
                     {
                         <tr>
                             <td style="font-weight: bold;">@shopping.date</td>
-                            <td>@(((Dictionary<LBCFUBL_WCF.DBO.Shopping, double>)ViewBag.Shoppings_totals)[shopping])</td>
+                            <td>@(((Dictionary<LBCFUBL_WCF.DBO.Shopping, double>)ViewBag.Shoppings_totals)[shopping]) €</td>
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#shopModal-@(shopping.id.ToString())">Voir plus</button>
                             </td>

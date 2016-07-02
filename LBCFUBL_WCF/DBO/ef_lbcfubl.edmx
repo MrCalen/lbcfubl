@@ -74,7 +74,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -82,30 +84,6 @@
             </Principal>
             <Dependent Role="Purchase">
               <PropertyRef Name="id_prod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Purchase_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="login" />
-            </Principal>
-            <Dependent Role="Purchase">
-              <PropertyRef Name="login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Purchase_User1">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="login" />
-            </Principal>
-            <Dependent Role="Purchase">
-              <PropertyRef Name="added_by" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,14 +156,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="Purchase" EntitySet="Purchase" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Purchase" EntitySet="Purchase" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchase_User1" Association="Self.FK_Purchase_User1">
-            <End Role="User" EntitySet="User" />
             <End Role="Purchase" EntitySet="Purchase" />
           </AssociationSet>
           <AssociationSet Name="FK_Shopping_Product_Product" Association="Self.FK_Shopping_Product_Product">
@@ -394,13 +364,13 @@
           <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Get_User_Account_Day_History" ReturnType="Collection(lbcfublModel.Get_User_Account_Day_History_Result)">
-            <Parameter Name="login" Mode="In" Type="String" />
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_User_Money_History" ReturnType="Collection(lbcfublModel.Get_User_Money_History_Result)">
-            <Parameter Name="login" Mode="In" Type="String" />
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_User_Purchase_Day_History" ReturnType="Collection(lbcfublModel.Get_User_Purchase_Day_History_Result)">
-            <Parameter Name="login" Mode="In" Type="String" />
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_Users_Accounts_Day_History" ReturnType="Collection(lbcfublModel.Get_Users_Accounts_Day_History_Result)" />
           <FunctionImport Name="Get_Users_Purchases_Day_History" ReturnType="Collection(lbcfublModel.Get_Users_Purchases_Day_History_Result)" />

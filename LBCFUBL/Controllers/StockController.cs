@@ -54,10 +54,19 @@ namespace LBCFUBL.Controllers
                 foreach(LBCFUBL_WCF.DBO.Product p in products)
                 {
                     string number = "number" + p.id.ToString();
-                    shopping_products.Add(new LBCFUBL_WCF.DBO.Shopping_Product() {
-                        id_product = p.id,
-                        number = int.Parse(Request.Form[number])
-                    });
+                    int n = int.Parse(Request.Form[number]);
+                    if (n > 0)
+                    {
+                        shopping_products.Add(new LBCFUBL_WCF.DBO.Shopping_Product()
+                        {
+                            id_product = p.id,
+                            number = n
+                        });
+                        for (int i = 0; i < n; i++)
+                        {
+                            Helper.GetPurchaseClient().CreatePurchase("lab", shopping.date, p.id, "lab");
+                        }
+                    }
                 }
 
                 Helper.GetShoppingClient().CreateShoppingWithProducts(shopping.date, shopping_products.ToArray());

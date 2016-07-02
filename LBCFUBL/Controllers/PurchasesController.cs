@@ -165,7 +165,7 @@ namespace LBCFUBL.Controllers
                 }
                 // Check that the user is not blocked by adding a new purchase
                 double money = Math.Round(Helper.GetUserClient().GetUserMoney(purchase.login), 2);
-                if (money < -20)
+                if (money < -20 && user.login != "lab")
                     Helper.GetUserClient().Block(purchase.login, true);
                 return Redirect(Request.UrlReferrer.ToString());
             }
